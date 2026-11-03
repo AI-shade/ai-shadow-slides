@@ -1,0 +1,42 @@
+/* 색·글꼴·글자 크기는 여기서만 정합니다. */
+:root {
+  --bg: #ffffff;
+  --fg: #1a1a1a;
+  --accent: #2f6fed;
+  --stage-bg: #000000;
+
+  --font: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --title-size: 72px;
+  --body-size: 40px;
+  --pad: 120px;
+}
+
+/* 장 파일 (1920×1080 고정) */
+.slide {
+  margin: 0;
+  width: 1920px;
+  height: 1080px;
+  box-sizing: border-box;
+  padding: var(--pad);
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font);
+}
+.slide h1 {
+  margin: 0 0 60px;
+  font-size: var(--title-size);
+  color: var(--accent);
+}
+.slide .body {
+  font-size: var(--body-size);
+  line-height: 1.5;
+}
+
+/* index.html 무대 */
+.stage {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--stage-bg);
+}

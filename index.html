@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>발표</title>
+<link rel="stylesheet" href="theme.css">
+<style>
+  #frame {
+    position: absolute; left: 50%; top: 50%;
+    width: 1920px; height: 1080px; border: 0;
+    pointer-events: none; /* 방향키가 iframe에 먹히지 않게 포커스를 바깥에 둔다 */
+  }
+</style>
+</head>
+<body class="stage">
+<iframe id="frame" tabindex="-1"></iframe>
+<script>
+  // 장을 늘리거나 빼면 이 목록만 고치세요.
+  const slides = ['01', '02', '03', '04', '05'];
+  const frame = document.getElementById('frame');
+  let i = Math.max(0, slides.indexOf(location.hash.slice(1)));
+
+  function show() {
+    frame.src = `slides/${slides[i]}.html`;
+    history.replaceState(null, '', '#' + slides[i]);
+  }
+  function fit() {
+    const s = Math.min(innerWidth / 1920, innerHeight / 1080);
+    frame.style.transform = `translate(-50%, -50%) scale(${s})`;
+  }
+
+  addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'PageDown') i = Math.min(i + 1, slides.length - 1);
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') i = Math.max(i - 1, 0);
+    else return;
+    e.preventDefault();
+    show();
+  });
+  addEventListener('resize', fit);
+  fit();
+  show();
+</script>
+</body>
+</html>
