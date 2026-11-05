@@ -19,6 +19,20 @@ theme.css      색 · 글꼴 · 글자 크기 (여기서만 고침)
 slides/01.html 장마다 한 파일 (제목 + 본문)
 ```
 
+## PPT · PDF로 내보내기 (대회 제출용)
+
+현장 발표는 PPT 파일로 하므로, HTML을 고친 뒤 이것만 돌립니다.
+
+```
+pip install playwright python-pptx pillow
+python -m playwright install chromium
+python export.py
+```
+
+`dist/아이SHADOW-발표.pptx` 와 `.pdf` 가 생깁니다. 장마다 그림 한 장이라
+운영 PC에 글꼴이 없어도 깨지지 않습니다. 대신 PPT 안에서 글자는 못 고치니,
+고칠 땐 HTML을 고치고 다시 돌리세요.
+
 ## 장 추가
 
 1. `slides/` 안의 파일 하나를 복사해 `06.html` 처럼 이름을 붙입니다.
