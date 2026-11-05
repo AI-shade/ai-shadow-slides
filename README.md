@@ -1,12 +1,20 @@
 # 발표 슬라이드
 
+## 바로 보기 (설치 없이, 휴대폰도 됨)
+
+- 슬라이드: https://ai-shade.github.io/ai-shadow-slides/
+- 발표 설계도: https://ai-shade.github.io/ai-shadow-slides/blueprint.html
+
+> 이 GitHub 화면에서 `.html` 파일을 누르면 화면이 아니라 **코드**가 보입니다.
+> 화면으로 보려면 위 링크를 쓰세요. 푸시하고 1~2분 뒤에 반영됩니다.
+
 1920×1080 고정 화면을 브라우저 창 크기에 맞춰 비율 그대로 줄여 보여 줍니다.
 
-## 여는 법
+## 내 컴퓨터에서 열기
 
-- **그냥 열기**: `index.html`을 더블클릭해 브라우저로 엽니다. 서버가 필요 없습니다.
-- **깃허브 페이지**: 저장소 Settings → Pages → 이 폴더가 있는 브랜치를 고르면
-  `https://<계정>.github.io/<저장소>/` 에서 열립니다.
+1. 초록색 **Code** 버튼 → **Download ZIP** (또는 `git clone`)
+2. 압축을 풀고 `index.html`(슬라이드)이나 `blueprint.html`(설계도)을 더블클릭.
+   서버가 필요 없습니다.
 
 넘기기: `→` / `←` (발표 리모컨의 PageDown / PageUp 도 됩니다).
 주소 끝 `#03` 처럼 장 번호를 붙이면 그 장부터 엽니다.
