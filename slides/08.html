@@ -1,16 +1,51 @@
 <!doctype html>
 <html lang="ko">
-<head><meta charset="utf-8"><link rel="stylesheet" href="../theme.css"></head>
+<head><meta charset="utf-8"><link rel="stylesheet" href="../theme.css">
+<style>
+  /* 4단계 계단(확장형): 1·2 완료, 3 진행 중, 4 다음 · 하단: "시도했다" 띠 */
+  .stairs { flex: 1; }
+  .done { background: var(--gray); }
+  .now  { background: var(--main); color: var(--bg); }
+  .now .foot, .now .lab { color: var(--on-main); }
+  .next { border: 3px dashed var(--line); }
+  .stairs .lab { display: flex; align-items: center; gap: 12px; margin: 0; }
+  .stairs b { font-size: var(--body); line-height: 1.3; }
+  .tried { background: var(--gray-2); border-radius: 20px; padding: 24px 32px; }
+</style>
+</head>
 <body class="slide">
-<div class="wf"><div class="in" style="grid-template:'hd' auto 'rm' 1fr 'tr' auto">
-        <div class="hd" style="grid-area:hd">직접 찍은 503장으로 재고, 못 찾은 것을 학습시키는 중</div>
-        <div class="grow" style="grid-area:rm">
-          <div class="z g1" style="background:#eef0f3"><span class="lab">1 <span class="chip" style="font-size:1cqw;padding:0 .6cqw">완료</span></span><b>실사 503장 촬영 · 정답 표시</b><br><span class="small">학습 401 · 시험 102</span></div>
-          <div class="z g2" style="background:#eef0f3"><span class="lab">2 <span class="chip" style="font-size:1cqw;padding:0 .6cqw">완료</span></span><b>지금 앱으로 재 봄</b><br><span class="small">글자 192/326(59%) · 로고 29/42(69%)</span></div>
-          <div class="z g3" style="background:var(--accent);color:#fff;border:.25cqw solid var(--accent)"><span class="lab" style="color:#e3ecff">3 <span class="chip acc" style="font-size:1cqw;padding:0 .6cqw">진행 중</span></span><b>못 찾은 134개 잡기</b><br><span class="small" style="color:#e3ecff">빠뜨린 43 → 코드 · 프롬프트<br>못 읽은 91 → Roboflow 위치 모델</span></div>
-          <div class="z g4" style="background:#fff;color:inherit;border:1px dashed #aab2c0"><span class="lab" style="color:var(--ink-3)">4</span><b>시험 102장으로 다시 잼</b><br><span class="small" style="color:var(--ink-3)">그다음 같은 사진으로 위험 판단 학습</span></div>
-        </div>
-        <div class="z" style="grid-area:tr"><span class="lab">시도했다 (결과와 함께)</span>상가정보로 간판 위치 좁히기 — 간판 150장 중 전국 1곳인 이름이 나온 사진 24장 이하, 프랜차이즈는 수백 곳이라 대부분 안 좁혀짐</div>
-      </div><span class="pg">08</span></div>
+  <header>
+    <p class="sec">Execution · 진행 중</p>
+    <h1>직접 찍은 503장으로 재고, 못 찾은 것을 학습시키는 중</h1>
+  </header>
+
+  <div class="stairs">
+    <div class="done" style="height:52%">
+      <span class="lab">1 <span class="chip">완료</span></span>
+      <b>실사 503장 촬영 · 정답 표시</b>
+      <p class="foot">학습 401 · 시험 102</p>
+    </div>
+    <div class="done" style="height:68%">
+      <span class="lab">2 <span class="chip">완료</span></span>
+      <b>지금 앱으로 재 봄</b>
+      <p class="foot">글자 192/326(59%) · 로고 29/42(69%)</p>
+    </div>
+    <div class="now" style="height:84%">
+      <span class="lab">3 <span class="chip on">진행 중</span></span>
+      <b>못 찾은 134개 잡기</b>
+      <p class="foot">빠뜨린 43 → 코드 · 프롬프트<br>못 읽은 91 → Roboflow 위치 모델</p>
+    </div>
+    <div class="next" style="height:100%">
+      <span class="lab">4 <span class="chip">다음</span></span>
+      <b>시험 102장으로 다시 잼</b>
+      <p class="foot">그다음 같은 사진으로 위험 판단 학습</p>
+    </div>
+  </div>
+
+  <div class="tried">
+    <span class="lab">시도했다 (결과와 함께)</span>
+    <p>상가정보로 간판 위치 좁히기 — 간판 150장 중 전국 1곳인 이름이 나온 사진 24장 이하, 프랜차이즈는 수백 곳이라 대부분 안 좁혀짐</p>
+  </div>
+  <span class="pg">08</span>
 </body>
 </html>

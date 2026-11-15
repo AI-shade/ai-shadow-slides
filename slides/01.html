@@ -1,13 +1,43 @@
 <!doctype html>
 <html lang="ko">
-<head><meta charset="utf-8"><link rel="stylesheet" href="../theme.css"></head>
+<head><meta charset="utf-8"><link rel="stylesheet" href="../theme.css">
+<style>
+  /* 좌 60% 헤드라인 → 정의, 우 40% 보정 전·후 (대조형) */
+  .brand { display: flex; align-items: center; gap: 24px; }
+  .brand img { height: 56px; }
+  .cover { flex: 1; min-height: 0; display: grid; grid-template-columns: 60fr 40fr; gap: 72px; }
+  .cover .left { display: flex; flex-direction: column; justify-content: center; gap: 48px; }
+  .cover .def { color: var(--text-2); }
+  .pair { position: relative; }
+  .pair .before { position: absolute; left: 0; top: 18%; width: 38%; height: 58%; }
+  .pair .after  { position: absolute; right: 0; top: 8%; width: 50%; height: 78%; border: 6px solid var(--main); }
+  .pair .beam   { position: absolute; left: 38%; right: 50%; top: 8%; height: 78%;
+                  clip-path: polygon(0 12.8%, 100% 0, 100% 100%, 0 87.2%);
+                  background: linear-gradient(to bottom, var(--main-beam), transparent); }
+  .pair .cap    { position: absolute; left: 0; right: 0; bottom: 0; }
+</style>
+</head>
 <body class="slide">
-<div class="wf"><div class="in" style="grid-template:'logo logo' auto 'head vis' 1fr 'sub vis' auto 'foot foot' auto / 1.5fr 1fr">
-        <div style="grid-area:logo;display:flex;align-items:center;gap:1.2cqw"><img src="../assets/ishadow-wordmark.svg" alt="아이SHADOW" style="height:2.6cqw"><img src="../assets/team-clover.png" alt="" style="height:2.6cqw"><span class="small">팀 네잎클로드</span></div>
-        <div class="z solid" style="grid-area:head;display:flex;flex-direction:column;justify-content:center"><div class="hd" style="font-size:3.2cqw">SNS 사진 속 아이의 개인정보만 지우고,<br>공유는 마음 편히.</div></div>
-        <div class="z solid" style="grid-area:sub">아이SHADOW는 SNS에 올리기 전, 사진 배경과 옷에서 아이의 위치를 알려 주는 단서를 찾아 그 부분만 지워 주는 AI 서비스입니다.</div>
-        <div class="z" style="grid-area:vis"><div class="row" style="height:75%"><div class="z ph">간판 부분<br>보정 전</div><div class="arrow">→</div><div class="z ph" style="border:.3cqw solid var(--accent);flex:1.25">간판 부분<br>보정 후</div></div><div class="small"><span class="needz">[추가 자료 필요]</span> 간판·로고만 자른 실제 보정 전·후 이미지 (아이 얼굴 제외)</div></div>
-        <div class="z" style="grid-area:foot">[멋쟁이사자처럼] Campus AX-Ton 해커톤 본선 · 발표자 이영우</div>
-      </div><span class="pg">01</span></div>
+  <div class="brand">
+    <img src="../assets/ishadow-wordmark.svg" alt="아이SHADOW">
+    <img src="../assets/team-clover.png" alt="">
+    <span class="foot">팀 네잎클로드</span>
+  </div>
+
+  <div class="cover">
+    <div class="left">
+      <h1>SNS 사진 속 아이의<br>개인정보만 지우고,<br>공유는 마음 편히.</h1>
+      <p class="def">아이SHADOW는 SNS에 올리기 전, 사진 배경과 옷에서 아이의 위치를 알려 주는 단서를 찾아 그 부분만 지워 주는 AI 서비스입니다.</p>
+    </div>
+    <div class="pair">
+      <div class="slot before">보정 전<span class="need">[추가 자료 필요]</span></div>
+      <div class="beam"></div>
+      <div class="slot after">보정 후<span class="need">[추가 자료 필요]</span></div>
+      <p class="foot cap">간판·로고 부분만 자른 실제 보정 전·후 (아이 얼굴 제외)</p>
+    </div>
+  </div>
+
+  <p class="foot band">[멋쟁이사자처럼] Campus AX-Ton 해커톤 본선 · 발표자 이영우</p>
+  <span class="pg">01</span>
 </body>
 </html>

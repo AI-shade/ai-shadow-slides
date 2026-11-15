@@ -1,17 +1,34 @@
 <!doctype html>
 <html lang="ko">
-<head><meta charset="utf-8"><link rel="stylesheet" href="../theme.css"></head>
+<head><meta charset="utf-8"><link rel="stylesheet" href="../theme.css">
+<style>
+  /* 헤드라인 → Why AI 띠 → 단계 띠 4칸(과정형) → 영상 */
+  .why { display: flex; align-items: center; gap: 28px; }
+  .why b { white-space: nowrap; }
+  .steps { display: flex; gap: 20px; }
+  .steps .box { flex: 1; padding: 24px 32px; font-weight: 600; }
+  .video { flex: 1; min-height: 0; font-size: var(--body); }
+</style>
+</head>
 <body class="slide">
-<div class="wf"><div class="in" style="grid-template:'hd' auto 'wa' auto 'fl' auto 'vd' 1fr">
-        <div class="hd" style="grid-area:hd;font-size:2.1cqw">모든 배경을 지우지 않습니다. 위치를 좁힐 수 있는 근거만 골라 지웁니다.</div>
-        <div class="z" style="grid-area:wa"><span class="lab">Why AI</span><b>배경과 옷을 읽고</b> → <b>동네가 좁혀지는지 보고</b> → <b>좁혀지는 것만 지웁니다</b></div>
-        <div class="row" style="grid-area:fl">
-          <div class="z solid">① 사진 올리기</div><div class="arrow">→</div>
-          <div class="z solid">② 위험 요소 지도</div><div class="arrow">→</div>
-          <div class="z acc">③ 자동 보정</div><div class="arrow">→</div>
-          <div class="z solid">④ 재검증</div>
-        </div>
-        <div class="z ph" style="grid-area:vd;font-size:2cqw">시연 영상 (2분)<br><span class="small"><span class="needz">[추가 자료 필요]</span> 편집된 2분 시연 영상</span></div>
-      </div><span class="pg">05</span></div>
+  <header>
+    <p class="sec">솔루션 · Why AI · 시연</p>
+    <h1>모든 배경을 지우지 않습니다.<br>위치를 좁힐 수 있는 근거만 골라 지웁니다.</h1>
+  </header>
+
+  <div class="box why">
+    <span class="lab" style="margin:0">Why AI</span>
+    <b>배경과 옷을 읽고</b><div class="arrow"></div><b>동네가 좁혀지는지 보고</b><div class="arrow"></div><b class="main">좁혀지는 것만 지웁니다</b>
+  </div>
+
+  <div class="steps">
+    <div class="box">① 사진 올리기</div><div class="arrow"></div>
+    <div class="box">② 위험 요소 지도</div><div class="arrow"></div>
+    <div class="box on">③ 자동 보정</div><div class="arrow"></div>
+    <div class="box">④ 재검증</div>
+  </div>
+
+  <div class="slot video">시연 영상 (2분)<span class="need" style="font-size:var(--foot)">[추가 자료 필요] 편집된 2분 시연 영상</span></div>
+  <span class="pg">05</span>
 </body>
 </html>

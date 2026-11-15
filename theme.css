@@ -1,90 +1,86 @@
-/* 색·글꼴·글자 크기는 여기서만 정합니다. 값은 blueprint.html에서 그대로 가져왔습니다. */
+/* 색·글꼴·글자 크기는 여기서만 정합니다.
+   디자인은 나중에 따로 정하므로, 지금 값은 내용이 1920×1080에 들어가도록 잡은 임시값입니다. */
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
-  :root {
-    --ink: #1b2333;
-    --ink-2: #4a5468;
-    --ink-3: #7b8496;
-    --line: #d9dde5;
-    --line-2: #eceff4;
-    --bg: #f6f7f9;
-    --paper: #ffffff;
-    --navy: #1f2a44;
-    --accent: #2f6fed;
-    --accent-soft: #e8f0fe;
-    --warn: #d9480f;
-    --warn-soft: #fff1e8;
-    --need: #b42318;
-    --need-soft: #fdecea;
-    --font: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+
+:root {
+  /* 4색 */
+  --bg: #ffffff;
+  --main: #2f6fed;
+  --sub: #1f2a44;
+  --text: #1b2333;
+
+  /* 무채색 단계와 메인 색의 옅은 단계 (blueprint.html 값) */
+  --text-2: #4a5468;
+  --text-3: #7b8496;
+  --line: #d9dde5;
+  --gray: #eceff4;
+  --gray-2: #f6f7f9;
+  --main-1: #f1f5fe;
+  --main-2: #dce7fd;
+  --main-3: #b9cffb;
+  --main-soft: #e8f0fe;
+  --main-beam: rgba(47, 111, 237, .30);
+  --on-main: #e3ecff;          /* 메인 · 서브 바탕 위의 옅은 글자 */
+  --shadow: 0 16px 40px rgba(20, 30, 60, .22);
+
+  /* 작업 표시 — 자료가 들어오면 사라질 글자 */
+  --need: #b42318;
+
+  --font: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --h: 64px;       /* 헤드라인 */
+  --body: 32px;    /* 본문 */
+  --foot: 22px;    /* 각주 · 출처 */
+  --kpi: 96px;     /* 큰 숫자 */
+
   --stage-bg: #000000;
 }
-  * { box-sizing: border-box; }
 
-/* 장 파일 (1920×1080 고정) */
-.slide { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--paper);
-  color: var(--ink); font-family: var(--font); word-break: keep-all; }
-.slide > .wf { border: 0; border-radius: 0; box-shadow: none; }
+* { box-sizing: border-box; }
 
-  .need { display: inline-block; background: var(--need-soft); color: var(--need); font-size: 12px; font-weight: 600; padding: 0 6px; border-radius: 4px; white-space: nowrap; }
-  .hyp { display: inline-block; background: var(--warn-soft); color: var(--warn); font-size: 12px; font-weight: 600; padding: 0 6px; border-radius: 4px; white-space: nowrap; }
-  .em { color: var(--accent); font-weight: 700; }
+/* 장 (1920×1080 고정) */
+.slide {
+  margin: 0; width: 1920px; height: 1080px; position: relative; overflow: hidden;
+  background: var(--bg); color: var(--text); font-family: var(--font);
+  font-size: var(--body); line-height: 1.4; word-break: keep-all;
+  padding: 80px 120px 100px; display: flex; flex-direction: column; gap: 44px;
+}
+.slide p { margin: 0; }
+.slide header { display: flex; flex-direction: column; gap: 12px; }
+.slide .sec { font-size: var(--foot); font-weight: 700; color: var(--text-3); letter-spacing: .04em; }
+.slide h1 { margin: 0; font-size: var(--h); font-weight: 800; line-height: 1.25; letter-spacing: -.01em; }
+.pg { position: absolute; right: 120px; bottom: 40px; font-size: var(--foot); color: var(--text-3); }
 
-/* 16:9 화면 (blueprint.html 와이어프레임과 같은 규칙) */
-  .wf { container-type: inline-size; aspect-ratio: 16 / 9; width: 100%; background: #fff; border: 1px solid #b9c0cc; box-shadow: 0 2px 10px rgba(20,30,60,.06); border-radius: 4px; position: relative; overflow: hidden; }
-  .wf .in { position: absolute; inset: 0; padding: 4cqw 4.5cqw 3.4cqw; display: grid; gap: 1.6cqw; font-size: 1.55cqw; line-height: 1.35; }
-  .wf .pg { position: absolute; right: 2cqw; bottom: 1.2cqw; font-size: 1.1cqw; color: var(--ink-3); }
-  .wf .hd { font-size: 2.5cqw; font-weight: 800; color: var(--ink); line-height: 1.3; }
-  .z { border: 1px dashed #aab2c0; border-radius: .8cqw; padding: 1.2cqw 1.4cqw; background: #fafbfc; position: relative; min-height: 0; overflow: hidden; }
-  .z .lab { display: block; font-size: 1.05cqw; font-weight: 700; color: var(--ink-3); letter-spacing: .05em; margin-bottom: .5cqw; }
-  .z.acc { border: .25cqw solid var(--accent); background: var(--accent-soft); }
-  .z.solid { border-style: solid; }
-  .z.dark { background: var(--navy); color: #fff; border: 0; }
-  .z.dark .lab { color: #9fb0d6; }
-  .z.warn { border-color: var(--warn); background: var(--warn-soft); }
-  .big { font-size: 5.2cqw; font-weight: 800; line-height: 1; color: var(--accent); }
-  .big.ink { color: var(--ink); }
-  .big.warn { color: var(--warn); }
-  .small { font-size: 1.15cqw; color: var(--ink-3); }
-  .needz { color: var(--need); font-weight: 700; }
-  .row { display: flex; gap: 1cqw; align-items: stretch; }
-  .row > * { flex: 1; }
-  .arrow { flex: 0 0 auto; align-self: center; color: var(--ink-3); font-size: 2.2cqw; }
-  .chip { display: inline-block; border: 1px solid #aab2c0; border-radius: 99px; padding: .2cqw 1cqw; margin: .3cqw .3cqw 0 0; font-size: 1.2cqw; background: #fff; }
-  .chip.acc { border-color: var(--accent); color: var(--accent); font-weight: 700; }
-  table.mini { width: 100%; border-collapse: collapse; font-size: 1.25cqw; }
-  table.mini th, table.mini td { border: 1px solid #c6ccd6; padding: .5cqw .7cqw; text-align: left; }
-  table.mini th { background: #eef1f5; }
-  table.mini td.acc { background: var(--accent-soft); font-weight: 700; color: var(--accent); }
-  .ph { display: flex; align-items: center; justify-content: center; text-align: center; color: var(--ink-3); background: repeating-linear-gradient(45deg, #f2f4f7, #f2f4f7 .8cqw, #e9ecf1 .8cqw, #e9ecf1 1.6cqw); }
-  .fig { display: grid; place-items: center; }
-  .sil { width: 6cqw; }
-  .sil .h { width: 3cqw; height: 3cqw; border-radius: 50%; border: .2cqw solid #8a94a8; margin: 0 auto .3cqw; }
-  .sil .b { width: 5cqw; height: 4.6cqw; border-radius: .6cqw; border: .2cqw solid #8a94a8; margin: 0 auto; position: relative; }
-  .sil.mask .h { background: #1b2333; border-color: #1b2333; }
-  .sil.mask .b::after { content: ""; position: absolute; inset: .6cqw; border: .2cqw dashed var(--accent); background: #fff; }
-  .sil .logo { position: absolute; right: .6cqw; top: .7cqw; width: 1cqw; height: 1cqw; background: var(--warn); }
+.foot { font-size: var(--foot); color: var(--text-3); line-height: 1.45; }
+.lab { display: block; font-size: var(--foot); font-weight: 700; color: var(--text-3); letter-spacing: .02em; margin-bottom: 10px; }
+.kpi { font-size: var(--kpi); font-weight: 800; line-height: 1; letter-spacing: -.02em; }
+.main { color: var(--main); }
+.mute { color: var(--text-2); }
+.need { color: var(--need); font-weight: 700; }
 
-  /* 도식 구조 표시 */
-  .struct { display: inline-block; background: var(--navy); color: #fff; font-size: 12px; font-weight: 700; padding: 1px 8px; border-radius: 4px; margin-right: 6px; }
-  .struct.sub { background: var(--line-2); color: var(--ink); }
-  .spec .memo { border: 1px dashed var(--line); border-radius: 6px; padding: 8px 12px; background: #fcfcfd; }
-  .spec .memo b { color: var(--ink-2); font-size: 12px; }
-  /* 확대 원 (이미지 일부 확대) */
-  .zoom { position: relative; }
-  .zoom .spot { position: absolute; border: .25cqw solid var(--accent); border-radius: 50%; }
-  .zoom .lens { position: absolute; border: .3cqw solid var(--accent); border-radius: 50%; background: #fff; display: grid; place-items: center; text-align: center; font-size: 1.15cqw; font-weight: 700; color: var(--accent); }
-  .zoom .beam { position: absolute; background: linear-gradient(90deg, rgba(47,111,237,.28), rgba(47,111,237,0)); clip-path: polygon(0 40%, 100% 0, 100% 100%, 0 60%); }
-  /* 확장형: 점점 크게 · 진하게 */
-  .grow { display: flex; align-items: flex-end; gap: 1cqw; }
-  .grow > .z { border-style: solid; }
-  .grow .g1 { height: 52%; background: #f1f5fe; } .grow .g2 { height: 68%; background: #dce7fd; }
-  .grow .g3 { height: 84%; background: #b9cffb; } .grow .g4 { height: 100%; background: var(--accent); color: #fff; border-color: var(--accent); }
-  .grow .g4 .lab, .grow .g4 .small { color: #e3ecff; }
-  /* 설명형: 대상 가운데, 설명 도형 앞뒤 + 그림자 */
-  .explain { position: relative; }
-  .explain .note { position: absolute; background: #fff; border: 1px solid #c6ccd6; border-radius: .8cqw; padding: .8cqw 1cqw; box-shadow: 0 .5cqw 1.4cqw rgba(20,30,60,.18); font-size: 1.2cqw; }
-  .explain .note.back { z-index: 0; } .explain .note.front { z-index: 2; }
-  .explain .center { position: absolute; z-index: 1; }
+/* 칸 */
+.box { background: var(--gray-2); border-radius: 24px; padding: 36px 40px; }
+.box.on { background: var(--bg); border: 6px solid var(--main); }     /* 강조: 메인 색 · 굵은 선 */
+.band { border-top: 2px solid var(--line); padding-top: 24px; }
+.slot {                                                                  /* 아직 없는 사진 · 영상 자리 */
+  background: var(--gray); border-radius: 20px; display: grid; place-items: center; align-content: center;
+  gap: 8px; text-align: center; color: var(--text-3); font-size: var(--foot);
+}
+.chip {
+  display: inline-block; font-size: var(--foot); font-weight: 600; line-height: 1.3;
+  padding: 4px 18px; border-radius: 99px; border: 2px solid var(--line); background: var(--bg); color: var(--text-2);
+}
+.chip.on { border-color: var(--main); color: var(--main); }
+
+/* 과정형 화살표: 두꺼운 선 + 그라데이션 */
+.arrow {
+  flex: 0 0 64px; height: 32px; align-self: center;
+  background: linear-gradient(90deg, var(--line), var(--text-3));
+  clip-path: polygon(0 34%, 62% 34%, 62% 0, 100% 50%, 62% 100%, 62% 66%, 0 66%);
+}
+
+/* 확장형 계단: 같은 도형을 점점 크게 */
+.stairs { display: flex; align-items: flex-end; gap: 28px; min-height: 0; }
+.stairs > div { flex: 1; border-radius: 24px; padding: 32px 36px; display: flex; flex-direction: column; gap: 10px; }
 
 /* index.html 무대 */
 .stage { margin: 0; height: 100vh; overflow: hidden; background: var(--stage-bg); }

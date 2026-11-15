@@ -1,21 +1,51 @@
 <!doctype html>
 <html lang="ko">
-<head><meta charset="utf-8"><link rel="stylesheet" href="../theme.css"></head>
+<head><meta charset="utf-8"><link rel="stylesheet" href="../theme.css">
+<style>
+  /* 위: 시연으로 고친 것 vs 실사로 잰 것(대조형 2단) · 아래: 전 → 후 개선표 3행 · 측정 기준 */
+  .slide { gap: 32px; }
+  .top { display: grid; grid-template-columns: 1fr 1.4fr; gap: 40px; }
+  .top .box { display: flex; flex-direction: column; gap: 12px; }
+  .pair { display: flex; gap: 64px; }
+  table { width: 100%; border-collapse: collapse; font-size: 28px; line-height: 1.3; }
+  th, td { padding: 12px 18px; text-align: left; border-bottom: 2px solid var(--line); }
+  th { font-size: var(--foot); color: var(--text-3); border-bottom: 2px solid var(--text-3); }
+  td:first-child { width: 22%; color: var(--text-2); }
+  td.after { color: var(--main); font-weight: 700; }
+</style>
+</head>
 <body class="slide">
-<div class="wf"><div class="in" style="grid-template:'hd hd' auto 'a b' 1fr 'tb tb' auto 'nt nt' auto / 1fr 1fr">
-        <div class="hd" style="grid-area:hd">시연으로 고치고, 실제 사진으로 다시 쟀습니다</div>
-        <div class="z solid" style="grid-area:a"><span class="lab">시연이 드러낸 문제 · 고침</span>
-          <div class="row"><div><div class="big ink">33→12</div>배경 흐림 때<br>사람 일부가 잘린 사진</div></div></div>
-        <div class="z acc" style="grid-area:b"><span class="lab">데이터가 정한 다음 단계 · 직접 찍은 사진으로 다시 잼</span>
-          <div class="row"><div><div class="big">59%</div>간판 글자 찾음<br><span class="small">192/326 · 실사 시험 102장</span></div><div><div class="big">69%</div>로고 · 마크 찾음<br><span class="small">29/42</span></div></div>
-          <span class="small">AI로 만든 사진(정답표 103장)에서는 위험 사진의 98%를 찾았음 · 오탐 19/32 · 판정 뒤집힘 6.8%</span></div>
-        <div style="grid-area:tb"><table class="mini">
-          <tr><th>어디서 나왔나</th><th>전</th><th>후</th></tr>
-          <tr><td>멘토 시연</td><td>배경 흐림 때 사람 일부가 잘림</td><td style="color:var(--accent);font-weight:700">33장 → 12장</td></tr>
-          <tr><td>멘토 지적</td><td>옷 색 5 × 마크 4, 보정 카드 4장</td><td style="color:var(--accent);font-weight:700">한 줄 세 가지 · «자동 보정» 하나</td></tr>
-          <tr><td>2회차 멘토링</td><td>위험도 판단 중심</td><td style="color:var(--accent);font-weight:700">마스킹 먼저, 판단은 다음</td></tr>
-        </table></div>
-        <div class="small" style="grid-area:nt">측정 기준: 59% · 69%는 직접 찍은 시험 102장에서 간판 · 로고 하나하나를 찾았는지(main d49db95). 98%는 AI로 만든 사진 103장에서 위험 사진 한 장 단위로 찾았는지. 단위가 달라 나란히 비교하지 않음</div>
-      </div><span class="pg">07</span></div>
+  <header>
+    <p class="sec">Validation · 측정과 개선</p>
+    <h1>시연으로 고치고, 실제 사진으로 다시 쟀습니다</h1>
+  </header>
+
+  <div class="top">
+    <div class="box">
+      <span class="lab">시연이 드러낸 문제 · 고침</span>
+      <div class="kpi">33→12</div>
+      <p>배경 흐림 때 사람 일부가 잘린 사진</p>
+    </div>
+    <div class="box on">
+      <span class="lab">데이터가 정한 다음 단계 · 직접 찍은 사진으로 다시 잼</span>
+      <div class="pair">
+        <div><div class="kpi main">59%</div><p>간판 글자 찾음</p><p class="foot">192/326 · 실사 시험 102장</p></div>
+        <div><div class="kpi main">69%</div><p>로고 · 마크 찾음</p><p class="foot">29/42</p></div>
+      </div>
+      <p class="foot">AI로 만든 사진(정답표 103장)에서는 위험 사진의 98%를 찾았음 · 오탐 19/32 · 판정 뒤집힘 6.8%</p>
+    </div>
+  </div>
+
+  <table>
+    <thead><tr><th>어디서 나왔나</th><th>전</th><th>후</th></tr></thead>
+    <tbody>
+      <tr><td>멘토 시연</td><td>배경 흐림 때 사람 일부가 잘림</td><td class="after">33장 → 12장</td></tr>
+      <tr><td>멘토 지적</td><td>옷 색 5 × 마크 4, 보정 카드 4장</td><td class="after">한 줄 세 가지 · «자동 보정» 하나</td></tr>
+      <tr><td>2회차 멘토링</td><td>위험도 판단 중심</td><td class="after">마스킹 먼저, 판단은 다음</td></tr>
+    </tbody>
+  </table>
+
+  <p class="foot">측정 기준: 59% · 69%는 직접 찍은 시험 102장에서 간판 · 로고 하나하나를 찾았는지(main d49db95). 98%는 AI로 만든 사진 103장에서 위험 사진 한 장 단위로 찾았는지. 단위가 달라 나란히 비교하지 않음</p>
+  <span class="pg">07</span>
 </body>
 </html>

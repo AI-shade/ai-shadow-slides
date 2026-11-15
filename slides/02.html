@@ -1,15 +1,52 @@
 <!doctype html>
 <html lang="ko">
-<head><meta charset="utf-8"><link rel="stylesheet" href="../theme.css"></head>
+<head><meta charset="utf-8"><link rel="stylesheet" href="../theme.css">
+<style>
+  /* 헤드라인 → KPI 카드 2개(나열형) → Why Now · Why Here → So what → 출처 */
+  .slide { gap: 30px; }
+  .kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .kpis .box { display: flex; flex-direction: column; gap: 6px; padding: 28px 40px; }
+  .why { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .why ol { margin: 0; padding-left: 1.3em; }
+  .sowhat { font-weight: 700; }
+</style>
+</head>
 <body class="slide">
-<div class="wf"><div class="in" style="grid-template:'hd hd' auto 'k1 k3' 1fr 'wn wh' auto 'so so' auto 'src src' auto / 1fr 1fr">
-        <div class="hd" style="grid-area:hd">부모 86.1%가 아이 사진을 올리고,<br>이제 아이 사진 보호는 사회의 과제입니다</div>
-        <div class="z solid" style="grid-area:k1"><div class="big ink">86.1%</div>SNS를 하는 부모 중 아이 사진을 올린 비율</div>
-        <div class="z acc" style="grid-area:k3"><div class="big">13.2%</div>게시 후 부정적 경험<br>(개인정보 도용 · 불쾌한 댓글 등)</div>
-        <div class="z" style="grid-area:wn"><span class="lab">Why Now</span>① 프랑스, 2024년부터 부모가 올리는 아이 사진까지 법으로 보호 · ② 국내 개인정보보호위원회, 부모가 올린 아이 사진 삭제 지원 추진 — 11.17 토론회 의제</div>
-        <div class="z" style="grid-area:wh"><span class="lab">Why Here · 대한민국</span>국민 2명 중 1명이 인스타그램을 쓰고, 아이 4명 중 3명이 학원에 다닙니다. 한국 아이의 사진에는 학원 간판과 셔틀버스가 같이 찍히기 쉽습니다.</div>
-        <div class="z solid" style="grid-area:so"><span class="lab">So what</span>아이 사진은 계속 올라가고, 이제 그걸 지키는 일은 사회의 과제입니다. 필요한 건 올리기 전의 확인입니다.</div>
-        <div class="small" style="grid-area:src">출처: 세이브더칠드런 조사(2021), 만 0~11세 자녀 부모 1,000명 · 인스타그램 MAU 2,797만(2026.1) · 교육부 초중고 사교육비 조사(2025) · 프랑스 2024-120호 법(2024.2) · 개인정보보호위원회 아동·청소년 개인정보 보호 기본계획(2022.7) · 제도개선 토론회(2026.11.17)</div>
-      </div><span class="pg">02</span></div>
+  <header>
+    <p class="sec">시장기회 · Why Now</p>
+    <h1>부모 86.1%가 아이 사진을 올리고,<br>이제 아이 사진 보호는 사회의 과제입니다</h1>
+  </header>
+
+  <div class="kpis">
+    <div class="box">
+      <div class="kpi">86.1%</div>
+      <p>SNS를 하는 부모 중 아이 사진을 올린 비율</p>
+      <p class="foot">최근 3개월 안에 SNS에 글을 올린 0~11세 자녀 부모 1,000명</p>
+    </div>
+    <div class="box on">
+      <div class="kpi main">13.2%</div>
+      <p>게시 후 부정적 경험 (개인정보 도용 · 불쾌한 댓글 등)</p>
+      <p class="foot">SNS에 자녀 콘텐츠를 올린 부모 중</p>
+    </div>
+  </div>
+
+  <div class="why">
+    <div>
+      <span class="lab">Why Now</span>
+      <ol>
+        <li>프랑스, 2024년부터 부모가 올리는 아이 사진까지 법으로 보호</li>
+        <li>개인정보보호위원회, 부모가 올린 아이 사진 삭제 지원 추진 — 11.17 토론회 의제</li>
+      </ol>
+    </div>
+    <div>
+      <span class="lab">Why Here · 대한민국</span>
+      <p>국민 2명 중 1명이 인스타그램을 쓰고, 아이 4명 중 3명이 학원에 다닙니다. 한국 아이의 사진에는 학원 간판과 셔틀버스가 같이 찍히기 쉽습니다.</p>
+    </div>
+  </div>
+
+  <p class="sowhat band">아이 사진은 계속 올라가고, 이제 그걸 지키는 일은 사회의 과제입니다. 필요한 건 올리기 전의 확인입니다.</p>
+
+  <p class="foot">출처: 세이브더칠드런 조사(2021) · 인스타그램 MAU 2,797만(2026.1) · 교육부 초중고 사교육비 조사(2025) · 프랑스 2024-120호 법(2024.2) · 개인정보보호위원회 아동·청소년 개인정보 보호 기본계획(2022.7) · 제도개선 토론회(2026.11.17)</p>
+  <span class="pg">02</span>
 </body>
 </html>
