@@ -84,3 +84,9 @@
 
 /* index.html 무대 */
 .stage { margin: 0; height: 100vh; overflow: hidden; background: var(--stage-bg); }
+
+/* 진행 표시: 장 맨 위 가로 막대. 지난 부분·지금 부분은 채우고, 남은 부분은 회색 (02~09장) */
+.prog { position: absolute; top: 40px; left: 120px; right: 120px; display: flex; gap: 6px; }
+.prog span { flex: var(--n); height: 6px; border-radius: 3px; background: var(--gray); }
+.prog span.done { background: var(--main-3); }
+.prog span.on { background: var(--main); }

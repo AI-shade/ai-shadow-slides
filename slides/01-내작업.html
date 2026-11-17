@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><link rel="stylesheet" href="../theme.css">
+<style>
+  .slide { display: grid; grid-template: auto 1fr auto / 1.5fr 1fr; gap: 0 80px; }
+  .top  { grid-column: 1 / -1; font-size: 28px; font-weight: 700; color: #888; }
+  .left { display: flex; flex-direction: column; justify-content: center; }
+  h1.head { font-size: 88px; font-weight: 800; line-height: 1.2; margin: 0 0 56px; letter-spacing: -2px; color: var(--fg); }
+  h1.head em { font-style: normal; color: var(--accent); }
+  .def  { font-size: var(--body-size); line-height: 1.5; color: #444; }
+  .def b { color: var(--fg); }
+  .right { display: flex; flex-direction: column; justify-content: center; gap: 28px; }
+  .pair { display: flex; align-items: flex-end; gap: 24px; }
+  .arrow { align-self: center; }
+  .card { border-radius: 16px; overflow: hidden; border: 2px solid #ddd; }
+  .card.after { border: 6px solid var(--accent); }
+  .card svg { display: block; width: 100%; }
+  .lab { font-size: 24px; color: #888; text-align: center; margin-top: 10px; }
+  .arrow { font-size: 48px; color: #bbb; }
+  .note { font-size: 22px; color: #aaa; text-align: center; }
+  .foot { grid-column: 1 / -1; font-size: 26px; color: #888; border-top: 2px solid #eee; padding-top: 28px; }
+</style></head>
+<body class="slide">
+  <div class="top">아이SHADOW</div>
+
+  <div class="left">
+    <h1 class="head">사진은 <em>그대로.</em><br>장소 단서<em>만</em> 지웁니다.</h1>
+    <div class="def"><b>아이SHADOW</b> — 올리기 전에 진단하고,<br>단서만 고치고, 다시 확인합니다.</div>
+  </div>
+
+  <div class="right">
+    <div class="pair">
+      <div style="flex:1">
+        <div class="card">
+          <svg viewBox="0 0 300 220"><rect width="300" height="220" fill="#d9d4cc"/>
+            <rect x="20" y="40" width="260" height="90" rx="6" fill="#1f3c88"/>
+            <text x="150" y="98" font-size="40" font-weight="800" fill="#fff" text-anchor="middle" font-family="sans-serif">○○태권도</text>
+            <text x="150" y="168" font-size="22" fill="#555" text-anchor="middle" font-family="sans-serif">☎ 042-○○○-○○○○</text></svg>
+        </div>
+        <div class="lab">보정 전</div>
+      </div>
+      <div class="arrow">→</div>
+      <div style="flex:1.25">
+        <div class="card after">
+          <svg viewBox="0 0 300 220"><rect width="300" height="220" fill="#d9d4cc"/>
+            <rect x="20" y="40" width="260" height="90" rx="6" fill="#3a3f4a"/></svg>
+        </div>
+        <div class="lab">보정 후</div>
+      </div>
+    </div>
+    <div class="note">예시 그림 · 실제 보정 전·후 크롭으로 교체 필요</div>
+  </div>
+
+  <div class="foot">AI솔루션 해커톤 본선 · 발표 영우</div>
+</body>
+</html>

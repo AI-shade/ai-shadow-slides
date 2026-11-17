@@ -2,59 +2,71 @@
 <html lang="ko">
 <head><meta charset="utf-8"><link rel="stylesheet" href="../theme.css">
 <style>
-  /* 좌: 두 시선 위아래(대조형) · 우: 사진 한 장 + 단서 두 곳 확대 원 + 나머지 단서 유형 · 하단: 시사점 */
-  .grid { flex: 1; min-height: 0; display: grid; grid-template-columns: 640px 1fr; gap: 48px; }
-  .eyes { display: grid; grid-template-rows: 1fr 1fr; gap: 28px; }
-  .eyes .box { display: flex; flex-direction: column; justify-content: center; gap: 10px; }
-  .eyes .say { color: var(--text-2); }
+  /* 02와 잇는 한 줄 → 좌: 같은 사진 다른 시선 · 우: 지금 방법 비교표 → "그래서" */
+  .slide { gap: 28px; }
+  .gap { font-size: 30px; font-weight: 700; }
+  .grid { flex: 1; min-height: 0; display: grid; grid-template-columns: 600px 1fr; gap: 40px; }
   .zoom { position: relative; }
-  .zoom .photo { position: absolute; left: 0; top: 0; width: 520px; height: 400px; }
-  .zoom .spot  { position: absolute; border: 5px solid var(--main); border-radius: 50%; }
-  .zoom .lens  { position: absolute; width: 230px; height: 230px; border: 6px solid var(--main); border-radius: 50%;
-                 background: var(--bg); display: grid; place-items: center; text-align: center;
-                 font-weight: 700; color: var(--main); line-height: 1.3; }
-  .zoom .beam  { position: absolute; background: linear-gradient(90deg, var(--main-beam), rgba(47,111,237,.06)); }
-  .zoom .types { position: absolute; left: 0; right: 0; bottom: 0; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
-  .tip { font-weight: 700; }
+  .zoom .photo { position: absolute; left: 0; top: 0; width: 360px; height: 330px; }
+  .zoom .spot  { position: absolute; left: 50px; top: 46px; width: 76px; height: 76px; border: 5px solid var(--main); border-radius: 50%; }
+  .zoom .beam  { position: absolute; left: 126px; top: 10px; width: 240px; height: 200px; clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 56%);
+                 background: linear-gradient(90deg, var(--main-beam), rgba(47,111,237,.06)); }
+  .zoom .lens  { position: absolute; left: 366px; top: 0; width: 210px; height: 210px; border: 6px solid var(--main); border-radius: 50%;
+                 background: var(--bg); display: grid; place-items: center; text-align: center; font-weight: 700; color: var(--main); }
+  .zoom .eyes  { position: absolute; left: 0; right: 0; bottom: 0; display: grid; gap: 10px; font-size: 26px; }
+  .zoom .eyes b { color: var(--main); }
+  table { width: 100%; border-collapse: collapse; font-size: 24px; line-height: 1.3; align-self: center; }
+  th, td { padding: 12px 12px; text-align: left; border-bottom: 2px solid var(--line); }
+  thead th { font-size: 20px; color: var(--text-3); border-bottom: 2px solid var(--text-3); }
+  tbody th { font-weight: 600; width: 23%; }
+  td { color: var(--text-2); }
+  .us { background: var(--main-soft); color: var(--main); font-weight: 700; border-left: 6px solid var(--main); border-right: 6px solid var(--main); }
+  thead .us { border-top: 6px solid var(--main); }
+  tbody tr:last-child .us { border-bottom: 6px solid var(--main); }
+  .so { display: flex; gap: 24px; align-items: baseline; }
+  .so .lab { margin: 0; white-space: nowrap; color: var(--main); }
+  .so b { font-size: 34px; }
 </style>
 </head>
 <body class="slide">
+  <nav class="prog"><span class="on" style="--n:2"></span><span style="--n:2"></span><span style="--n:1"></span><span style="--n:3"></span></nav>
   <header>
-    <p class="sec">문제정의</p>
-    <h1>부모 66%가 걱정하지만, 35.8%는 '설마' 하며 전체 공개로 올립니다</h1>
+    <p class="sec">왜 이 해결책인가</p>
+    <h1>가리거나 안 올리는 대신, 위치로 이어지는 단서만 끊기로 했습니다</h1>
   </header>
 
+  <p class="gap">부모 66%가 아이 개인정보 노출을 걱정하지만, 사진 속 무엇이 위험한지 확인할 방법이 없습니다.</p>
+
   <div class="grid">
-    <div class="eyes">
-      <div class="box">
-        <span class="lab">부모의 시선</span>
-        <p>표정 · 옷차림 · 추억</p>
-        <p class="say">→ "예쁘게 나왔네"</p>
-      </div>
-      <div class="box on">
-        <span class="lab">낯선 사람의 시선</span>
-        <p class="main"><b>교복 · 간판 · 차량</b></p>
-        <p class="say">→ "어디 다니는지 알겠네"</p>
+    <div class="zoom">
+      <div class="slot photo">직접 찍은 사진<br>(아이 얼굴 제외)<span class="need">[추가 자료 필요]</span></div>
+      <div class="beam"></div>
+      <div class="spot"></div>
+      <div class="lens">학원 간판</div>
+      <div class="eyes">
+        <p>부모의 시선 → "예쁘게 나왔네"</p>
+        <p><b>낯선 사람의 시선 → "어디 다니는지 알겠네"</b></p>
       </div>
     </div>
 
-    <div class="zoom">
-      <div class="slot photo">직접 찍은 사진 (아이 얼굴 제외)<span class="need">[추가 자료 필요]</span></div>
-      <div class="beam" style="left:96px;top:0;width:620px;height:230px;clip-path:polygon(0 24%,100% 0,100% 100%,0 56%)"></div>
-      <div class="beam" style="left:340px;top:250px;width:376px;height:230px;clip-path:polygon(0 4%,100% 0,100% 100%,0 30%)"></div>
-      <div class="spot" style="left:56px;top:52px;width:80px;height:80px"></div>
-      <div class="spot" style="left:306px;top:252px;width:68px;height:68px"></div>
-      <div class="lens" style="left:716px;top:0">건물 꼭대기<br>간판</div>
-      <div class="lens" style="left:716px;top:250px">교복<br>이름표</div>
-      <div class="types">
-        <span class="foot">다른 단서 유형</span>
-        <span class="chip">유치원 차량</span><span class="chip">가방 부착물</span><span class="chip">입간판</span><span class="chip">잘리거나 가려진 간판</span>
-      </div>
-    </div>
+    <table>
+      <thead>
+        <tr><th></th><th>안 올린다</th><th>공개 범위 줄이기</th><th>얼굴 가리기</th><th>직접 지우기</th><th class="us">아이SHADOW</th></tr>
+      </thead>
+      <tbody>
+        <tr><th>아이 사진을 남길 수 있는가</th><td>✕</td><td>○</td><td>✕ 아이가 안 보임</td><td>○</td><td class="us">○</td></tr>
+        <tr><th>위험한 곳을 알려 주는가</th><td>—</td><td>✕</td><td>✕</td><td>✕ 직접 찾아야 함</td><td class="us">○ 위험 요소 진단</td></tr>
+        <tr><th>단서가 지워지는가</th><td>—</td><td>✕ 사진은 그대로</td><td>✕ 간판은 그대로</td><td>△ 찾은 것만</td><td class="us">○ 단서만 다시 그림</td></tr>
+        <tr><th>고친 뒤 다시 확인하는가</th><td>—</td><td>—</td><td>—</td><td>△ 직접 다시 봄</td><td class="us">○ 다시 진단</td></tr>
+      </tbody>
+    </table>
   </div>
 
-  <p class="tip band">'설마' 하며 올린 사진 속 간판 하나가 아이가 다니는 곳을 알려 줍니다</p>
-  <p class="foot">66% · 35.8%: 세이브더칠드런 조사(2021), 0~11세 자녀 부모 1,000명</p>
+  <div class="so band">
+    <span class="lab">그래서</span>
+    <b>아이는 그대로 두고, 아이와 장소를 잇는 단서만 끊습니다.</b>
+  </div>
+  <p class="foot">66%: 세이브더칠드런 조사(2021) · 공개 범위를 줄인 부모 63.2% · 직접 지우기 불만 "하나하나 지우기 불편하다"(사용자 설문)</p>
   <span class="pg">03</span>
 </body>
 </html>

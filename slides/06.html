@@ -2,49 +2,28 @@
 <html lang="ko">
 <head><meta charset="utf-8"><link rel="stylesheet" href="../theme.css">
 <style>
-  /* 좌 70%: 마스크 실루엣 + 설명 상자 3개(설명형) · 우 30%: 원칙 4개(나열형) */
-  .grid { flex: 1; min-height: 0; display: grid; grid-template-columns: 7fr 3fr; gap: 48px; }
-  .stage6 { position: relative; background: var(--gray-2); border-radius: 24px; }
-  .stage6 .lab { position: absolute; left: 40px; top: 32px; }
-  .sil { position: absolute; left: 50%; top: 54%; transform: translate(-50%, -50%); width: 300px; z-index: 1; }
-  .note { position: absolute; background: var(--bg); border-radius: 18px; padding: 20px 26px; box-shadow: var(--shadow); line-height: 1.35; }
-  .note b { display: block; }
-  .note.back  { z-index: 0; }
-  .note.front { z-index: 2; }
-  .rules { display: flex; flex-direction: column; justify-content: center; gap: 22px; }
-  .rules ol { margin: 0; padding-left: 1.4em; display: flex; flex-direction: column; gap: 18px; color: var(--main); font-weight: 700; }
-  .rules .foot { font-weight: 500; margin-top: 4px; }
+  /* 단계 띠 4칸 → 시연 영상 */
+  .slide { gap: 32px; }
+  .steps { display: flex; gap: 20px; }
+  .steps .box { flex: 1; padding: 24px 32px; font-weight: 600; }
+  .video { flex: 1; min-height: 0; font-size: var(--body); }
 </style>
 </head>
 <body class="slide">
+  <nav class="prog"><span class="done" style="--n:2"></span><span class="done" style="--n:2"></span><span class="on" style="--n:1"></span><span style="--n:3"></span></nav>
   <header>
-    <p class="sec">Solution · 핵심 구조</p>
-    <h1>아이 얼굴은 AI가 고칠 범위에서 처음부터 뺍니다</h1>
+    <p class="sec">시연</p>
+    <h1>사진을 올리고, 위험을 보고, 고치고, 다시 확인합니다</h1>
   </header>
 
-  <div class="grid">
-    <div class="stage6">
-      <span class="lab">마스크 규칙 — 흰 곳만 AI가 고치고, 검은 곳은 그대로 둡니다</span>
-      <div class="note back" style="left:60px;top:110px;width:360px"><b>검은 칸 · 그대로 둠</b>얼굴 · 머리카락 · 목 · 손</div>
-      <svg class="sil" viewBox="0 0 300 380" aria-hidden="true">
-        <circle cx="150" cy="80" r="66" fill="var(--text)"/>
-        <rect x="40" y="166" width="220" height="200" rx="40" fill="var(--bg)" stroke="var(--text)" stroke-width="6"/>
-        <rect x="80" y="206" width="140" height="120" rx="10" fill="var(--bg)" stroke="var(--main)" stroke-width="6" stroke-dasharray="16 10"/>
-      </svg>
-      <div class="note front" style="left:740px;top:300px;width:400px;border:4px solid var(--main)"><b class="main">흰 칸 · AI가 다시 그림</b>찾은 간판 · 옷의 로고</div>
-      <div class="note front" style="left:60px;bottom:40px;width:480px"><b>순서</b>앞 단계가 무엇을 열어도, 마지막에 얼굴·손을 다시 막습니다</div>
-    </div>
-
-    <div class="rules">
-      <span class="lab">원칙</span>
-      <ol>
-        <li>진단할 때는 얼굴을 가린 사진만 AI에 보냅니다.</li>
-        <li>원본은 AI 보정·이미지 검색을 누를 때만, 그때마다 동의를 받고 보냅니다.</li>
-        <li>얼굴·머리카락·목·손은 AI가 다시 그리지 않습니다.<p class="foot">잰 값: 마스크가 이 부분을 여는 픽셀 0</p></li>
-        <li>아이SHADOW 서버에는 사진을 저장하지 않습니다.</li>
-      </ol>
-    </div>
+  <div class="steps">
+    <div class="box">① 사진 올리기</div><div class="arrow"></div>
+    <div class="box">② 위험 요소 지도</div><div class="arrow"></div>
+    <div class="box on">③ 자동 보정</div><div class="arrow"></div>
+    <div class="box">④ 재검증</div>
   </div>
+
+  <div class="slot video">시연 영상 (2분)<span class="need" style="font-size:var(--foot)">[추가 자료 필요] 편집된 2분 시연 영상</span></div>
   <span class="pg">06</span>
 </body>
 </html>

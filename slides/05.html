@@ -2,50 +2,58 @@
 <html lang="ko">
 <head><meta charset="utf-8"><link rel="stylesheet" href="../theme.css">
 <style>
-  /* 헤드라인 → Why AI 3칸(사람이 못 하는 것 · AI가 하는 일 · 잰 값) → 단계 띠 4칸(과정형) → 영상 */
-  .slide { gap: 32px; }
-  .why { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; align-items: stretch; }
-  .why .box { padding: 22px 28px; display: flex; flex-direction: column; gap: 6px; }
-  .why .box .lab { margin: 0; }
-  .why .box b { font-size: 30px; line-height: 1.3; }
-  .why .box .num { color: var(--main); font-weight: 700; font-size: 26px; }
-  .steps { display: flex; gap: 20px; }
-  .steps .box { flex: 1; padding: 24px 32px; font-weight: 600; }
-  .video { flex: 1; min-height: 0; font-size: var(--body); }
+  /* 6단계 흐름(과정형) → 아래 좌: 왜 AI 3칸 · 우: 아이를 지키는 원칙 */
+  .slide { gap: 36px; }
+  .flow { display: flex; gap: 10px; }
+  .flow .box { flex: 1; padding: 22px 20px; display: flex; flex-direction: column; gap: 6px; }
+  .flow b { font-size: 28px; line-height: 1.25; }
+  .flow p { font-size: 21px; line-height: 1.35; color: var(--text-2); }
+  .flow .arrow { flex: 0 0 40px; height: 24px; }
+  .low { flex: 1; min-height: 0; display: grid; grid-template-columns: 1.6fr 1fr; gap: 28px; }
+  .why { display: flex; flex-direction: column; gap: 14px; }
+  .why .lab { margin: 0; }
+  .why .cards { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .why .card { background: var(--bg); border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 10px; }
+  .why .card b { font-size: 30px; line-height: 1.3; }
+  .why .card p { font-size: 23px; line-height: 1.4; color: var(--main); font-weight: 700; }
+  .rule ol { margin: 8px 0 0; padding-left: 1.3em; display: flex; flex-direction: column; gap: 14px; font-size: 27px; font-weight: 700; line-height: 1.35; color: var(--main); }
 </style>
 </head>
 <body class="slide">
+  <nav class="prog"><span class="done" style="--n:2"></span><span class="on" style="--n:2"></span><span style="--n:1"></span><span style="--n:3"></span></nav>
   <header>
-    <p class="sec">솔루션 · Why AI · 시연</p>
-    <h1>모든 배경을 지우지 않습니다.<br>위치를 알려 주는 단서를 찾아 그 부분만 고칩니다.</h1>
+    <p class="sec">해결책 파이프라인</p>
+    <h1>사진 한 장이 거치는 6단계, 아이 얼굴은 처음부터 뺍니다</h1>
   </header>
 
-  <div class="why">
-    <div class="box">
-      <span class="lab">사람 눈엔 작아서 놓치는 글자</span>
-      <b>직접 학습한 모델이 글자를 못 읽어도 간판 위치를 찾습니다</b>
-      <p class="num">구글도 못 읽은 282개 중 126개 찾음</p>
-    </div>
-    <div class="box">
-      <span class="lab">위험한 간판인지 판단</span>
-      <b>글자를 읽고, 동네를 좁히는 이름인지 프랜차이즈인지 가립니다</b>
-      <p class="num">프랜차이즈 전국 수백 곳 · 동네 상호 전국 1곳도</p>
-    </div>
-    <div class="box">
-      <span class="lab">지저분하지 않게 지우기</span>
-      <b>모자이크 대신 주변에 맞춰 그 부분만 다시 그립니다</b>
-      <p class="num">설문 불만 1위 "지저분하게 지워진다"</p>
-    </div>
+  <div class="flow">
+    <div class="box"><b>① 올리기</b></div><div class="arrow"></div>
+    <div class="box"><b>② 얼굴 가리고 진단</b><p>글자 · 소속 · 장소 읽기</p></div><div class="arrow"></div>
+    <div class="box"><b>③ 위험 판단</b><p>동네를 좁히는 이름인가</p></div><div class="arrow"></div>
+    <div class="box on"><b>④ 마스크</b><p>흰 곳만 고침, 얼굴 · 손은 마지막에 막음</p></div><div class="arrow"></div>
+    <div class="box"><b>⑤ AI 보정</b><p>그 부분만 다시 그림</p></div><div class="arrow"></div>
+    <div class="box"><b>⑥ 재검증</b><p>고친 사진 다시 진단</p></div>
   </div>
 
-  <div class="steps">
-    <div class="box">① 사진 올리기</div><div class="arrow"></div>
-    <div class="box">② 위험 요소 지도</div><div class="arrow"></div>
-    <div class="box on">③ 자동 보정</div><div class="arrow"></div>
-    <div class="box">④ 재검증</div>
+  <div class="low">
+    <div class="why box">
+      <span class="lab">왜 AI인가</span>
+      <div class="cards">
+        <div class="card"><b>사람 눈엔 안 보임</b><p>숨은 위험 사진 8장 중 5장 찾음</p></div>
+        <div class="card"><b>표로는 못 가림</b><p>간판 150장을 전국 가게 목록과 맞춰 보니, 전국 1곳 이름은 24장 이하</p></div>
+        <div class="card"><b>모자이크는 지저분함</b><p>주변에 맞춰 그 부분만 다시 그림</p></div>
+      </div>
+    </div>
+    <div class="rule box on">
+      <span class="lab">아이를 지키는 원칙</span>
+      <ol>
+        <li>진단은 얼굴을 가린 사진만</li>
+        <li>원본은 누를 때마다 동의를 받고</li>
+        <li>얼굴 · 머리카락 · 목 · 손을 여는 픽셀 0</li>
+        <li>아이SHADOW 서버엔 사진을 저장하지 않음</li>
+      </ol>
+    </div>
   </div>
-
-  <div class="slot video">시연 영상 (2분)<span class="need" style="font-size:var(--foot)">[추가 자료 필요] 편집된 2분 시연 영상</span></div>
   <span class="pg">05</span>
 </body>
 </html>

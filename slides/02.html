@@ -2,51 +2,64 @@
 <html lang="ko">
 <head><meta charset="utf-8"><link rel="stylesheet" href="../theme.css">
 <style>
-  /* 헤드라인 → KPI 카드 2개(나열형) → Why Now · Why Here → So what → 출처 */
-  .slide { gap: 30px; }
-  .kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-  .kpis .box { display: flex; flex-direction: column; gap: 6px; padding: 28px 40px; }
-  .why { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-  .why ol { margin: 0; padding-left: 1.3em; }
-  .sowhat { font-weight: 700; }
+  /* 왼쪽: 국내 기사 3장 한 줄 · 해외 기사 3장 한 줄(기사 화면 캡처) · 오른쪽: 큰 숫자 → 국내 정책 띠 → 출처 */
+  .slide { gap: 28px; }
+  .main-row { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 320px; gap: 32px; }
+  .rows { display: grid; grid-template-rows: 1fr 1fr; gap: 18px; min-height: 0; }
+  .grp { display: flex; flex-direction: column; gap: 8px; min-height: 0; }
+  .grp .lab { margin: 0; }
+  .cards { flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .art { min-height: 0; display: flex; flex-direction: column; gap: 6px; }
+  .art .src { font-size: 19px; color: var(--text-3); font-weight: 600; white-space: nowrap; overflow: hidden; }
+  .art .shot { flex: 1; min-height: 0; background: #fff; border: 1px solid var(--line); border-radius: 10px; overflow: hidden;
+               box-shadow: 0 10px 26px rgba(20, 30, 60, .16); }
+  .art img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; }
+  .nums { display: flex; flex-direction: column; justify-content: center; gap: 40px; text-align: center; }
+  .nums .kpi { font-size: 96px; }
+  .nums .kpi.sm { font-size: 68px; color: var(--text); }
+  .nums p { font-size: 25px; line-height: 1.35; }
+  .gov { display: flex; gap: 20px; align-items: baseline; }
+  .gov .lab { margin: 0; white-space: nowrap; }
 </style>
 </head>
 <body class="slide">
+  <nav class="prog"><span class="on" style="--n:2"></span><span style="--n:2"></span><span style="--n:1"></span><span style="--n:3"></span></nav>
   <header>
-    <p class="sec">시장기회 · Why Now</p>
-    <h1>부모 86.1%가 아이 사진을 올리고,<br>이제 아이 사진 보호는 사회의 과제입니다</h1>
+    <p class="sec">문제 상황 · 국내와 해외</p>
+    <h1>아이 사진은 계속 올라가고, 해외는 이미 법으로 막기 시작했습니다</h1>
   </header>
 
-  <div class="kpis">
-    <div class="box">
-      <div class="kpi">86.1%</div>
-      <p>SNS를 하는 부모 중 아이 사진을 올린 비율</p>
-      <p class="foot">최근 3개월 안에 SNS에 글을 올린 0~11세 자녀 부모 1,000명</p>
+  <div class="main-row">
+    <div class="rows">
+      <div class="grp">
+        <span class="lab">국내 뉴스</span>
+        <div class="cards">
+          <div class="art"><span class="src">노컷뉴스 · 2023.7.15</span><div class="shot"><img src="../assets/news/kr1.png" alt="SNS에 아이 사진 올렸는데…정작 저커버그는 아이 얼굴 가렸다?"></div></div>
+          <div class="art"><span class="src">머니투데이 · 2025.12.6</span><div class="shot"><img src="../assets/news/kr2.png" alt="사랑스러운 내 아이 얼굴 모자이크하는 사연"></div></div>
+          <div class="art"><span class="src">뉴시스 · 2022.10.9</span><div class="shot"><img src="../assets/news/kr3.png" alt="페북·인스타에 올린 아이 영상, 괜찮을까요"></div></div>
+        </div>
+      </div>
+      <div class="grp">
+        <span class="lab">해외 뉴스</span>
+        <div class="cards">
+          <div class="art"><span class="src">프랑스 · 2023.3.10 → 2024.2 법 통과</span><div class="shot"><img src="../assets/news/fr.png" alt="Sharenting: Why is France trying to stop parents from oversharing their children's images online?"></div></div>
+          <div class="art"><span class="src">이탈리아 · 2024.4.6</span><div class="shot"><img src="../assets/news/it.png" alt="Italy considers law against sharenting to protect children's privacy"></div></div>
+          <div class="art"><span class="src">스페인 · 2025.2.12</span><div class="shot"><img src="../assets/news/es.png" alt="Spain wants to regulate parent influencers" style="object-fit:contain;object-position:center"></div></div>
+        </div>
+      </div>
     </div>
-    <div class="box on">
-      <div class="kpi main">13.2%</div>
-      <p>게시 후 부정적 경험 (개인정보 도용 · 불쾌한 댓글 등)</p>
-      <p class="foot">SNS에 자녀 콘텐츠를 올린 부모 중</p>
+
+    <div class="nums">
+      <div><div class="kpi main">86.1%</div><p>SNS를 하는 부모 중<br>아이 사진을 올린 비율</p></div>
+      <div><div class="kpi sm">13.2%</div><p>올린 뒤 부정적 경험<br><span class="foot">개인정보 도용 · 불쾌한 댓글 등</span></p></div>
     </div>
   </div>
 
-  <div class="why">
-    <div>
-      <span class="lab">Why Now</span>
-      <ol>
-        <li>프랑스, 2024년부터 부모가 올리는 아이 사진까지 법으로 보호</li>
-        <li>개인정보보호위원회, 부모가 올린 아이 사진 삭제 지원 추진 — 11.17 토론회 의제</li>
-      </ol>
-    </div>
-    <div>
-      <span class="lab">Why Here · 대한민국</span>
-      <p>국민 2명 중 1명이 인스타그램을 쓰고, 아이 4명 중 3명이 학원에 다닙니다. 한국 아이의 사진에는 학원 간판과 셔틀버스가 같이 찍히기 쉽습니다.</p>
-    </div>
+  <div class="gov band">
+    <span class="lab">국내 정책</span>
+    <p>개인정보보호위원회 — 부모 등 제3자가 올린 아이 게시물 삭제 지원 논의 시작 <span class="mute">(2026.11.17 제도개선 토론회)</span></p>
   </div>
-
-  <p class="sowhat band">아이 사진은 계속 올라가고, 이제 그걸 지키는 일은 사회의 과제입니다. 필요한 건 올리기 전의 확인입니다.</p>
-
-  <p class="foot">출처: 세이브더칠드런 조사(2021) · 인스타그램 MAU 2,797만(2026.1) · 교육부 초중고 사교육비 조사(2025) · 프랑스 2024-120호 법(2024.2) · 개인정보보호위원회 아동·청소년 개인정보 보호 기본계획(2022.7) · 제도개선 토론회(2026.11.17)</p>
+  <p class="foot">86.1% · 13.2%: 세이브더칠드런 조사(2021), 만 0~11세 자녀 부모 1,000명 · 기사는 각 매체 화면 캡처, 아이가 나온 사진은 흐리게 처리</p>
   <span class="pg">02</span>
 </body>
 </html>

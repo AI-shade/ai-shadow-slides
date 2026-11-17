@@ -2,40 +2,24 @@
 <html lang="ko">
 <head><meta charset="utf-8"><link rel="stylesheet" href="../theme.css">
 <style>
-  /* 좌: 어두운 바탕에 비전 한 문장(크게) → QR · 우: 세로 크레딧. 요약은 화면에 두지 않고 말로 한 문장만 */
-  .slide { padding-top: 100px; }
-  .grid { flex: 1; min-height: 0; display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; }
-  .left { display: flex; flex-direction: column; gap: 28px; min-height: 0; }
-  .vision { flex: 1; background: var(--sub); color: var(--bg); border-radius: 24px; padding: 56px 56px;
-            display: flex; flex-direction: column; justify-content: center; gap: 28px; }
-  .vision .lab { color: var(--on-main); margin: 0; }
-  .vision .big { font-size: 52px; font-weight: 800; line-height: 1.35; letter-spacing: -.01em; }
-  .vision .foot { color: var(--on-main); }
-  .qr { height: 110px; }
-  .credits { background: var(--gray-2); border-radius: 24px; padding: 44px 48px; display: flex; flex-direction: column; gap: 18px; }
-  .credits p b { display: inline-block; width: 3em; }
+  /* 감사합니다(크게) + 서비스 한 줄 · QR → 팀 한 줄 */
+  .end { flex: 1; min-height: 0; display: grid; grid-template-columns: 1.6fr 1fr; gap: 60px; align-items: center; }
+  .end .left { display: flex; flex-direction: column; gap: 32px; }
+  .end .thanks { font-size: 140px; font-weight: 800; line-height: 1; letter-spacing: -.02em; }
+  .end .one { font-size: 40px; font-weight: 700; color: var(--main); }
+  .end .qr { height: 460px; }
 </style>
 </head>
 <body class="slide">
-  <div class="grid">
+  <div class="end">
     <div class="left">
-      <div class="vision">
-        <span class="lab">비전 · 사회적 임팩트</span>
-        <p class="big">아이는 자기 사진이 올라가는 데 동의할 수 없습니다.<br>부모가 올리는 사진에서도 아이의 사생활이 지켜지게 하겠습니다.</p>
-        <p class="foot">부모 중 아이 동의를 구한 경우 44.6% · 아동 75.5% "동의를 받은 적 없다" (세이브더칠드런 2021)</p>
-      </div>
-      <div class="slot qr">서비스 주소 · QR <span class="need">[추가 자료 필요]</span></div>
+      <img src="../assets/ishadow-wordmark.svg" alt="아이SHADOW" style="height:64px;align-self:flex-start">
+      <div class="thanks">감사합니다</div>
+      <p class="one">아이는 그대로, 단서만 지웁니다 — 아이SHADOW</p>
     </div>
-
-    <div class="credits">
-      <span class="lab">만든 사람들</span>
-      <p><b>근오</b> 팀장 · 사업</p>
-      <p><b>영우</b> 발표 · 상가정보 검토</p>
-      <p><b>현미</b> 발표자료</p>
-      <p><b>윤서</b> <span class="need">[역할]</span></p>
-      <p><b>민석</b> <span class="need">[역할]</span></p>
-    </div>
+    <div class="slot qr">서비스 주소 · QR<span class="need">[추가 자료 필요]</span></div>
   </div>
+  <p class="foot band">팀 네잎클로드 · 근오 · 영우 · 현미 · 윤서 · 민석</p>
   <span class="pg">10</span>
 </body>
 </html>

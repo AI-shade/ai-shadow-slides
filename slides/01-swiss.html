@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap">
+<!-- pptx-design-styles «07 Swiss International» 그대로: 색·글꼴·크기는 스킬 명세값 (1pt = 2px, 1920 기준) -->
+<style>
+  body {
+    margin: 0; width: 1920px; height: 1080px; overflow: hidden; position: relative;
+    background: #FFFFFF; color: #111111;
+    font-family: "Helvetica Neue", Arial, "Malgun Gothic", sans-serif;
+    word-break: keep-all;
+    display: grid; grid-template-columns: repeat(12, 1fr); column-gap: 32px;
+    padding: 0 120px 0 160px; box-sizing: border-box;
+    grid-template-rows: 120px 380px 2px 1fr 120px;
+  }
+  .bar { position: absolute; left: 0; top: 0; bottom: 0; width: 16px; background: #E8000D; }
+  .label { font-family: "Space Mono", monospace; font-size: 20px; letter-spacing: 8px; color: #444444; text-transform: uppercase; }
+  .top { grid-column: 1 / -1; grid-row: 1; align-self: end; display: flex; justify-content: space-between; }
+  h1 { grid-column: 1 / 9; grid-row: 2; align-self: end; margin: 0 0 56px;
+       font-size: 88px; font-weight: 700; line-height: 1.1; letter-spacing: -2px; }
+  h1 .r { color: #E8000D; }
+  .rule { grid-column: 1 / -1; grid-row: 3; background: #DDDDDD; }
+  .def { grid-column: 1 / 6; grid-row: 4; margin-top: 56px; font-size: 32px; line-height: 1.55; color: #444444; }
+  .def b { color: #111111; }
+  .steps { grid-column: 7 / 13; grid-row: 4; margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 32px; }
+  .step { border-top: 6px solid #111111; padding-top: 20px; }
+  .step.r { border-color: #E8000D; }
+  .step .n { font-family: "Space Mono", monospace; font-size: 20px; letter-spacing: 4px; color: #444444; }
+  .step .t { font-size: 40px; font-weight: 700; margin-top: 12px; }
+  .step .d { font-size: 26px; color: #444444; margin-top: 10px; line-height: 1.4; }
+  .foot { grid-column: 1 / -1; grid-row: 5; align-self: center; display: flex; justify-content: space-between; }
+  .circle { position: absolute; right: 120px; bottom: 200px; width: 120px; height: 120px;
+            border: 6px solid #E8000D; border-radius: 50%; box-sizing: border-box; }
+</style></head>
+<body>
+  <div class="bar"></div>
+
+  <div class="top"><span class="label">아이SHADOW</span><span class="label">01</span></div>
+
+  <h1>사진은 그대로.<br>장소 단서<span class="r">만</span> 지웁니다.</h1>
+
+  <div class="rule"></div>
+
+  <div class="def"><b>아이SHADOW</b>는 부모가 아이 사진을 올리기 전에,
+    그 사진으로 아이가 어디 있는지 알아낼 수 있는지 봅니다.
+    아이는 그대로 두고 위험한 부분만 고칩니다.</div>
+
+  <div class="steps">
+    <div class="step"><div class="n">01</div><div class="t">진단</div><div class="d">장소 단서를 찾는다</div></div>
+    <div class="step r"><div class="n">02</div><div class="t">보정</div><div class="d">단서만 고친다</div></div>
+    <div class="step"><div class="n">03</div><div class="t">재확인</div><div class="d">다시 찾아본다</div></div>
+  </div>
+
+  <div class="circle"></div>
+
+  <div class="foot"><span class="label">AI솔루션 해커톤 본선</span><span class="label">발표 영우</span></div>
+</body>
+</html>

@@ -2,12 +2,13 @@
 <html lang="ko">
 <head><meta charset="utf-8"><link rel="stylesheet" href="../theme.css">
 <style>
-  /* 좌 60% 헤드라인 → 정의, 우 40% 보정 전·후 (대조형) */
+  /* 좌: 문제(가장 크게) → 우리가 하는 것 · 우: 간판 보정 전·후 */
   .brand { display: flex; align-items: center; gap: 24px; }
   .brand img { height: 56px; }
-  .cover { flex: 1; min-height: 0; display: grid; grid-template-columns: 60fr 40fr; gap: 72px; }
-  .cover .left { display: flex; flex-direction: column; justify-content: center; gap: 48px; }
-  .cover .def { color: var(--text-2); }
+  .cover { flex: 1; min-height: 0; display: grid; grid-template-columns: 58fr 42fr; gap: 72px; }
+  .cover .left { display: flex; flex-direction: column; justify-content: center; gap: 44px; }
+  .cover h1 { font-size: 76px; line-height: 1.22; }
+  .cover .we { font-size: 36px; font-weight: 700; color: var(--main); line-height: 1.4; }
   .pair { position: relative; }
   .pair .before { position: absolute; left: 0; top: 18%; width: 38%; height: 58%; }
   .pair .after  { position: absolute; right: 0; top: 8%; width: 50%; height: 78%; border: 6px solid var(--main); }
@@ -26,14 +27,14 @@
 
   <div class="cover">
     <div class="left">
-      <h1>SNS 사진 속 아이의<br>개인정보만 지우고,<br>공유는 마음 편히.</h1>
-      <p class="def">아이SHADOW는 SNS에 올리기 전, 사진 배경과 옷에서 아이의 위치를 알려 주는 단서를 찾아 그 부분만 지워 주는 AI 서비스입니다.</p>
+      <h1>아이 사진 속 간판 하나가,<br>아이가 다니는 곳을<br>알려 줍니다</h1>
+      <p class="we">아이SHADOW는 아이는 그대로 두고,<br>위치를 알려 주는 단서만 찾아 지웁니다.</p>
     </div>
     <div class="pair">
       <div class="slot before">보정 전<span class="need">[추가 자료 필요]</span></div>
       <div class="beam"></div>
       <div class="slot after">보정 후<span class="need">[추가 자료 필요]</span></div>
-      <p class="foot cap">간판·로고 부분만 자른 실제 보정 전·후 (아이 얼굴 제외)</p>
+      <p class="foot cap">간판 부분만 자른 실제 보정 전·후 (아이 얼굴 제외)</p>
     </div>
   </div>
 

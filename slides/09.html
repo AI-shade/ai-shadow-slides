@@ -2,63 +2,32 @@
 <html lang="ko">
 <head><meta charset="utf-8"><link rel="stylesheet" href="../theme.css">
 <style>
-  /* 왼쪽 30%: 인스타 게시물 3개 + 데려오는 순서 한 줄 · 오른쪽 70%: 3단 확장 계단 · 하단: 원가 띠 */
-  .main-row { flex: 1; min-height: 0; display: grid; grid-template-columns: 3fr 7fr; gap: 40px; }
-  .ig { display: flex; flex-direction: column; gap: 14px; min-height: 0; }
-  .ig .posts { flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-  .ig .slot { padding: 12px; }
-  .ig b { font-size: 28px; line-height: 1.35; }
-  .stairs { min-height: 0; }
-  .stairs .lab { display: flex; align-items: center; gap: 12px; margin: 0; }
-  .stairs b { font-size: var(--body); line-height: 1.3; }
-  .s1 { background: var(--main-1); }
-  .s2 { background: var(--main-2); }
-  .s3 { background: var(--main); color: var(--bg); }
-  .s3 .lab, .s3 .foot { color: var(--on-main); }
-  .cost { background: var(--gray-2); border-radius: 20px; padding: 24px 32px; }
+  /* 부모 · 사회 · 아이 3칸 → 비전(어두운 띠) */
+  .three { flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .three .box { display: flex; flex-direction: column; justify-content: center; gap: 16px; }
+  .three .box .lab { margin: 0; }
+  .three b { font-size: 38px; line-height: 1.35; }
+  .vision { background: var(--sub); color: var(--bg); border-radius: 24px; padding: 40px 48px; }
+  .vision .lab { color: var(--on-main); }
+  .vision p { font-size: 46px; font-weight: 800; line-height: 1.3; }
 </style>
 </head>
 <body class="slide">
+  <nav class="prog"><span class="done" style="--n:2"></span><span class="done" style="--n:2"></span><span class="done" style="--n:1"></span><span class="on" style="--n:3"></span></nav>
   <header>
-    <p class="sec">Execution · 비즈니스 모델</p>
-    <h1>무료 체험에서 과금으로, 부모에서 육아 인플루언서로</h1>
+    <p class="sec">기대 모습</p>
+    <h1>올리기 전에 한 번 확인하는 것이 당연해지게 합니다</h1>
   </header>
 
-  <div class="main-row">
-    <div class="ig box">
-      <span class="lab" style="margin:0">사람을 데려오는 길 · 인스타 @child_shadow</span>
-      <div class="posts">
-        <div class="slot">① 경각심</div>
-        <div class="slot">② 직접 찾기</div>
-        <div class="slot">③ 30초 사용법</div>
-      </div>
-      <p class="foot"><span class="need">[게시물 캡처 3장]</span> ①은 "10장 중 7장" 출처 확인 전엔 사칭 문자 게시물</p>
-      <b>먼저 위험을 느끼게 하고, 직접 찾아보게 한 뒤, 30초 사용법으로 데려옵니다</b>
-      <p class="foot">게시물 8 · 팔로워 14 — 출시 전이라 숫자보다 데려오는 순서를 먼저 실험</p>
-    </div>
-
-    <div class="stairs">
-      <div class="s1" style="height:56%">
-        <span class="lab">테스트</span>
-        <b>인스타 → 웹 무료 체험</b>
-        <p class="foot">부모 누구나 · 사진 몇 장</p>
-      </div>
-      <div class="s2" style="height:76%">
-        <span class="lab">침투 · B2C</span>
-        <b>부모</b>
-        <p class="foot">일정 장수부터 과금 · 가격 <span class="need">[추가 자료 필요]</span></p>
-      </div>
-      <div class="s3" style="height:100%">
-        <span class="lab">성장 · B2B <span class="chip on">가설</span></span>
-        <b>육아 인플루언서 · 키즈 모델 기획사</b>
-        <p class="foot">아이 사진을 매일, 많은 사람에게 — 위험도 크고 낼 이유도 큼</p>
-      </div>
-    </div>
+  <div class="three">
+    <div class="box"><span class="lab">부모</span><b>사진을 포기하지 않고, 위험한 곳만 고쳐 올립니다</b></div>
+    <div class="box"><span class="lab">사회</span><b>올린 뒤 지우기의 앞 단계를 맡습니다</b><p class="foot">이미 퍼진 사진은 지워도 남습니다</p></div>
+    <div class="box on"><span class="lab">아이</span><b>동의할 수 없는 아이의 사생활이 지켜집니다</b><p class="foot">아동 75.5% "사진 올릴 때 동의를 받은 적 없다" (세이브더칠드런 2021)</p></div>
   </div>
 
-  <div class="cost">
-    <span class="lab">원가</span>
-    <p>진단 1장 약 <b>5.6원</b> (입력 2,611 · 출력 274 토큰) · 보정 단가 <span class="need">[추가 자료 필요]</span></p>
+  <div class="vision">
+    <span class="lab">비전</span>
+    <p>부모가 올리는 사진에서도 아이의 사생활이 지켜지게 하겠습니다.</p>
   </div>
   <span class="pg">09</span>
 </body>
