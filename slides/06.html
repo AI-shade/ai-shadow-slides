@@ -24,23 +24,23 @@
 
   <div class="grid">
     <div class="stage6">
-      <span class="lab">마스크 규칙 — 사람은 윤곽만, 얼굴은 그리지 않는다</span>
-      <div class="note back" style="left:60px;top:110px;width:360px"><b>검은 칸 · 그대로</b>아이 얼굴</div>
+      <span class="lab">마스크 규칙 — 흰 곳만 AI가 고치고, 검은 곳은 그대로 둡니다</span>
+      <div class="note back" style="left:60px;top:110px;width:360px"><b>검은 칸 · 그대로 둠</b>얼굴 · 머리카락 · 목 · 손</div>
       <svg class="sil" viewBox="0 0 300 380" aria-hidden="true">
         <circle cx="150" cy="80" r="66" fill="var(--text)"/>
         <rect x="40" y="166" width="220" height="200" rx="40" fill="var(--bg)" stroke="var(--text)" stroke-width="6"/>
         <rect x="80" y="206" width="140" height="120" rx="10" fill="var(--bg)" stroke="var(--main)" stroke-width="6" stroke-dasharray="16 10"/>
       </svg>
-      <div class="note front" style="left:740px;top:300px;width:400px;border:4px solid var(--main)"><b class="main">흰 칸 · AI가 다시 그림</b>옷 가슴 로고 · 배경 간판</div>
-      <div class="note front" style="left:60px;bottom:40px;width:480px"><b>순서</b>검게 덮는 건 언제나 마지막 단계</div>
+      <div class="note front" style="left:740px;top:300px;width:400px;border:4px solid var(--main)"><b class="main">흰 칸 · AI가 다시 그림</b>찾은 간판 · 옷의 로고</div>
+      <div class="note front" style="left:60px;bottom:40px;width:480px"><b>순서</b>앞 단계가 무엇을 열어도, 마지막에 얼굴·손을 다시 막습니다</div>
     </div>
 
     <div class="rules">
       <span class="lab">원칙</span>
       <ol>
-        <li>진단할 때는 아이 얼굴을 가리고 보냅니다.</li>
-        <li>원본을 보낼지 말지는 언제나 부모가 정합니다.</li>
-        <li>아이 얼굴은 AI가 다시 그리지 않습니다.<p class="foot">잰 값: 마스크가 얼굴을 여는 픽셀 0</p></li>
+        <li>진단할 때는 얼굴을 가린 사진만 AI에 보냅니다.</li>
+        <li>원본은 AI 보정·이미지 검색을 누를 때만, 그때마다 동의를 받고 보냅니다.</li>
+        <li>얼굴·머리카락·목·손은 AI가 다시 그리지 않습니다.<p class="foot">잰 값: 마스크가 이 부분을 여는 픽셀 0</p></li>
         <li>아이SHADOW 서버에는 사진을 저장하지 않습니다.</li>
       </ol>
     </div>

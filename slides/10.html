@@ -2,15 +2,15 @@
 <html lang="ko">
 <head><meta charset="utf-8"><link rel="stylesheet" href="../theme.css">
 <style>
-  /* 좌: 어두운 바탕에 요약 3줄 → 비전 → QR · 우: 세로 크레딧 */
+  /* 좌: 어두운 바탕에 비전 한 문장(크게) → QR · 우: 세로 크레딧. 요약은 화면에 두지 않고 말로 한 문장만 */
   .slide { padding-top: 100px; }
   .grid { flex: 1; min-height: 0; display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; }
   .left { display: flex; flex-direction: column; gap: 28px; min-height: 0; }
-  .sum { flex: 1; background: var(--sub); color: var(--bg); border-radius: 24px; padding: 44px 48px;
-         display: flex; flex-direction: column; justify-content: center; gap: 22px; }
-  .sum .lab { color: var(--on-main); }
-  .sum p { font-weight: 700; }
-  .vision { display: flex; flex-direction: column; gap: 8px; }
+  .vision { flex: 1; background: var(--sub); color: var(--bg); border-radius: 24px; padding: 56px 56px;
+            display: flex; flex-direction: column; justify-content: center; gap: 28px; }
+  .vision .lab { color: var(--on-main); margin: 0; }
+  .vision .big { font-size: 52px; font-weight: 800; line-height: 1.35; letter-spacing: -.01em; }
+  .vision .foot { color: var(--on-main); }
   .qr { height: 110px; }
   .credits { background: var(--gray-2); border-radius: 24px; padding: 44px 48px; display: flex; flex-direction: column; gap: 18px; }
   .credits p b { display: inline-block; width: 3em; }
@@ -19,15 +19,9 @@
 <body class="slide">
   <div class="grid">
     <div class="left">
-      <div class="sum">
-        <span class="lab">세 줄 요약</span>
-        <p>① 간판·교복 하나로 아이가 어디 다니는지 드러난다</p>
-        <p>② 그 단서만 가려내 다시 그리고, 얼굴·손은 0픽셀</p>
-        <p>③ 직접 찍은 503장으로 판단을 키운다</p>
-      </div>
-      <div class="box on vision">
-        <span class="lab" style="margin:0">비전 · 사회적 임팩트</span>
-        <p><b>아이는 자기 사진이 올라가는 데 동의할 수 없습니다 — 부모가 올리는 사진에서도 아이의 사생활이 지켜지게</b></p>
+      <div class="vision">
+        <span class="lab">비전 · 사회적 임팩트</span>
+        <p class="big">아이는 자기 사진이 올라가는 데 동의할 수 없습니다.<br>부모가 올리는 사진에서도 아이의 사생활이 지켜지게 하겠습니다.</p>
         <p class="foot">부모 중 아이 동의를 구한 경우 44.6% · 아동 75.5% "동의를 받은 적 없다" (세이브더칠드런 2021)</p>
       </div>
       <div class="slot qr">서비스 주소 · QR <span class="need">[추가 자료 필요]</span></div>

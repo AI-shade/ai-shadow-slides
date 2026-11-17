@@ -2,9 +2,13 @@
 <html lang="ko">
 <head><meta charset="utf-8"><link rel="stylesheet" href="../theme.css">
 <style>
-  /* 헤드라인 → Why AI 띠 → 단계 띠 4칸(과정형) → 영상 */
-  .why { display: flex; align-items: center; gap: 28px; }
-  .why b { white-space: nowrap; }
+  /* 헤드라인 → Why AI 3칸(사람이 못 하는 것 · AI가 하는 일 · 잰 값) → 단계 띠 4칸(과정형) → 영상 */
+  .slide { gap: 32px; }
+  .why { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; align-items: stretch; }
+  .why .box { padding: 22px 28px; display: flex; flex-direction: column; gap: 6px; }
+  .why .box .lab { margin: 0; }
+  .why .box b { font-size: 30px; line-height: 1.3; }
+  .why .box .num { color: var(--main); font-weight: 700; font-size: 26px; }
   .steps { display: flex; gap: 20px; }
   .steps .box { flex: 1; padding: 24px 32px; font-weight: 600; }
   .video { flex: 1; min-height: 0; font-size: var(--body); }
@@ -13,12 +17,25 @@
 <body class="slide">
   <header>
     <p class="sec">솔루션 · Why AI · 시연</p>
-    <h1>모든 배경을 지우지 않습니다.<br>위치를 좁힐 수 있는 근거만 골라 지웁니다.</h1>
+    <h1>모든 배경을 지우지 않습니다.<br>위치를 알려 주는 단서를 찾아 그 부분만 고칩니다.</h1>
   </header>
 
-  <div class="box why">
-    <span class="lab" style="margin:0">Why AI</span>
-    <b>배경과 옷을 읽고</b><div class="arrow"></div><b>동네가 좁혀지는지 보고</b><div class="arrow"></div><b class="main">좁혀지는 것만 지웁니다</b>
+  <div class="why">
+    <div class="box">
+      <span class="lab">사람 눈엔 작아서 놓치는 글자</span>
+      <b>직접 학습한 모델이 글자를 못 읽어도 간판 위치를 찾습니다</b>
+      <p class="num">구글도 못 읽은 282개 중 126개 찾음</p>
+    </div>
+    <div class="box">
+      <span class="lab">위험한 간판인지 판단</span>
+      <b>글자를 읽고, 동네를 좁히는 이름인지 프랜차이즈인지 가립니다</b>
+      <p class="num">프랜차이즈 전국 수백 곳 · 동네 상호 전국 1곳도</p>
+    </div>
+    <div class="box">
+      <span class="lab">지저분하지 않게 지우기</span>
+      <b>모자이크 대신 주변에 맞춰 그 부분만 다시 그립니다</b>
+      <p class="num">설문 불만 1위 "지저분하게 지워진다"</p>
+    </div>
   </div>
 
   <div class="steps">
