@@ -9,10 +9,10 @@
   .mo .when { font-size: 30px; font-weight: 800; }
   .mo .when span { font-size: 22px; color: var(--text-3); font-weight: 600; margin-left: 8px; }
   .mo h3 { margin: 0; font-size: 21px; color: var(--text-3); font-weight: 700; }
-  .mo ul { margin: 0; padding-left: 1.1em; display: flex; flex-direction: column; gap: 6px; font-size: 23px; line-height: 1.35; }
+  .mo ul { margin: 0; padding-left: 1.1em; display: flex; flex-direction: column; gap: 10px; font-size: 27px; line-height: 1.35; }
   .mo .fix li b { color: var(--main); }
   .mo.on .when { color: var(--main); }
-  .nums { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+  .nums { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
   .nums div { background: var(--gray-2); border-radius: 16px; padding: 14px 18px; text-align: center; }
   .nums b { display: block; font-size: 40px; font-weight: 800; line-height: 1.1; }
   .nums span { font-size: 20px; color: var(--text-3); font-weight: 600; }
@@ -31,15 +31,14 @@
       <h3>만든 것</h3>
       <ul>
         <li>진단 · 위험 요소 지도</li>
-        <li>위치 확인 3단계 (랜드마크 · 이미지 역검색 · 위치 추측)</li>
         <li>사람이 빼고 고치는 검수</li>
-        <li>배경 흐림 · 배경 교체 · 옷 손보기</li>
+        <li>배경 흐림 · 교체 · 옷 손보기</li>
       </ul>
       <h3>실측하고 수정한 것</h3>
       <ul class="fix">
         <li>마스크가 얼굴 · 손을 여는 픽셀 <b>0</b></li>
         <li>"교복이 아니다"를 교복으로 세던 버그 고침</li>
-              </ul>
+      </ul>
     </div>
 
     <div class="mo box">
@@ -47,15 +46,12 @@
       <h3>만든 것</h3>
       <ul>
         <li>간판 글자를 AI로 다시 그리기</li>
-        <li>세로 간판 · 안내 문구 덮기</li>
         <li>판독 모델 · 보정 모델 비교</li>
       </ul>
       <h3>실측하고 수정한 것</h3>
       <ul class="fix">
         <li>배경 흐림 때 손 · 팔이 잘린 사진 <b>33 → 12장</b></li>
         <li>옷 손보기 선택지 20개 → <b>3개</b></li>
-        <li>보정 방식 카드 4장 → <b>하나로</b></li>
-        <li>사진 1장 진단 원가 <b>5.6원</b></li>
       </ul>
     </div>
 
@@ -65,7 +61,6 @@
       <ul>
         <li>직접 찍은 사진 503장 · 위치 표시</li>
         <li>전국 상가 275만 곳과 간판 이름 대조</li>
-        <li>사용자 설문 · 인스타 카드뉴스</li>
       </ul>
       <h3>실측하고 수정한 것</h3>
       <ul class="fix">
@@ -78,8 +73,6 @@
 
   <div class="nums">
     <div><b>3개월</b><span>8.19 ~</span></div>
-    <div><b>168</b><span>코드 수정 기록</span></div>
-    <div><b>107</b><span>자동 테스트</span></div>
     <div><b>503장</b><span>실사 직접 촬영</span></div>
     <div><b>275만</b><span>전국 상가 대조</span></div>
     <div><b>6회</b><span>멘토링 (기술 3 · 사업 3)</span></div>

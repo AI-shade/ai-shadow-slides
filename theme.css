@@ -90,3 +90,13 @@
 .prog span { flex: var(--n); height: 6px; border-radius: 3px; background: var(--gray); }
 .prog span.done { background: var(--main-3); }
 .prog span.on { background: var(--main); }
+
+/* 등장 효과: 발표 화면(index.html)이 html.play를 붙였을 때만. 위에서부터 차례로 살짝 떠오른다 */
+@keyframes rise { from { opacity: 0; transform: translateY(24px); } }
+html.play body.slide > :not(.prog):not(.pg) { animation: rise .55s cubic-bezier(.2, .7, .2, 1) both; }
+html.play body.slide > :nth-child(3) { animation-delay: .08s; }
+html.play body.slide > :nth-child(4) { animation-delay: .18s; }
+html.play body.slide > :nth-child(5) { animation-delay: .28s; }
+html.play body.slide > :nth-child(6) { animation-delay: .38s; }
+html.play body.slide > :nth-child(n+7) { animation-delay: .46s; }
+@media (prefers-reduced-motion: reduce) { html.play body.slide > * { animation: none; } }
