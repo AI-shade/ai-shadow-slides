@@ -2,35 +2,32 @@
 <html lang="ko">
 <head><meta charset="utf-8"><link rel="stylesheet" href="../theme.css">
 <style>
-  /* 좌: 문제(가장 크게) → 우리가 하는 것 · 우: 동네 지도 일러스트(인스타 카드뉴스 그림체) */
+  /* 위: 대회 이름 · 좌: 문제(가장 크게) → 우리가 하는 것 · 우: 그림 자리(미정) · 아래: 제품 · 팀 이름 */
   .brand { display: flex; align-items: center; gap: 24px; }
   .brand img { height: 56px; }
   .cover { flex: 1; min-height: 0; display: grid; grid-template-columns: 58fr 42fr; gap: 72px; }
   .cover .left { display: flex; flex-direction: column; justify-content: center; gap: 44px; }
   .cover h1 { font-size: 76px; line-height: 1.22; }
   .cover .we { font-size: 36px; font-weight: 700; color: var(--main); line-height: 1.4; }
-  .art { display: flex; align-items: center; }
-  .art img { width: 100%; border-radius: 28px; display: block; }
+  .art { align-self: center; height: 70%; }
 </style>
 </head>
 <body class="slide">
-  <div class="brand">
-    <img src="../assets/ishadow-wordmark.svg" alt="아이SHADOW">
-    <img src="../assets/team-clover.png" alt="">
-    <span class="foot">팀 네잎클로드</span>
-  </div>
+  <p class="foot">[멋쟁이사자처럼] Campus AX-Ton 해커톤 본선 · 발표자 이영우</p>
 
   <div class="cover">
     <div class="left">
       <h1>아이 사진 속 간판 하나가,<br>아이가 다니는 곳을<br>알려 줍니다</h1>
-      <p class="we">아이SHADOW는 아이는 그대로 두고,<br>위치를 알려 주는 단서만 찾아 지웁니다.</p>
+      <p class="we">저희는 아이는 그대로 두고,<br>사진 속 위치 단서만 찾아 지웁니다.</p>
     </div>
-    <div class="art">
-      <img src="../assets/cover-map.png" alt="동네 지도 위 위치 표시 일러스트">
-    </div>
+    <div class="slot art">그림 자리 (미정)</div>
   </div>
 
-  <p class="foot band">[멋쟁이사자처럼] Campus AX-Ton 해커톤 본선 · 발표자 이영우</p>
+  <div class="brand band">
+    <img src="../assets/ishadow-wordmark.svg" alt="아이SHADOW">
+    <img src="../assets/team-clover.png" alt="">
+    <span class="foot">팀 네잎클로드</span>
+  </div>
   <span class="pg">01</span>
 </body>
 </html>

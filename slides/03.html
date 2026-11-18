@@ -4,7 +4,10 @@
 <style>
   /* 02와 잇는 한 줄 → 좌: 같은 사진 다른 시선 · 우: 지금 방법 비교표 → "그래서" */
   .slide { gap: 28px; }
-  .gap { font-size: 30px; font-weight: 700; }
+  .worry { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .worry .lab { margin: 0 8px 0 0; }
+  .worry .w { font-size: 26px; padding: 8px 20px; border-radius: 99px; background: var(--main-soft); color: var(--main); font-weight: 600; }
+  .worry .w:last-child { background: var(--gray); color: var(--text-2); }
   .grid { flex: 1; min-height: 0; display: grid; grid-template-columns: 600px 1fr; gap: 40px; }
   .zoom { position: relative; }
   .zoom .photo { position: absolute; left: 0; top: 0; width: 360px; height: 330px; }
@@ -29,13 +32,13 @@
 </style>
 </head>
 <body class="slide">
-  <nav class="prog"><span class="on" style="--n:2"></span><span style="--n:2"></span><span style="--n:1"></span><span style="--n:3"></span></nav>
+  <nav class="prog"><span class="on" style="--n:2"></span><span style="--n:1"></span><span style="--n:1"></span><span style="--n:1"></span><span style="--n:2"></span></nav>
   <header>
     <p class="sec">왜 이 해결책인가</p>
-    <h1>가리거나 안 올리는 대신, 위치로 이어지는 단서만 끊기로 했습니다</h1>
+    <h1>부모는 아이 얼굴보다 어린이집 이름과 집 위치를 걱정합니다</h1>
   </header>
 
-  <p class="gap">부모 66%가 아이 개인정보 노출을 걱정하지만, 사진 속 무엇이 위험한지 확인할 방법이 없습니다.</p>
+  <div class="worry"><span class="lab">부모 설문 · 걱정되는 것 (많이 고른 순)</span><span class="w">어린이집 · 학교 이름</span><span class="w">집 · 아파트 간판</span><span class="w">원복 · 교복</span><span class="w">아이 얼굴: 고른 사람 없음</span></div>
 
   <div class="grid">
     <div class="zoom">
@@ -44,14 +47,14 @@
       <div class="spot"></div>
       <div class="lens">학원 간판</div>
       <div class="eyes">
-        <p>부모의 시선 → "예쁘게 나왔네"</p>
-        <p><b>낯선 사람의 시선 → "어디 다니는지 알겠네"</b></p>
+        <p>부모: "예쁘게 나왔네"</p>
+        <p><b>낯선 사람: "어디 다니는지 알겠네"</b></p>
       </div>
     </div>
 
     <table>
       <thead>
-        <tr><th></th><th>안 올린다</th><th>공개 범위 줄이기</th><th>얼굴 가리기</th><th>직접 지우기</th><th class="us">아이SHADOW</th></tr>
+        <tr><th></th><th>안 올린다</th><th>공개 범위 줄이기</th><th>얼굴 가리기</th><th>휴대폰 지우개</th><th class="us">아이SHADOW</th></tr>
       </thead>
       <tbody>
         <tr><th>아이 사진을 남길 수 있는가</th><td>✕</td><td>○</td><td>✕ 아이가 안 보임</td><td>○</td><td class="us">○</td></tr>
@@ -64,9 +67,9 @@
 
   <div class="so band">
     <span class="lab">그래서</span>
-    <b>아이는 그대로 두고, 아이와 장소를 잇는 단서만 끊습니다.</b>
+    <b>아이는 그대로 두고, 위치를 알려 주는 단서만 찾아서 지웁니다.</b>
   </div>
-  <p class="foot">66%: 세이브더칠드런 조사(2021) · 공개 범위를 줄인 부모 63.2% · 직접 지우기 불만 "하나하나 지우기 불편하다"(사용자 설문)</p>
+  <p class="foot">부모 설문에서 지우개가 불편한 이유: "수작업이 필요하다", "가린 티가 난다"</p>
   <span class="pg">03</span>
 </body>
 </html>
