@@ -2,55 +2,51 @@
 <html lang="ko">
 <head><meta charset="utf-8"><link rel="stylesheet" href="../theme.css">
 <style>
-  /* 확장 계단 4단(테스트 → 부모 → B2B → 해외) → 원가 띠 */
-  .stairs { flex: 1; min-height: 0; }
-  .stairs .lab { display: flex; align-items: center; gap: 12px; margin: 0; }
-  .stairs b { font-size: var(--body); line-height: 1.3; }
-  .stairs p { font-size: 24px; line-height: 1.4; }
-  .s1 { background: var(--gray-2); }
-  .s2 { background: var(--main-1); }
-  .s3 { background: var(--main-2); }
-  .s4 { background: var(--main); color: var(--bg); }
-  .s4 .lab, .s4 .foot { color: var(--on-main); }
-  .s4 .chip { background: transparent; color: var(--bg); border-color: var(--on-main); }
-  .cost { background: var(--gray-2); border-radius: 20px; padding: 24px 32px; }
+  /* 좌: 사용자 유입(인스타 프로필 + 게시물 첫 장 3개) · 우: 다음 계획 4단계 */
+  .row2 { flex: 1; min-height: 0; display: grid; grid-template-columns: 1.3fr 1fr; gap: 36px; }
+  .ig { display: flex; flex-direction: column; gap: 16px; min-height: 0; }
+  .ig .lab { margin: 0; }
+  .ig .prof { width: 100%; max-width: 520px; border-radius: 12px; display: block; }
+  .ig .posts { flex: 1; min-height: 0; display: flex; align-items: center; gap: 8px; }
+  .ig .post { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px; text-align: center; }
+  .ig .post img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); box-shadow: 0 8px 20px rgba(20, 30, 60, .14); }
+  .ig .post span { font-size: 21px; font-weight: 700; color: var(--text-2); }
+  .ig .posts .arrow { flex: 0 0 26px; height: 18px; margin-bottom: 30px; }
+  .ig b { font-size: 28px; line-height: 1.35; }
+  .plan { display: flex; flex-direction: column; gap: 16px; }
+  .plan .lab { margin: 0; }
+  .plan .box { flex: 1; padding: 22px 32px; display: flex; flex-direction: column; justify-content: center; gap: 4px; }
+  .plan b { font-size: 32px; }
+  .plan p { font-size: 24px; color: var(--text-2); }
 </style>
 </head>
 <body class="slide">
   <nav class="prog"><span class="done" style="--n:2"></span><span class="done" style="--n:2"></span><span class="done" style="--n:1"></span><span class="on" style="--n:3"></span></nav>
   <header>
-    <p class="sec">비즈니스 모델 · 해외 확장</p>
-    <h1>부모에서 시작해, 인플루언서와 규제가 더 센 해외로 넓힙니다</h1>
+    <p class="sec">운영 구조 · 계획</p>
+    <h1>인스타로 알리고, 직접 찍은 사진으로 계속 키웁니다</h1>
   </header>
 
-  <div class="stairs">
-    <div class="s1" style="height:46%">
-      <span class="lab">테스트</span>
-      <b>웹 무료 체험</b>
-      <p class="foot">부모 누구나 · 사진 몇 장</p>
+  <div class="row2">
+    <div class="ig box">
+      <span class="lab">사용자 유입 · 인스타 @child_shadow</span>
+      <img class="prof" src="../assets/insta/profile.png" alt="인스타그램 child_shadow 프로필">
+      <div class="posts">
+        <div class="post"><img src="../assets/insta/post1.png" alt="어린이집 사칭 문자 게시물"><span>① 경각심</span></div><div class="arrow"></div>
+        <div class="post"><img src="../assets/insta/post2.png" alt="다른 곳 7개 찾기 게시물"><span>② 직접 찾기</span></div><div class="arrow"></div>
+        <div class="post"><img src="../assets/insta/post3.png" alt="올리기 전에 30초만 게시물"><span>③ 30초 사용법</span></div>
+      </div>
+      <b>위험을 알리고 → 직접 찾아보게 하고 → 사용법으로 이어집니다</b>
+      <p class="foot">게시물 8 · 팔로워 14 (2026.11.15)</p>
     </div>
-    <div class="s2" style="height:64%">
-      <span class="lab">B2C</span>
-      <b>부모</b>
-      <p class="foot">일정 장수부터 과금 · 가격 <span class="need">[추가 자료 필요]</span></p>
-    </div>
-    <div class="s3" style="height:82%">
-      <span class="lab">B2B <span class="chip">가설</span></span>
-      <b>육아 인플루언서 · 키즈 모델 기획사</b>
-      <p class="foot">아이 사진을 매일, 많은 사람에게 — 위험도 크고 낼 이유도 큼</p>
-    </div>
-    <div class="s4" style="height:100%">
-      <span class="lab">해외 <span class="chip">가설</span></span>
-      <b>아이 사진 규제가 더 센 나라</b>
-      <p>프랑스 — 부모가 올리는 아이 사진 보호법(2024) · 아동 인플루언서법(2020)</p>
-      <p>이탈리아 · 스페인 — 법 추진 중</p>
-      <p class="foot">나라마다 바꿀 것: 글자 읽기 · 장소 데이터</p>
-    </div>
-  </div>
 
-  <div class="cost">
-    <span class="lab">원가</span>
-    <p>진단 1장 약 <b>5.6원</b> (입력 2,611 · 출력 274 토큰) · 보정 단가 <span class="need">[추가 자료 필요]</span></p>
+    <div class="plan">
+      <span class="lab">다음 계획</span>
+      <div class="box on"><b>1. 위치 모델을 앱에 붙임</b><p>우리 서버에서 실행 · 사진을 외부로 보내지 않음</p></div>
+      <div class="box"><b>2. 시험 102장으로 다시 잼</b><p>학습에 섞지 않은 사진</p></div>
+      <div class="box"><b>3. 위험 판단까지 학습</b><p>같은 사진으로</p></div>
+      <div class="box"><b>4. 운영하며 데이터 쌓기</b><p>사진은 저장하지 않음</p></div>
+    </div>
   </div>
   <span class="pg">07</span>
 </body>

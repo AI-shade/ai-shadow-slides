@@ -2,61 +2,91 @@
 <html lang="ko">
 <head><meta charset="utf-8"><link rel="stylesheet" href="../theme.css">
 <style>
-  /* 만들어 온 순서 4칸(과정형) → 맡은 사람 한 줄 */
-  .steps { flex: 1; min-height: 0; display: flex; gap: 16px; }
-  .steps .box { flex: 1; padding: 32px 30px; display: flex; flex-direction: column; gap: 12px; }
-  .steps .box .lab { margin: 0; }
-  .steps b { font-size: 32px; line-height: 1.3; }
-  .steps p { font-size: 26px; line-height: 1.4; color: var(--text-2); }
-  .steps .kpi { font-size: 72px; }
-  .steps .q { margin-top: auto; font-size: 24px; color: var(--text-3); }
-  .fb { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; font-size: 25px; line-height: 1.35; }
-  .fb span { color: var(--main); font-weight: 700; display: block; }
+  /* 3개월 타임라인(달마다: 만든 것 → 실측하고 수정한 것) → 숫자 띠 → 맡은 사람 */
+  .slide { gap: 28px; }
+  .tl { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+  .mo { display: flex; flex-direction: column; gap: 12px; padding: 28px 30px; }
+  .mo .when { font-size: 30px; font-weight: 800; }
+  .mo .when span { font-size: 22px; color: var(--text-3); font-weight: 600; margin-left: 8px; }
+  .mo h3 { margin: 0; font-size: 21px; color: var(--text-3); font-weight: 700; }
+  .mo ul { margin: 0; padding-left: 1.1em; display: flex; flex-direction: column; gap: 6px; font-size: 23px; line-height: 1.35; }
+  .mo .fix li b { color: var(--main); }
+  .mo.on .when { color: var(--main); }
+  .nums { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+  .nums div { background: var(--gray-2); border-radius: 16px; padding: 14px 18px; text-align: center; }
+  .nums b { display: block; font-size: 40px; font-weight: 800; line-height: 1.1; }
+  .nums span { font-size: 20px; color: var(--text-3); font-weight: 600; }
 </style>
 </head>
 <body class="slide">
   <nav class="prog"><span class="done" style="--n:2"></span><span class="on" style="--n:2"></span><span style="--n:1"></span><span style="--n:3"></span></nav>
   <header>
     <p class="sec">어떻게 만들어 냈나</p>
-    <h1>써 보게 하고, 재 보고, 고치면서 만들었습니다</h1>
+    <h1>이렇게 만들었습니다</h1>
   </header>
 
-  <div class="steps">
-    <div class="box">
-      <span class="lab">① 첫 정답표</span>
-      <b>AI로 만든 사진 103장</b>
-      <div class="kpi">98%</div>
-      <p>위험한 사진을 찾음</p>
-      <p class="q">그런데 실제 사진은?</p>
-    </div>
-    <div class="arrow"></div>
-    <div class="box">
-      <span class="lab">② 사용자 설문</span>
-      <div class="kpi">95%</div>
-      <p>몰랐던 위험을 알게 됐다</p>
-      <p class="q">불만 "지저분하게 지워진다" · "하나하나 지우기 불편하다" → 자동 보정 하나로</p>
-    </div>
-    <div class="arrow"></div>
-    <div class="box">
-      <span class="lab">③ 멘토 피드백 → 바꾼 것</span>
-      <ul class="fb">
-        <li>신체가 잘림<span>인물 범위 재정립 · 신체 마스킹 강화</span></li>
-        <li>기능이 복잡함<span>선택지 축소</span></li>
-        <li>방식이 조잡함<span>간소화 · 정리</span></li>
-        <li>보정 화질<span>모델 비교 후 수정</span></li>
+  <div class="tl">
+    <div class="mo box">
+      <div class="when">8월<span>첫 버전</span></div>
+      <h3>만든 것</h3>
+      <ul>
+        <li>진단 · 위험 요소 지도</li>
+        <li>위치 확인 3단계 (랜드마크 · 이미지 역검색 · 위치 추측)</li>
+        <li>사람이 빼고 고치는 검수</li>
+        <li>배경 흐림 · 배경 교체 · 옷 손보기</li>
+      </ul>
+      <h3>실측하고 수정한 것</h3>
+      <ul class="fix">
+        <li>AI로 만든 사진 103장 정답표</li>
+        <li>"교복이 아니다"를 교복으로 세던 버그</li>
+        <li>판정 규칙 수정 → 놓침 <b>8 → 4장</b></li>
       </ul>
     </div>
-    <div class="arrow"></div>
-    <div class="box on">
-      <span class="lab">④ 직접 찍은 사진 503장</span>
-      <p>간판 글자 <b class="main">40%</b> 찾음 · 로고 62%</p>
-      <p>못 읽은 282개 → 위치 모델 학습</p>
-      <div class="kpi main">126개</div>
-      <p>찾음 (시범)</p>
+
+    <div class="mo box">
+      <div class="when">9~10월<span>멘토 피드백</span></div>
+      <h3>만든 것</h3>
+      <ul>
+        <li>간판 글자를 AI로 다시 그리기</li>
+        <li>세로 간판 · 안내 문구 덮기</li>
+        <li>판독 모델 · 보정 모델 비교</li>
+      </ul>
+      <h3>실측하고 수정한 것</h3>
+      <ul class="fix">
+        <li>배경 흐림 때 손 · 팔 잘림 → <b>33 → 12장</b></li>
+        <li>옷 손보기 선택지 20개 → <b>3개</b></li>
+        <li>보정 방식 카드 4장 → <b>자동 보정 하나</b></li>
+        <li>사진 1장 진단 원가 <b>5.6원</b></li>
+      </ul>
+    </div>
+
+    <div class="mo box on">
+      <div class="when">11월<span>실제 사진으로 시연</span></div>
+      <h3>만든 것</h3>
+      <ul>
+        <li>직접 찍은 사진 503장 · 위치 표시</li>
+        <li>전국 상가 275만 곳과 간판 이름 대조</li>
+        <li>사용자 설문 · 인스타 카드뉴스</li>
+      </ul>
+      <h3>실측하고 수정한 것</h3>
+      <ul class="fix">
+        <li>실제 사진 간판 글자 <b>40%</b>만 찾음</li>
+        <li>못 읽은 280개 → 위치 모델 학습 → <b>126개</b> 찾음 (시범)</li>
+        <li>체험자 <b>17/18명</b> "생각 못 한 위험을 알게 됐다"</li>
+      </ul>
     </div>
   </div>
 
-  <p class="foot">데이터 · 라벨 윤서 · 측정 현미 · 위치 모델 학습 영우 · 설문: 지인 18명(자녀 있는 8명) · 맘카페 5명 · 95%는 앱을 써 본 응답자 <span class="need">[N명]</span> 중</p>
+  <div class="nums">
+    <div><b>3개월</b><span>8.19 ~</span></div>
+    <div><b>168</b><span>코드 수정 기록</span></div>
+    <div><b>107</b><span>자동 테스트</span></div>
+    <div><b>503장</b><span>실사 직접 촬영</span></div>
+    <div><b>275만</b><span>전국 상가 대조</span></div>
+    <div><b>6회</b><span>멘토링 (기술 3 · 사업 3)</span></div>
+  </div>
+
+  <p class="foot">숫자마다 세는 단위가 다름 (사진 · 간판 글자 · 응답자)</p>
   <span class="pg">04</span>
 </body>
 </html>

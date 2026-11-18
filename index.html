@@ -22,7 +22,7 @@
   let i = Math.max(0, slides.indexOf(location.hash.slice(1)));
 
   function show() {
-    frame.src = `slides/${slides[i]}.html`;
+    frame.src = `slides/${slides[i]}.html?v=${Date.now()}`;  // 고친 장이 캐시에 막히지 않게
     history.replaceState(null, '', '#' + slides[i]);
   }
   function fit() {

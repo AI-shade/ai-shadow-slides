@@ -17,8 +17,17 @@
   .nums { display: flex; flex-direction: column; justify-content: center; gap: 40px; text-align: center; }
   .nums .kpi { font-size: 96px; }
   .nums .kpi.sm { font-size: 68px; color: var(--text); }
+  /* 인스타 DM 받은 메시지처럼: 둥근 말풍선 + 왼쪽 아래 꼬리 */
+  .voice { text-align: left; display: flex; flex-direction: column; gap: 10px; }
+  .voice .lab { margin: 0; color: var(--main); }
+  .voice .bubble { position: relative; background: var(--gray); border-radius: 28px 28px 28px 6px; padding: 18px 22px; }
+  .voice .bubble::before { content: ""; position: absolute; left: -10px; bottom: 0; width: 20px; height: 18px;
+                           background: var(--gray); clip-path: polygon(100% 0, 100% 100%, 0 100%); }
+  .voice p { font-size: 24px; font-weight: 600; line-height: 1.4; }
+  .voice .who { font-size: 20px; color: var(--text-3); font-weight: 600; padding-left: 8px; }
   .nums p { font-size: 25px; line-height: 1.35; }
-  .gov { display: flex; gap: 20px; align-items: baseline; }
+  .gov { display: flex; gap: 20px; align-items: center; }
+  .gov-doc { height: 190px; border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 6px 16px rgba(20, 30, 60, .12); }
   .gov .lab { margin: 0; white-space: nowrap; }
 </style>
 </head>
@@ -51,15 +60,16 @@
 
     <div class="nums">
       <div><div class="kpi main">86.1%</div><p>SNS를 하는 부모 중<br>아이 사진을 올린 비율</p></div>
-      <div><div class="kpi sm">13.2%</div><p>올린 뒤 부정적 경험<br><span class="foot">개인정보 도용 · 불쾌한 댓글 등</span></p></div>
+      <div class="voice"><span class="lab">직접 인터뷰 · 인스타 DM</span><div class="bubble"><p>"밖에서 찍은 영상 배경을 보고 '무슨 동네 사시네요' 같은 댓글이 달렸어요."</p></div><span class="who">육아·교육 인플루언서</span></div>
     </div>
   </div>
 
   <div class="gov band">
+    <img class="gov-doc" src="../assets/news/gov.png" alt="개인정보보호위원회 보도자료: 아동·청소년부터 사망자까지, 개인정보 보호체계 개선 논의">
     <span class="lab">국내 정책</span>
     <p>개인정보보호위원회 — 부모 등 제3자가 올린 아이 게시물 삭제 지원 논의 시작 <span class="mute">(2026.11.17 제도개선 토론회)</span></p>
   </div>
-  <p class="foot">86.1% · 13.2%: 세이브더칠드런 조사(2021), 만 0~11세 자녀 부모 1,000명 · 기사는 각 매체 화면 캡처, 아이가 나온 사진은 흐리게 처리</p>
+  <p class="foot">86.1%: 세이브더칠드런 조사(2021), 만 0~11세 자녀 부모 1,000명 · 기사는 각 매체 화면 캡처, 아이가 나온 사진은 흐리게 처리</p>
   <span class="pg">02</span>
 </body>
 </html>
