@@ -2,74 +2,90 @@
 <html lang="ko">
 <head><meta charset="utf-8"><link rel="stylesheet" href="../theme.css">
 <style>
-  /* 왼쪽: 국내 기사 3장 한 줄 · 해외 기사 3장 한 줄(기사 화면 캡처) · 오른쪽: 큰 숫자 → 국내 정책 띠 → 출처 */
+  /* 흐름: 부모 SNS 공유(86.1%) → '셰어런팅'이라는 말이 생김 → 그 사진이 악용된 사례(국내 · 해외) */
   .slide { gap: 28px; }
-  .main-row { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 320px; gap: 32px; }
-  .rows { display: grid; grid-template-rows: 1fr 1fr; gap: 18px; min-height: 0; }
-  .grp { display: flex; flex-direction: column; gap: 8px; min-height: 0; }
-  .grp .lab { margin: 0; }
-  .cards { flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .art { min-height: 0; display: flex; flex-direction: column; gap: 6px; }
-  .art .src { font-size: 19px; color: var(--text-3); font-weight: 600; white-space: nowrap; overflow: hidden; }
-  .art .shot { flex: 1; min-height: 0; background: #fff; border: 1px solid var(--line); border-radius: 10px; overflow: hidden;
-               box-shadow: 0 10px 26px rgba(20, 30, 60, .16); }
-  .art img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; }
-  .nums { display: flex; flex-direction: column; justify-content: center; gap: 40px; text-align: center; }
-  .nums .kpi { font-size: 96px; }
-  .nums .kpi.sm { font-size: 68px; color: var(--text); }
-  /* 인스타 DM 받은 메시지처럼: 둥근 말풍선 + 왼쪽 아래 꼬리 */
-  .voice { text-align: left; display: flex; flex-direction: column; gap: 10px; }
-  .voice .lab { margin: 0; color: var(--main); }
-  .voice .bubble { position: relative; background: var(--gray); border-radius: 28px 28px 28px 6px; padding: 18px 22px; }
-  .voice .bubble::before { content: ""; position: absolute; left: -10px; bottom: 0; width: 20px; height: 18px;
-                           background: var(--gray); clip-path: polygon(100% 0, 100% 100%, 0 100%); }
-  .voice p { font-size: 24px; font-weight: 600; line-height: 1.4; }
-  .voice .who { font-size: 20px; color: var(--text-3); font-weight: 600; padding-left: 8px; }
-  .nums p { font-size: 25px; line-height: 1.35; }
-  .gov { display: flex; gap: 20px; align-items: center; }
-  .gov-doc { height: 190px; border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 6px 16px rgba(20, 30, 60, .12); }
-  .gov .lab { margin: 0; white-space: nowrap; }
+  .flow3 { flex: 1; min-height: 0; display: grid; grid-template-columns: 330px 72px 400px 72px 1fr; align-items: stretch; }
+  .flow3 > .arrow { align-self: center; flex: none; width: 48px; height: 28px; margin: 0 12px; }
+  .col { display: flex; flex-direction: column; gap: 12px; min-height: 0; }
+  .step { font-size: 22px; font-weight: 800; color: var(--main); }
+  .stat { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 12px; }
+  /* 86.1%를 부모 10명 그림으로: 8명은 칠하고 9번째는 60%만 칠함 (템플릿 239장 점 그래프를 사람 모양으로) */
+  .people { display: grid; grid-template-columns: repeat(5, 48px); gap: 14px 16px; }
+  .people i { width: 48px; height: 77px; background: linear-gradient(90deg, var(--main) var(--f, 100%), var(--gray) var(--f, 100%));
+              -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 64'%3E%3Ccircle cx='20' cy='12' r='11'/%3E%3Cpath d='M4 64V38a16 16 0 0 1 32 0v26z'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 64'%3E%3Ccircle cx='20' cy='12' r='11'/%3E%3Cpath d='M4 64V38a16 16 0 0 1 32 0v26z'/%3E%3C/svg%3E") center / contain no-repeat; }
+  .people i.off { --f: 0%; }
+  .stat .kpi { font-size: 88px; }
+  .stat p { font-size: 28px; line-height: 1.35; font-weight: 600; }
+  .word { background: var(--main-soft); border-radius: 18px; padding: 22px 24px; }
+  .word b { display: block; font-size: 48px; font-weight: 800; color: var(--main); }
+  .word p { font-size: 22px; line-height: 1.4; color: var(--text-2); margin-top: 6px; }
+  .shot { flex: 1 1 0; min-height: 0; background: #fff; border: 1px solid var(--line); border-radius: 10px; overflow: hidden;
+          box-shadow: 0 10px 26px rgba(20, 30, 60, .16); }
+  .shot img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; }
+  .case .shot img { object-fit: contain; object-position: top center; }
+  .src { font-size: 18px; color: var(--text-3); font-weight: 600; }
+  .cases { background: var(--gray-2); border-radius: 20px; padding: 16px 20px; display: grid; grid-template-rows: auto 1fr auto 1fr; gap: 8px 16px; grid-template-columns: 1fr 1fr; min-height: 0; flex: 1; }
+  .cases .rowlab { grid-column: 1 / -1; font-size: 22px; font-weight: 800; }
+  .case { display: flex; flex-direction: column; gap: 4px; min-height: 0; }
+  .bubble { position: relative; background: var(--bg); box-shadow: 0 6px 16px rgba(20, 30, 60, .10); border-radius: 22px 22px 22px 6px; padding: 14px 18px; font-size: 21px; font-weight: 600; line-height: 1.4; }
+  .bubble::before { content: ""; position: absolute; left: -9px; bottom: 0; width: 18px; height: 16px; background: var(--bg); clip-path: polygon(100% 0, 100% 100%, 0 100%); }
 </style>
 </head>
 <body class="slide">
   <nav class="prog"><span class="on" style="--n:2"></span><span style="--n:1"></span><span style="--n:1"></span><span style="--n:1"></span><span style="--n:2"></span></nav>
   <header>
-    <p class="sec">문제 상황 · 국내와 해외</p>
-    <h1>부모는 아이 사진을 올리고, 해외는 법으로 다루기 시작했습니다</h1>
+    <p class="sec">문제 상황</p>
+    <h1>부모 대부분이 아이 사진을 올리고, 그 사진이 범죄에 쓰이고 있습니다</h1>
   </header>
 
-  <div class="main-row">
-    <div class="rows">
-      <div class="grp">
-        <span class="lab">국내 뉴스</span>
-        <div class="cards">
-          <div class="art"><span class="src">노컷뉴스 · 2023.7.15</span><div class="shot"><img src="../assets/news/kr1.png" alt="SNS에 아이 사진 올렸는데…정작 저커버그는 아이 얼굴 가렸다?"></div></div>
-          <div class="art"><span class="src">머니투데이 · 2025.12.6</span><div class="shot"><img src="../assets/news/kr2.png" alt="사랑스러운 내 아이 얼굴 모자이크하는 사연"></div></div>
-          <div class="art"><span class="src">뉴시스 · 2022.10.9</span><div class="shot"><img src="../assets/news/kr3.png" alt="페북·인스타에 올린 아이 영상, 괜찮을까요"></div></div>
-        </div>
+  <div class="flow3">
+    <div class="col">
+      <span class="step">① 부모의 SNS</span>
+      <div class="stat">
+        <div class="people" aria-label="부모 10명 중 8.6명"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i style="--f:60%"></i><i class="off"></i></div>
+        <div class="kpi main">86.1%</div>
+        <p>SNS를 하는 부모 10명 중<br>8~9명이 아이 사진을 올림</p>
+        <span class="src">세이브더칠드런 조사(2021)<br>만 0~11세 자녀 부모 1,000명</span>
       </div>
-      <div class="grp">
-        <span class="lab">해외 뉴스</span>
-        <div class="cards">
-          <div class="art"><span class="src">프랑스 · 2023.3.10 → 2024.2 법 통과</span><div class="shot"><img src="../assets/news/fr.png" alt="Sharenting: Why is France trying to stop parents from oversharing their children's images online?"></div></div>
-          <div class="art"><span class="src">이탈리아 · 2024.4.6</span><div class="shot"><img src="../assets/news/it.png" alt="Italy considers law against sharenting to protect children's privacy"></div></div>
-          <div class="art"><span class="src">스페인 · 2025.2.12</span><div class="shot"><img src="../assets/news/es.png" alt="Spain wants to regulate parent influencers" style="object-fit:contain;object-position:center"></div></div>
+    </div>
+    <div class="arrow"></div>
+
+    <div class="col">
+      <span class="step">② 그래서 생긴 말</span>
+      <div class="word"><b>셰어런팅</b><p>셰어(share) + 페어런팅(parenting).<br>부모가 아이 사진 · 영상을 SNS에 올리는 것</p></div>
+      <span class="src">뉴시스 · 2022.10.9</span>
+      <div class="shot"><img src="../assets/news/kr3.png" alt="페북·인스타에 올린 아이 영상, 괜찮을까요"></div>
+      <span class="src">노컷뉴스 · 2023.7.15</span>
+      <div class="shot"><img src="../assets/news/kr1.png" alt="SNS에 아이 사진 올렸는데…정작 저커버그는 아이 얼굴 가렸다?"></div>
+    </div>
+    <div class="arrow"></div>
+
+    <div class="col">
+      <span class="step">③ 그 사진이 악용된 사례</span>
+      <div class="cases">
+        <span class="rowlab">국내</span>
+        <div class="case">
+          <span class="src">직접 인터뷰 · 육아·교육 인플루언서 · 인스타 DM</span>
+          <div class="bubble">"밖에서 찍은 영상 배경을 보고 '무슨 동네 사시네요' 같은 댓글이 달렸어요."</div>
+        </div>
+        <div class="case">
+          <span class="src">베이비뉴스 · 2026.11.10 · 성평등가족부</span>
+          <div class="shot"><img src="../assets/news/c_kr1.png" alt="AI 도입하자 아동·청소년 성착취물 삭제 처리량 9.7배 증가"></div>
+        </div>
+        <span class="rowlab">해외</span>
+        <div class="case">
+          <span class="src">호주 · 2015.9.30 · IBTimes</span>
+          <div class="shot"><img src="../assets/news/c_au.png" alt="Australia: Paedophile websites sourcing half their photos from Facebook"></div>
+        </div>
+        <div class="case">
+          <span class="src">영국 · 2026.7.6 · 파이낸셜뉴스</span>
+          <div class="shot"><img src="../assets/news/c_kr3.png" alt="평범한 가족사진이 순식간에 누드로…SNS 습격한 누디피케이션 주의보"></div>
         </div>
       </div>
     </div>
-
-    <div class="nums">
-      <div><div class="kpi main">86.1%</div><p>SNS를 하는 부모 중<br>아이 사진을 올린 비율</p></div>
-      <div class="voice"><span class="lab">직접 인터뷰 · 인스타 DM</span><div class="bubble"><p>"밖에서 찍은 영상 배경을 보고 '무슨 동네 사시네요' 같은 댓글이 달렸어요."</p></div><span class="who">육아·교육 인플루언서</span></div>
-    </div>
   </div>
 
-  <div class="gov band">
-    <img class="gov-doc" src="../assets/news/gov.png" alt="개인정보보호위원회 보도자료: 아동·청소년부터 사망자까지, 개인정보 보호체계 개선 논의">
-    <span class="lab">국내 정책</span>
-    <p>개인정보보호위원회가 부모 등 제3자가 올린 게시물 삭제 지원을 논의하기 시작했습니다 <span class="mute">(2026.11.17 토론회)</span></p>
-  </div>
-  <p class="foot">86.1%: 세이브더칠드런 조사(2021), 만 0~11세 자녀 부모 1,000명 · 기사는 각 매체 화면 캡처, 아이가 나온 사진은 흐리게 처리</p>
+  <p class="foot">호주: 아동 성범죄 사이트 사진의 최대 절반이 SNS에서 가져온 것(호주 eSafety, 2015) · 영국: AI로 만든 아동 성착취물 2024년 13건 → 2025년 3,440건(영국 인터넷감시재단) · 기사는 각 매체 화면 캡처, 아이가 나온 사진은 흐리게 처리</p>
   <span class="pg">02</span>
 </body>
 </html>
