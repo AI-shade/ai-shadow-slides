@@ -24,8 +24,9 @@
   .shot img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; }
   .case .shot img { object-fit: contain; object-position: top center; }
   .src { font-size: 18px; color: var(--text-3); font-weight: 600; }
-  .cases { background: var(--gray-2); border-radius: 20px; padding: 16px 20px; display: grid; grid-template-rows: auto 1fr auto 1fr; gap: 8px 16px; grid-template-columns: 1fr 1fr; min-height: 0; flex: 1; }
+  .cases { background: var(--gray-2); border-radius: 20px; padding: 16px 20px; display: grid; grid-template-rows: auto auto auto 1fr; gap: 8px 16px; grid-template-columns: 1fr 1fr; min-height: 0; flex: 1; }
   .cases .rowlab { grid-column: 1 / -1; font-size: 22px; font-weight: 800; }
+  .case.wide { grid-column: 1 / -1; }
   .case { display: flex; flex-direction: column; gap: 4px; min-height: 0; }
   .bubble { position: relative; background: var(--bg); box-shadow: 0 6px 16px rgba(20, 30, 60, .10); border-radius: 22px 22px 22px 6px; padding: 14px 18px; font-size: 21px; font-weight: 600; line-height: 1.4; }
   .bubble::before { content: ""; position: absolute; left: -9px; bottom: 0; width: 18px; height: 16px; background: var(--bg); clip-path: polygon(100% 0, 100% 100%, 0 100%); }
@@ -35,7 +36,7 @@
   <nav class="prog"><span class="on" style="--n:2"></span><span style="--n:1"></span><span style="--n:1"></span><span style="--n:1"></span><span style="--n:2"></span></nav>
   <header>
     <p class="sec">문제 상황</p>
-    <h1>부모 대부분이 아이 사진을 올리고, 그 사진이 범죄에 쓰이고 있습니다</h1>
+    <h1><span class="need">[제목 미정]</span></h1>
   </header>
 
   <div class="flow3">
@@ -61,31 +62,27 @@
     <div class="arrow"></div>
 
     <div class="col">
-      <span class="step">③ 그 사진이 악용된 사례</span>
+      <span class="step">③ 사진 속 배경이 위치를 알려 줍니다</span>
       <div class="cases">
-        <span class="rowlab">국내</span>
-        <div class="case">
-          <span class="src">직접 인터뷰 · 육아·교육 인플루언서 · 인스타 DM</span>
+        <span class="rowlab">국내 · 직접 인터뷰</span>
+        <div class="case wide">
+          <span class="src">육아·교육 인플루언서 · 인스타 DM</span>
           <div class="bubble">"밖에서 찍은 영상 배경을 보고 '무슨 동네 사시네요' 같은 댓글이 달렸어요."</div>
         </div>
+        <span class="rowlab">해외 · 경찰 경고</span>
         <div class="case">
-          <span class="src">베이비뉴스 · 2026.11.10 · 성평등가족부</span>
-          <div class="shot"><img src="../assets/news/c_kr1.png" alt="AI 도입하자 아동·청소년 성착취물 삭제 처리량 9.7배 증가"></div>
-        </div>
-        <span class="rowlab">해외</span>
-        <div class="case">
-          <span class="src">호주 · 2015.9.30 · IBTimes</span>
-          <div class="shot"><img src="../assets/news/c_au.png" alt="Australia: Paedophile websites sourcing half their photos from Facebook"></div>
+          <span class="src">호주 연방경찰 · 2025.1.27 · The Nightly</span>
+          <div class="shot"><img src="../assets/news/p_au.png" alt="Unfortunate reality: AFP warns parents about posting back-to-school photos online"></div>
         </div>
         <div class="case">
-          <span class="src">영국 · 2026.7.6 · 파이낸셜뉴스</span>
-          <div class="shot"><img src="../assets/news/c_kr3.png" alt="평범한 가족사진이 순식간에 누드로…SNS 습격한 누디피케이션 주의보"></div>
+          <span class="src">뉴질랜드 경찰 · 2025.1.31 · RNZ</span>
+          <div class="shot"><img src="../assets/news/p_nz.png" alt="Why parents should think twice before posting back-to-school photos of their children"></div>
         </div>
       </div>
     </div>
   </div>
 
-  <p class="foot">호주: 아동 성범죄 사이트 사진의 최대 절반이 SNS에서 가져온 것(호주 eSafety, 2015) · 영국: AI로 만든 아동 성착취물 2024년 13건 → 2025년 3,440건(영국 인터넷감시재단) · 기사는 각 매체 화면 캡처, 아이가 나온 사진은 흐리게 처리</p>
+  <p class="foot">호주 연방경찰: 범죄자는 교복 로고나 사진 배경의 단서로 아이 정보를 모은다 · 뉴질랜드 경찰: 교복 · 학교 건물이 찍힌 사진은 낮 동안 아이가 어디 있는지 알려 준다 · 기사는 각 매체 화면 캡처, 아이가 나온 사진은 흐리게 처리</p>
   <span class="pg">02</span>
 </body>
 </html>
