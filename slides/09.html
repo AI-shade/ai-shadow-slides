@@ -34,7 +34,7 @@
   .map > svg { width: 100%; height: 100%; }
 
   /* ④ 결과 */
-  .res { background: var(--sub); color: #fff; padding: 76px 22px 20px; display: flex; flex-direction: column; gap: 10px; }
+  .res { background: var(--sub); color: #fff; padding: 78px 20px 20px; display: flex; flex-direction: column; justify-content: center; gap: 12px; }
   .res .no { background: var(--main); }
   .res .lab { margin: 0; color: var(--on-main); }
   .res .big { font-size: 76px; font-weight: 900; line-height: 1; letter-spacing: -.02em; }
@@ -42,6 +42,10 @@
   .res .what { font-size: 21px; color: #d5dbe6; line-height: 1.4; }
   .res .bar { display: flex; height: 16px; border-radius: 8px; overflow: hidden; margin: 4px 0 2px; }
   .res .bar i { display: block; }
+  .res .lim { background: #fff; color: var(--text); border-radius: 14px; padding: 12px 14px; display: flex; flex-direction: column; gap: 4px; }
+  .res .lim b { font-size: 22px; color: var(--main); white-space: normal; }
+  .res .lim span { font-size: 18px; line-height: 1.4; color: var(--text-2); }
+  .res .what strong { color: #fff; font-size: 24px; }
   .res .so { margin-top: auto; background: #fff; color: var(--text); border-radius: 14px; padding: 12px 14px; font-size: 19px; line-height: 1.4; }
   .res .so b { display: block; font-size: 21px; color: var(--main); white-space: normal; margin-bottom: 2px; }
   .step { font-style: normal; font-size: 20px; font-weight: 800; color: var(--main); margin-right: 8px; }
@@ -89,14 +93,13 @@
     <div class="scene">
       <div class="pic res">
         <span class="no">4</span>
-        <span class="lab">한 곳까지 좁혀진 간판 이름</span>
-        <span class="big">26<small> / 410</small></span>
-        <div class="bar"><i style="flex:214;background:#5b6579"></i><i style="flex:64;background:#7f8aa0"></i><i style="flex:3;background:var(--main-3)"></i><i style="flex:26;background:var(--main)"></i><i style="flex:103;background:#3a4560"></i></div>
-        <p class="what">대부분은 프랜차이즈 · 흔한 말이라<br>전국에 여러 곳 (치킨 20,180곳)</p>
-        <div class="so"><b>그래서 정한 것</b>위치를 찍어 주는 기능은 만들지 않고, «이 이름은 전국 ○곳뿐» 알림만 넣음</div>
+        <span class="lab">한계점</span>
+        <div class="lim"><b>지점이 많은 이름</b><span>전국에 너무 많이 떠서 위치를 모름<br>(예: 치킨 20,180곳)</span></div>
+        <div class="lim"><b>매장이 몇 곳뿐인 이름</b><span>지도에 위치 반경이 최대 5곳 뜸<br>→ 어느 곳인지는 하나로 못 정함</span></div>
+        <p class="what">실험: 간판 하나로 한 곳까지 좁혀진 이름 <strong>26 / 410</strong></p>
       </div>
-      <b><i class="step">결과</i>대부분 안 좁혀짐</b>
-      <p>찍어 주면 악용될 수 있어<br>드문 정도만 알려 주기로</p>
+      <b><i class="step">한계점</i>지점 수에 따라 달라요</b>
+      <p>많으면 안 좁혀지고,<br>적으면 반경이 여러 곳 뜸</p>
     </div>
   </div>
 
