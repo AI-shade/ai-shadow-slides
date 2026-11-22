@@ -100,3 +100,16 @@ html.play body.slide > :nth-child(5) { animation-delay: .28s; }
 html.play body.slide > :nth-child(6) { animation-delay: .38s; }
 html.play body.slide > :nth-child(n+7) { animation-delay: .46s; }
 @media (prefers-reduced-motion: reduce) { html.play body.slide > * { animation: none; } }
+
+/* 팀 로고 네잎클로버 = 발표 진행 표시 (사업 멘토링 피드백: 상단에 로고를 재미있게)
+   네 마디 = 네 잎: 1 문제(02~04) · 2 해결(05~06, 회로 무늬 잎) · 3 검증(07~11) · 4 사업(12~15).
+   지난 잎은 초록, 남은 잎은 회색, 지금 잎은 발표 모드에서 장이 넘어갈 때 가운데서 피어난다. 16 · 17장에서 네 잎 완성 */
+.clover { position: absolute; top: 44px; right: 112px; width: 100px; height: 92px; }
+.clover img { position: absolute; inset: 0; width: 100%; height: 100%; image-rendering: pixelated; }
+.clover-lab { position: absolute; top: 80px; right: 226px; font-size: var(--foot); font-weight: 800; color: var(--main); white-space: nowrap; }
+.clover-lab i { font-style: normal; font-weight: 700; color: var(--text-3); margin-left: 8px; }
+@keyframes leaf { 0% { opacity: 0; transform: scale(.2) rotate(-30deg); } 70% { opacity: 1; transform: scale(1.12) rotate(4deg); } 100% { transform: none; } }
+@keyframes wiggle { 0%, 100% { transform: none; } 30% { transform: rotate(-10deg) scale(1.08); } 60% { transform: rotate(8deg) scale(1.08); } }
+html.play .clover .now { transform-origin: 51% 46%; animation: leaf .75s .45s cubic-bezier(.3, 1.4, .5, 1) both; }
+html.play .clover.full .now { animation: wiggle .9s .5s ease-in-out both; }
+@media (prefers-reduced-motion: reduce) { html.play .clover .now { animation: none; } }
