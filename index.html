@@ -56,11 +56,14 @@
   const frame = document.getElementById('frame');
   document.getElementById('count').textContent = `${slides.length}장 · 장을 누르면 그 장부터 발표 모드`;
 
+  // 고친 장이 브라우저 저장본(GitHub Pages는 10분)에 막히지 않게, 열 때마다 새로 받는다
+  const stamp = Date.now();
+
   // ── 스크롤 보기 ──
   const thumbs = slides.map((id, i) => {
     const card = document.createElement('section');
     card.className = 'card'; card.id = id;
-    card.innerHTML = `<p class="cap"><b>${id}</b>${names[i] || ''}</p><div class="thumb"><iframe loading="lazy" tabindex="-1" src="slides/${id}.html"></iframe></div>`;
+    card.innerHTML = `<p class="cap"><b>${id}</b>${names[i] || ''}</p><div class="thumb"><iframe loading="lazy" tabindex="-1" src="slides/${id}.html?v=${stamp}"></iframe></div>`;
     card.querySelector('.thumb').addEventListener('click', () => present(i));
     list.appendChild(card);
     return card.querySelector('.thumb');
@@ -86,7 +89,7 @@
   // 발표 모드에서만 등장 효과를 켠다(theme.css의 html.play). 목록 · PPT 내보내기에서는 효과 없이 바로 보인다.
   frame.addEventListener('load', () => { try { frame.contentDocument.documentElement.classList.add('play'); } catch (e) {} });
   function show() {
-    frame.src = `slides/${slides[i]}.html`;
+    frame.src = `slides/${slides[i]}.html?v=${stamp}`;
     history.replaceState(null, '', '#' + slides[i]);
   }
   function present(k) {
