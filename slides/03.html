@@ -4,7 +4,7 @@
 <style>
   /* 대조형: 해외 사건 세 개(기사 화면) ↔ 국내(강조 칸, 인터뷰 말풍선) · 아래 우리가 막는 것 */
   .slide { gap: 32px; }
-  .cmp { flex: 1; min-height: 0; display: grid; grid-template-columns: 2.1fr 1fr; gap: 28px; }
+  .cmp { flex: 1; min-height: 0; display: grid; grid-template-columns: 1.7fr 1fr; gap: 28px; }
   .cmp .box { display: flex; flex-direction: column; gap: 16px; min-height: 0; padding: 30px 34px; }
   .cmp .lab { margin: 0; }
   .cases { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 18px 22px; }
@@ -14,10 +14,11 @@
   .case b { font-size: 24px; line-height: 1.35; }
   .case.wide { grid-column: 1 / -1; display: grid; grid-template-columns: 1.2fr 1fr; gap: 22px; align-items: center; }
   .case.wide img { height: 100%; }
-  .bubble { position: relative; background: var(--bg); border: 3px solid var(--main); border-radius: 24px; padding: 24px 26px; font-size: 32px; font-weight: 800; line-height: 1.35; }
-  .bubble::after { content: ""; position: absolute; left: 44px; bottom: -22px; border: 11px solid transparent; border-top-color: var(--main); border-width: 22px 14px 0; }
-  .who { margin-top: 14px; font-size: 22px; color: var(--text-2); }
-  .cmp .slot { flex: 1; min-height: 0; padding: 20px; }
+  .who { margin: 0; font-size: 22px; color: var(--text-2); }
+  .q { margin: 0; font-size: 26px; font-weight: 700; line-height: 1.4; }
+  .q b { color: var(--main); margin-right: 6px; }
+  .cmt { width: 100%; border-radius: 12px; border: 2px solid var(--line); background: #fff; }
+  .cmp .shot { flex: 1; min-height: 0; width: 100%; object-fit: contain; object-position: top; border-radius: 12px; border: 2px solid var(--line); background: #fff; }
   .so { display: flex; gap: 24px; align-items: baseline; }
   .so .lab { margin: 0; color: var(--main); white-space: nowrap; }
   .so b { font-size: 32px; }
@@ -52,9 +53,11 @@
 
     <div class="box on">
       <span class="lab">국내 · 범죄 사례는 확인 못 함</span>
-      <div class="bubble">"무슨 동네 사시네요"<br>같은 댓글이 달렸어요</div>
-      <p class="who">직접 인터뷰 · 육아 · 교육 인플루언서</p>
-      <div class="slot">사는 곳 · 다니는 곳을 묻는 댓글 캡처<span class="need">[자료 필요]</span></div>
+      <p class="who">직접 인터뷰 · 육아 · 교육 인플루언서 (인스타 DM)</p>
+      <p class="q"><b>Q.</b>팔로워나 모르는 분이 아이가 어디 사는지, 어디 다니는지 알아챈 듯한 반응을 보인 적이 있었나요?</p>
+      <img class="shot" src="../assets/interview/quote-answer.png" alt="인터뷰 답변: 밖에서 찍은 영상 배경을 보고 무슨 동네 사시네요 같은 댓글이 달렸다">
+      <p class="who">실제 육아 인플루언서 게시물에 달린 댓글</p>
+      <img class="cmt" src="../assets/interview/comment-masked.png" alt="실제 댓글: 뭐야 블랙벨트였어요? ○○에 있는 태권도 맞죠?">
     </div>
   </div>
 
