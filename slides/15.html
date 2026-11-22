@@ -18,7 +18,8 @@
   .nm { display: flex; align-items: center; gap: 14px; }
   .flag { width: 48px; height: 32px; border-radius: 4px; box-shadow: 0 0 0 1.5px #c9cdd4; flex: none; }
   .nm b { font-size: 36px; font-weight: 900; }
-  .stg { margin-left: auto; font-size: 22px; font-weight: 800; color: var(--text-2); display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+  /* 점 · 글자를 세 줄 모두 같은 자리에서 시작한다(오른쪽 끝에 맞추면 글자 길이마다 점이 들쭉날쭉했다) */
+  .stg { margin-left: auto; font-size: 22px; font-weight: 800; color: var(--text-2); display: grid; grid-template-columns: auto 10.5em; align-items: center; gap: 10px; white-space: nowrap; }
   li.first .stg { color: var(--main); }
   .dots { display: inline-flex; gap: 4px; }
   .dots i { width: 14px; height: 14px; border-radius: 50%; }

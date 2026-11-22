@@ -7,20 +7,22 @@
      → 아래 아이를 지키는 원칙 세 개 → 맨 아래 쓰는 AI */
   .slide { gap: 26px; }
   .flow { flex: 1; min-height: 0; display: flex; align-items: stretch; gap: 12px; }
-  .flow .arrow { flex: 0 0 44px; height: 28px; }
-  .step { flex: 1; min-width: 0; background: var(--gray-2); border-radius: 26px; padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 10px; }
+  .flow .arrow { flex: 0 0 28px; height: 28px; }
+  .step { flex: 1; min-width: 0; background: var(--gray-2); border-radius: 26px; padding: 20px 16px 22px; display: flex; flex-direction: column; gap: 10px;
+    border: 6px solid transparent; } /* 4번 카드의 초록 테두리(6px)만큼 다른 카드도 비워 둬야 글자 줄이 같은 높이에 온다 */
   .step .ico { flex: 1; min-height: 0; width: 100%; background: var(--bg); border-radius: 18px; padding: 14px; }
-  .step .t { display: flex; align-items: center; gap: 12px; }
-  .step .no { flex: none; width: 46px; height: 46px; border-radius: 50%; background: var(--sub); color: #fff; font-size: 24px; font-weight: 900; display: grid; place-items: center; }
+  .step .t { display: flex; align-items: center; gap: 10px; height: 46px; }
+  /* 제목이 칸보다 넓어 «진단»·«표시»·«그리기»가 칸 밖으로 나갔다 — 화살표·여백·번호를 줄여 글자 크기는 그대로 둔다 */
+  .step .no { flex: none; width: 40px; height: 40px; border-radius: 50%; background: var(--sub); color: #fff; font-size: 22px; font-weight: 900; display: grid; place-items: center; }
   .step b { font-size: 29px; line-height: 1.2; white-space: nowrap; }
-  .step p { font-size: 23px; color: var(--text-2); line-height: 1.4; min-height: 2.8em; }
-  .step .where { align-self: flex-start; white-space: nowrap; font-size: 20px; font-weight: 700; border-radius: 99px; padding: 4px 14px; }
+  .step p { font-size: 23px; color: var(--text-2); line-height: 1.4; height: 2.8em; } /* 한 줄짜리도 두 줄 높이 — 아래 꼬리표가 같은 줄에 온다 */
+  .step .where { align-self: flex-start; white-space: nowrap; font-size: 20px; font-weight: 700; border-radius: 99px; padding: 4px 14px; border: 2px solid transparent; line-height: 1.4; }
   .where.in { background: var(--bg); color: var(--text-2); border: 2px solid var(--line); }
   .where.out { background: var(--sub); color: #fff; }
   .step.on { background: var(--bg); border: 6px solid var(--main); }
   .step.on .ico { background: var(--main-1); }
   .step.on .no { background: var(--main); }
-  .step.on b { color: var(--main); font-size: 26px; }
+  .step.on b { color: var(--main); font-size: 26px; line-height: 46px; }
   .rules { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
   .rules div { background: var(--main-1); border-radius: 18px; padding: 14px 24px; font-size: 25px; font-weight: 800; color: var(--main); line-height: 1.35; }
   .rules div span { display: block; font-size: 20px; font-weight: 600; color: var(--text-2); }

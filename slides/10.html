@@ -22,7 +22,7 @@
   .rule { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .rule div { border-radius: 16px; padding: 18px 22px; display: flex; flex-direction: column; gap: 6px; }
   .rule b { font-size: 30px; }
-  .rule span { font-size: 25px; line-height: 1.45; }
+  .rule span { font-size: 25px; line-height: 1.45; word-break: keep-all; text-wrap: balance; }
   .rule .yes { background: var(--main-1); }
   .rule .yes b { color: var(--main); }
   .rule .no { background: var(--gray-2); }
@@ -59,8 +59,8 @@
       <img class="shot" src="../assets/train/label_full.jpg" alt="">
       <p class="sum"><b>503장에 2,367곳</b> · 이 상자가 모델이 배우는 정답</p>
       <div class="rule">
-        <div class="yes"><b>가린다</b><span>가게 · 학원 이름<br>전화번호 · 교복 기관명</span></div>
-        <div class="no"><b>안 가린다</b><span>프랜차이즈 · 일반 문구<br>메뉴 · 가격</span></div>
+        <div class="yes"><b>가린다</b><span>가게 · 학원 이름 · 전화번호 · 교복 기관명</span></div>
+        <div class="no"><b>안 가린다</b><span>프랜차이즈 · 일반 문구 · 메뉴 · 가격</span></div>
       </div>
     </div>
   </div>
