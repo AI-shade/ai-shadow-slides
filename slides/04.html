@@ -2,23 +2,40 @@
 <html lang="ko">
 <head><meta charset="utf-8"><link rel="stylesheet" href="../theme.css">
 <style>
-  /* 2×2 위치 지도 · 가로: 올린 뒤 ↔ 올리기 전 · 세로: 사진 안(위) ↔ 사진 밖(아래) · 우리 칸만 강조 */
-  .slide { gap: 28px; }
-  .map { flex: 1; min-height: 0; display: grid; grid-template-columns: 120px 1fr 1fr; grid-template-rows: auto 1fr 1fr auto; gap: 14px; }
-  .ax { font-size: 22px; font-weight: 800; color: var(--text-3); display: flex; align-items: center; justify-content: center; }
-  .ax.y { flex-direction: column; gap: 6px; text-align: center; line-height: 1.3; font-size: 22px; }
-  .ax.y small { font-size: 18px; font-weight: 600; }
-  .ax.y b { color: var(--main); }
-  .ax.x { gap: 12px; }
-  .ax.x.now { color: var(--main); }
-  .q { background: var(--gray-2); border-radius: 22px; padding: 18px 24px; display: flex; flex-direction: column; gap: 10px; min-height: 0; }
-  .q .lab { margin: 0; }
-  .q .it b { display: block; font-size: 24px; line-height: 1.3; }
+  /* 4사분면 위치 지도: 가운데에서 교차하는 두 축
+     가로축: 올린 뒤(왼쪽) ↔ 올리기 전(오른쪽) · 세로축: 사진 "안"을 본다(위) ↔ 사진 "밖"만 다룬다(아래)
+     우리 자리(오른쪽 위)만 강조 */
+  .slide { gap: 22px; }
+  .map { flex: 1; min-height: 0; position: relative; padding: 52px 0; }
+  .quad { height: 100%; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 64px 72px; }
+
+  /* 축: 두꺼운 선 + 양끝 화살촉 */
+  .ax-x, .ax-y { position: absolute; background: var(--text-3); }
+  .ax-x { left: 0; right: 0; top: 50%; height: 4px; margin-top: -2px; }
+  .ax-y { top: 0; bottom: 0; left: 50%; width: 4px; margin-left: -2px; }
+  .ax-x::before, .ax-x::after, .ax-y::before, .ax-y::after { content: ""; position: absolute; border: 12px solid transparent; }
+  .ax-x::before { left: -6px; top: -10px; border-right: 18px solid var(--text-3); border-left: 0; }
+  .ax-x::after { right: -6px; top: -10px; border-left: 18px solid var(--text-3); border-right: 0; }
+  .ax-y::before { top: -6px; left: -10px; border-bottom: 18px solid var(--text-3); border-top: 0; }
+  .ax-y::after { bottom: -6px; left: -10px; border-top: 18px solid var(--text-3); border-bottom: 0; }
+
+  /* 축 이름표 */
+  .tag { position: absolute; z-index: 2; background: var(--bg); border: 3px solid var(--text-3); border-radius: 99px; padding: 4px 20px; font-size: 24px; font-weight: 800; color: var(--text-2); white-space: nowrap; }
+  .tag small { font-size: 19px; font-weight: 600; color: var(--text-3); margin-left: 8px; }
+  .tag.on { border-color: var(--main); color: var(--main); }
+  .t-top { top: 0; left: 50%; transform: translateX(-50%); }
+  .t-bot { bottom: 0; left: 50%; transform: translateX(-50%); }
+  .t-left { left: 22px; top: 50%; transform: translateY(-50%); }
+  .t-right { right: 22px; top: 50%; transform: translateY(-50%); }
+
+  /* 사분면 칸 */
+  .q { background: var(--gray-2); border-radius: 22px; padding: 18px 26px; display: flex; flex-direction: column; justify-content: center; gap: 10px; min-height: 0; position: relative; z-index: 1; }
+  .q .it b { display: block; font-size: 25px; line-height: 1.3; }
   .q .it span { display: block; font-size: 20px; color: var(--text-2); line-height: 1.4; }
-  .q .lim { margin-top: auto; font-size: 20px; color: var(--text-3); }
+  .q .lim { font-size: 20px; color: var(--text-3); }
   .q.us { background: var(--bg); border: 6px solid var(--main); }
   .star { background: var(--main-1); border-radius: 14px; padding: 10px 16px; }
-  .star b { color: var(--main); font-size: 26px !important; }
+  .star b { color: var(--main); font-size: 27px !important; }
   .star span { color: var(--text) !important; }
 </style>
 </head>
@@ -29,37 +46,35 @@
   </header>
 
   <div class="map">
-    <span></span><span class="ax x">← 올린 뒤</span><span class="ax x now">올리기 전 →</span>
+    <div class="ax-x"></div><div class="ax-y"></div>
+    <span class="tag on t-top">사진 "안"을 본다<small>간판 · 교복</small></span>
+    <span class="tag t-bot">사진 "밖"만 다룬다<small>공개 범위 · 동의 · 좌표</small></span>
+    <span class="tag t-left">← 올린 뒤</span>
+    <span class="tag on t-right">올리기 전 →</span>
 
-    <span class="ax y"><b>사진 "안"</b>을 본다<small>간판 · 교복</small></span>
-    <div class="q">
-      <span class="lab">올린 뒤 · 사진 안</span>
-      <div class="it"><b>정부 AI 탐지 · 삭제</b><span>성평등가족부, 아동 성착취물 자동 탐지 · 6개월간 9만 6천여 건 삭제 지원 (2026.11)</span></div>
-      <div class="it"><b>플랫폼 자동 감지</b><span>인스타그램, 아이 위주 계정에 성적 댓글 단 계정 약 13만 5천 개 삭제 (Meta 2025.7)</span></div>
-      <p class="lim">이미 퍼진 뒤 · 성착취물 · 나쁜 댓글만 찾고, 위치 단서는 안 봄</p>
+    <div class="quad">
+      <div class="q">
+        <div class="it"><b>정부 AI 탐지 · 삭제</b><span>성평등가족부, 아동 성착취물 자동 탐지 · 6개월간 9만 6천여 건 삭제 지원 (2026.11)</span></div>
+        <div class="it"><b>플랫폼 자동 감지</b><span>인스타그램, 아이 위주 계정에 성적 댓글 단 계정 약 13만 5천 개 삭제 (Meta 2025.7)</span></div>
+        <p class="lim">한계: 이미 퍼진 뒤 · 성착취물 · 나쁜 댓글만 찾고, 위치 단서는 안 봄</p>
+      </div>
+      <div class="q us">
+        <div class="it"><b>휴대폰 AI 지우개</b><span>지울 곳을 부모가 직접 찾아야 함 · 위험한지는 안 알려 줌</span></div>
+        <div class="it"><b>해외 사진 가리기 앱 (NoImgData · BlurPass)</b><span>얼굴 · 글자를 모자이크로 가림 · 아이도 가려지고 티가 남 · 위치 단서인지는 판단 안 함</span></div>
+        <div class="it star"><b>★ 아이SHADOW</b><span>위험한 단서(어린이집 이름 · 집 간판 · 교복)를 찾아 표시 → 부모가 골라 지움 · 아이는 그대로, 그 부분만 다시 그리고 다시 진단</span></div>
+      </div>
+      <div class="q">
+        <div class="it"><b>개인정보위 지우개 서비스</b><span>부모가 올린 글은 아직 논의 중 · 퍼진 뒤에야 움직임</span></div>
+        <div class="it"><b>프랑스 삭제 요청 (2024)</b><span>국내엔 없음 · 퍼진 뒤</span></div>
+      </div>
+      <div class="q">
+        <div class="it"><b>안 올린다 · 공개 범위 줄이기 · GPS 정보 지우기</b><span>추억을 못 남김 · 아는 사람에겐 보임 · 좌표만 지움</span></div>
+        <div class="it"><b>프랑스 공동 동의 · 사전 허가 · 인스타 계정 제한</b><span>올릴지 · 누가 동의할지만 정함</span></div>
+      </div>
     </div>
-    <div class="q us">
-      <span class="lab">올리기 전 · 사진 안</span>
-      <div class="it"><b>휴대폰 AI 지우개</b><span>지울 곳을 부모가 직접 찾아야 함 · 위험한지는 안 알려 줌</span></div>
-      <div class="it"><b>해외 사진 가리기 앱 (NoImgData · BlurPass)</b><span>얼굴 · 글자를 모자이크로 가림 · 아이도 가려지고 티가 남 · 위치 단서인지는 판단 안 함</span></div>
-      <div class="it star"><b>★ 아이SHADOW</b><span>위험한 단서(어린이집 이름 · 집 간판 · 교복)를 찾아 표시 → 부모가 골라 지움 · 아이는 그대로, 그 부분만 다시 그리고 다시 진단</span></div>
-    </div>
-
-    <span class="ax y"><span>사진 "밖"</span>만 다룬다<small>범위 · 동의 · 좌표</small></span>
-    <div class="q">
-      <span class="lab">올린 뒤 · 사진 밖</span>
-      <div class="it"><b>개인정보위 지우개 서비스</b><span>부모가 올린 글은 아직 논의 중 · 퍼진 뒤에야 움직임</span></div>
-      <div class="it"><b>프랑스 삭제 요청 (2024)</b><span>국내엔 없음 · 퍼진 뒤</span></div>
-    </div>
-    <div class="q">
-      <span class="lab">올리기 전 · 사진 밖</span>
-      <div class="it"><b>안 올린다 · 공개 범위 줄이기 · GPS 정보 지우기</b><span>추억을 못 남김 · 아는 사람에겐 보임 · 좌표만 지움</span></div>
-      <div class="it"><b>프랑스 공동 동의 · 사전 허가 · 인스타 계정 제한</b><span>올릴지 · 누가 동의할지만 정함</span></div>
-    </div>
-
-    <span></span>
-    <p class="foot" style="grid-column:2 / -1">근거: 세이브더칠드런(2021) · 머니투데이 2026.5.12 · 프랑스 2024-120호 · 2020-1266호 법 · Meta 발표(2025.7.23) · 개인정보위 지우개 서비스 · 베이비뉴스 2026.11.10(성평등가족부)</p>
   </div>
+
+  <p class="foot">근거: 세이브더칠드런(2021) · 머니투데이 2026.5.12 · 프랑스 2024-120호 · 2020-1266호 법 · Meta 발표(2025.7.23) · 개인정보위 지우개 서비스 · 베이비뉴스 2026.11.10(성평등가족부)</p>
   <span class="pg">04</span>
 </body>
 </html>
