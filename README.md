@@ -3,7 +3,7 @@
 ## 바로 보기 (설치 없이, 휴대폰도 됨)
 
 - 슬라이드: https://ai-shade.github.io/ai-shadow-slides/
-- 발표 설계도: https://ai-shade.github.io/ai-shadow-slides/blueprint.html
+- 발표 설계도: https://github.com/AI-shade/ai-shadow-slides/upload/main
 
 > 이 GitHub 화면에서 `.html` 파일을 누르면 화면이 아니라 **코드**가 보입니다.
 > 화면으로 보려면 위 링크를 쓰세요. 푸시하고 1~2분 뒤에 반영됩니다.
