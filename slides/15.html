@@ -2,39 +2,81 @@
 <html lang="ko">
 <head><meta charset="utf-8"><link rel="stylesheet" href="../theme.css">
 <style>
-  /* 확장형 계단: 같은 도형을 점점 크게 · 진하게, 마지막(해외)만 메인 색 */
-  .slide { gap: 30px; }
-  .stairs { flex: 1; }
-  .stairs > div { justify-content: flex-end; gap: 6px; }
-  .stairs .when { font-size: 22px; font-weight: 700; color: var(--text-3); }
-  .stairs b { font-size: 36px; }
-  .stairs p { font-size: 22px; line-height: 1.4; color: var(--text-2); }
-  .s1 { height: 26%; background: var(--gray-2); }
-  .s2 { height: 38%; background: var(--main-1); }
-  .s3 { height: 50%; background: var(--main-2); }
-  .s4 { height: 62%; background: var(--main-2); }
-  .s5 { height: 76%; background: var(--main-3); }
-  .s6 { height: 100%; background: var(--main); flex: 1.7 !important; }
-  .s6 b, .s6 p, .s6 .when { color: #fff; }
-  .s6 .when .need { color: #fff; background: rgba(0,0,0,.18); border-radius: 6px; padding: 0 6px; }
+  /* 확장: 국내(회색, 좁게) → 프랑스(강조, 첫 해외) → 이탈리아 → 스페인. 나라마다 법 단계(시행 · 발의 · 준비)를 따로 적음.
+     아래: 나라마다 바꿀 것 / 그대로 쓰는 것 · 출처 */
+  .slide { gap: 22px; }
+  .sub { font-size: 30px; color: var(--text-2); font-weight: 700; }
+  .sub em { font-style: normal; color: var(--main); font-weight: 800; }
+  .flow { flex: 1; min-height: 0; display: flex; align-items: stretch; }
+  .flow .arrow { flex: 0 0 52px; height: 28px; align-self: center; margin: 0 8px; }
+  .cty { flex: 1; min-width: 0; background: var(--gray-2); border-radius: 24px; padding: 18px 24px 20px; display: flex; flex-direction: column; gap: 8px; position: relative; }
+  .cty.home { flex: .78; background: var(--bg); border: 3px dashed var(--line); }
+  .cty.on { background: var(--bg); border: 6px solid var(--main); padding: 12px 18px 14px; }
+  .art { flex: 1; min-height: 0; display: grid; place-items: center; }
+  .art svg { width: 100%; height: 100%; max-height: 260px; }
+  .state { align-self: flex-start; font-size: 20px; font-weight: 800; border-radius: 99px; padding: 3px 14px; background: var(--sub); color: #fff; }
+  .home .state { background: var(--gray); color: var(--text-2); }
+  .on .state { background: var(--main); }
+  .first { position: absolute; top: 14px; right: 16px; font-size: 20px; font-weight: 900; color: var(--main); background: var(--main-2); border-radius: 10px; padding: 4px 12px; }
+  .cty b { font-size: 40px; line-height: 1.15; }
+  .home b { color: var(--text-2); }
+  .cty p { font-size: 22px; color: var(--text-2); line-height: 1.4; }
+  .src { font-size: 17px; color: var(--text-3); font-weight: 600; }
+  .keep { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .keep div { background: var(--gray-2); border-radius: 16px; padding: 14px 22px; display: flex; align-items: baseline; gap: 16px; }
+  .keep div.g { background: var(--main-1); }
+  .keep i { font-style: normal; font-size: 20px; font-weight: 800; color: var(--text-3); white-space: nowrap; }
+  .keep .g i { color: var(--main); }
+  .keep span { font-size: 25px; font-weight: 800; }
+  .foot b { font-weight: 700; }
 </style>
 </head>
 <body class="slide">
   <header>
     <p class="sec">확장 계획</p>
     <h1><span class="need">[제목 미정]</span></h1>
+    <p class="sub"><em>아이 사진을 법으로 지키기 시작한 나라부터.</em> 법이 생겼다는 건 부모가 이미 문제를 안다는 뜻입니다</p>
   </header>
 
-  <div class="stairs">
-    <div class="s1"><span class="when">26.12</span><b>지금</b><p>웹 무료 체험</p></div>
-    <div class="s2"><span class="when">27 상반기</span><b>베타</b><p>베타 테스트 완료</p></div>
-    <div class="s3"><span class="when">27 하반기</span><b>출시</b><p>정식 출시</p></div>
-    <div class="s4"><span class="when need">[시기 미정]</span><b>연계</b><p>키즈 세이프 서비스 연계</p></div>
-    <div class="s5"><span class="when need">[시기 미정]</span><b>제휴</b><p>보험사 · 통신사 제휴</p></div>
-    <div class="s6"><span class="when"><span class="need">[시기 미정]</span></span><b>해외</b><p>아이 사진 법이 생긴 나라부터<br>프랑스 아이 사진 보호법 (2024) · 이탈리아 · 스페인 법 추진 중<br>나라마다 바꿀 것: 글자 읽기 · 장소 데이터</p></div>
+  <div class="flow">
+    <div class="cty home">
+      <div class="art"><svg viewBox="-118 -26 262 188" role="img" aria-label="국내"><polygon points="129.9,75.0 26.0,135.0 26.0,148.5 129.9,88.5" fill="#c4c4c4" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="-103.9,60.0 26.0,135.0 26.0,148.5 -103.9,73.5" fill="#dcdcdc" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="0.0,0.0 129.9,75.0 26.0,135.0 -103.9,60.0" fill="#f4f4f4" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="98.7,69.0 65.0,88.5 65.0,31.5 98.7,12.0" fill="#cfd3d9" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="23.4,64.5 65.0,88.5 65.0,31.5 23.4,7.5" fill="#e3e5e9" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="57.2,-12.0 98.7,12.0 65.0,31.5 23.4,7.5" fill="#ffffff" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><ellipse cx="-28.6" cy="76.5" rx="23.0" ry="9.7" fill="rgba(0,0,0,.18)"/><rect x="-46.3" y="19.4" width="35.4" height="57.1" rx="17.7" fill="#222"/><circle cx="-28.6" cy="4.4" r="13.6" fill="#222"/><ellipse cx="-10.4" cy="93.0" rx="14.4" ry="6.1" fill="rgba(0,0,0,.18)"/><rect x="-21.4" y="57.3" width="22.1" height="35.7" rx="11.0" fill="#555"/><circle cx="-10.4" cy="47.9" r="8.5" fill="#555"/></svg></div>
+      <span class="state">먼저</span>
+      <b>국내</b>
+      <p>웹 · 제휴로<br>자리 잡기</p>
+      
+    </div>
+    <div class="arrow"></div>
+    <div class="cty on">
+      <div class="art"><svg viewBox="-118 -68 262 230" role="img" aria-label="프랑스"><polygon points="129.9,75.0 26.0,135.0 26.0,148.5 129.9,88.5" fill="#c4c4c4" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="-103.9,60.0 26.0,135.0 26.0,148.5 -103.9,73.5" fill="#dcdcdc" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="0.0,0.0 129.9,75.0 26.0,135.0 -103.9,60.0" fill="#f4f4f4" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="98.7,69.0 65.0,88.5 65.0,31.5 98.7,12.0" fill="#cfd3d9" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="23.4,64.5 65.0,88.5 65.0,31.5 23.4,7.5" fill="#e3e5e9" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="57.2,-12.0 98.7,12.0 65.0,31.5 23.4,7.5" fill="#ffffff" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><line x1="-31.2" y1="48.0" x2="-31.2" y2="-54.0" stroke="#555" stroke-width="3" stroke-linecap="round"/><circle cx="-31.2" cy="-57.0" r="4" fill="#555"/><polygon points="-31.2,-21.0 -18.2,-13.5 -18.2,-43.5 -31.2,-51.0" fill="#0055a4" stroke="#0055a4" stroke-width="1" stroke-linejoin="round" /><polygon points="-18.2,-13.5 -5.2,-6.0 -5.2,-36.0 -18.2,-43.5" fill="#ffffff" stroke="#ffffff" stroke-width="1" stroke-linejoin="round" /><polygon points="-5.2,-6.0 7.8,1.5 7.8,-28.5 -5.2,-36.0" fill="#ef4135" stroke="#ef4135" stroke-width="1" stroke-linejoin="round" /><polygon points="-31.2,-21.0 7.8,1.5 7.8,-28.5 -31.2,-51.0" fill="none" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><ellipse cx="-28.6" cy="76.5" rx="23.0" ry="9.7" fill="rgba(0,0,0,.18)"/><rect x="-46.3" y="19.4" width="35.4" height="57.1" rx="17.7" fill="#222"/><circle cx="-28.6" cy="4.4" r="13.6" fill="#222"/><ellipse cx="-10.4" cy="93.0" rx="14.4" ry="6.1" fill="rgba(0,0,0,.18)"/><rect x="-21.4" y="57.3" width="22.1" height="35.7" rx="11.0" fill="#555"/><circle cx="-10.4" cy="47.9" r="8.5" fill="#555"/></svg></div>
+      <span class="state">법 시행 · 2024.2</span><span class="first">첫 해외</span>
+      <b>프랑스</b>
+      <p>부모도 아이 초상권과<br>사생활을 지켜야 한다고 법에 적음</p>
+      <span class="src">Loi n° 2024-120</span>
+    </div>
+    <div class="arrow"></div>
+    <div class="cty ">
+      <div class="art"><svg viewBox="-118 -68 262 230" role="img" aria-label="이탈리아"><polygon points="129.9,75.0 26.0,135.0 26.0,148.5 129.9,88.5" fill="#c4c4c4" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="-103.9,60.0 26.0,135.0 26.0,148.5 -103.9,73.5" fill="#dcdcdc" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="0.0,0.0 129.9,75.0 26.0,135.0 -103.9,60.0" fill="#f4f4f4" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="98.7,69.0 65.0,88.5 65.0,31.5 98.7,12.0" fill="#cfd3d9" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="23.4,64.5 65.0,88.5 65.0,31.5 23.4,7.5" fill="#e3e5e9" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="57.2,-12.0 98.7,12.0 65.0,31.5 23.4,7.5" fill="#ffffff" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><line x1="-31.2" y1="48.0" x2="-31.2" y2="-54.0" stroke="#555" stroke-width="3" stroke-linecap="round"/><circle cx="-31.2" cy="-57.0" r="4" fill="#555"/><polygon points="-31.2,-21.0 -18.2,-13.5 -18.2,-43.5 -31.2,-51.0" fill="#009246" stroke="#009246" stroke-width="1" stroke-linejoin="round" /><polygon points="-18.2,-13.5 -5.2,-6.0 -5.2,-36.0 -18.2,-43.5" fill="#ffffff" stroke="#ffffff" stroke-width="1" stroke-linejoin="round" /><polygon points="-5.2,-6.0 7.8,1.5 7.8,-28.5 -5.2,-36.0" fill="#ce2b37" stroke="#ce2b37" stroke-width="1" stroke-linejoin="round" /><polygon points="-31.2,-21.0 7.8,1.5 7.8,-28.5 -31.2,-51.0" fill="none" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><ellipse cx="-28.6" cy="76.5" rx="23.0" ry="9.7" fill="rgba(0,0,0,.18)"/><rect x="-46.3" y="19.4" width="35.4" height="57.1" rx="17.7" fill="#222"/><circle cx="-28.6" cy="4.4" r="13.6" fill="#222"/><ellipse cx="-10.4" cy="93.0" rx="14.4" ry="6.1" fill="rgba(0,0,0,.18)"/><rect x="-21.4" y="57.3" width="22.1" height="35.7" rx="11.0" fill="#555"/><circle cx="-10.4" cy="47.9" r="8.5" fill="#555"/></svg></div>
+      <span class="state">법안 발의 · 2024.3</span>
+      <b>이탈리아</b>
+      <p>부모가 아이 사진을 온라인에<br>쓰면 신고하게 하는 안</p>
+      <span class="src">하원 법안 (AVS)</span>
+    </div>
+    <div class="arrow"></div>
+    <div class="cty ">
+      <div class="art"><svg viewBox="-118 -68 262 230" role="img" aria-label="스페인"><polygon points="129.9,75.0 26.0,135.0 26.0,148.5 129.9,88.5" fill="#c4c4c4" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="-103.9,60.0 26.0,135.0 26.0,148.5 -103.9,73.5" fill="#dcdcdc" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="0.0,0.0 129.9,75.0 26.0,135.0 -103.9,60.0" fill="#f4f4f4" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="98.7,69.0 65.0,88.5 65.0,31.5 98.7,12.0" fill="#cfd3d9" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="23.4,64.5 65.0,88.5 65.0,31.5 23.4,7.5" fill="#e3e5e9" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="57.2,-12.0 98.7,12.0 65.0,31.5 23.4,7.5" fill="#ffffff" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><line x1="-31.2" y1="48.0" x2="-31.2" y2="-54.0" stroke="#555" stroke-width="3" stroke-linecap="round"/><circle cx="-31.2" cy="-57.0" r="4" fill="#555"/><polygon points="-31.2,-43.5 7.8,-21.0 7.8,-28.5 -31.2,-51.0" fill="#aa151b" stroke="#aa151b" stroke-width="1" stroke-linejoin="round" /><polygon points="-31.2,-28.5 7.8,-6.0 7.8,-21.0 -31.2,-43.5" fill="#f1bf00" stroke="#f1bf00" stroke-width="1" stroke-linejoin="round" /><polygon points="-31.2,-21.0 7.8,1.5 7.8,-6.0 -31.2,-28.5" fill="#aa151b" stroke="#aa151b" stroke-width="1" stroke-linejoin="round" /><polygon points="-31.2,-21.0 7.8,1.5 7.8,-28.5 -31.2,-51.0" fill="none" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><ellipse cx="-28.6" cy="76.5" rx="23.0" ry="9.7" fill="rgba(0,0,0,.18)"/><rect x="-46.3" y="19.4" width="35.4" height="57.1" rx="17.7" fill="#222"/><circle cx="-28.6" cy="4.4" r="13.6" fill="#222"/><ellipse cx="-10.4" cy="93.0" rx="14.4" ry="6.1" fill="rgba(0,0,0,.18)"/><rect x="-21.4" y="57.3" width="22.1" height="35.7" rx="11.0" fill="#555"/><circle cx="-10.4" cy="47.9" r="8.5" fill="#555"/></svg></div>
+      <span class="state">정부가 규제 준비</span>
+      <b>스페인</b>
+      <p>부모의 아이 사진 게시를<br>규제하려 의견 수렴 중</p>
+      <span class="src">청년아동부</span>
+    </div>
   </div>
 
-  <p class="foot band">국내에서 자리 잡은 뒤 해외로, 한 번에 말고 차례로 · <span class="need">연도는 우리 일정으로 확정 필요</span></p>
+  <div class="keep">
+    <div><i>나라마다 바꿀 것</i><span>글자 읽기(언어) · 장소 데이터(가게 · 학교 목록)</span></div>
+    <div class="g"><i>그대로 쓰는 것</i><span>얼굴 잠금 · 단서만 보정 · 다시 확인</span></div>
+  </div>
+  <p class="foot">출처: 프랑스 Loi n° 2024-120 (2024.2.19) · 이탈리아 하원 «미성년자 초상권» 법안 (2024.3.21) · 스페인 청년아동부 셰어런팅 규제 의견 수렴 · 시기는 국내 숫자를 본 뒤 정함</p>
   <span class="pg">15</span>
 </body>
 </html>

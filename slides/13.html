@@ -2,64 +2,83 @@
 <html lang="ko">
 <head><meta charset="utf-8"><link rel="stylesheet" href="../theme.css">
 <style>
-  /* 과정형 세 칸: 첫 고객 → 지금 → 다음(강조) · 아래 받을 피드백 두 가지 · 맨 아래 발표 뒤 순서 */
-  .slide { gap: 30px; }
-  .flow { flex: 1; min-height: 0; display: flex; gap: 16px; }
-  .flow .box { flex: 1; display: flex; flex-direction: column; gap: 16px; }
-  .flow .lab { margin: 0; }
-  .flow .arrow { flex: 0 0 56px; height: 30px; }
-  .flow b { font-size: 38px; line-height: 1.3; }
-  .flow ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 16px; }
-  .flow li { font-size: 30px; line-height: 1.35; }
-  .flow li span { display: block; font-size: 22px; color: var(--text-2); }
-  .flow .kpi { font-size: 64px; color: var(--main); }
-  .fb { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  .fb div { background: var(--gray-2); border-radius: 18px; padding: 20px 26px; font-size: 24px; color: var(--text-2); line-height: 1.4; }
-  .fb b { display: block; font-size: 28px; color: var(--text); margin-bottom: 4px; }
-  .next { display: flex; align-items: center; gap: 18px; font-size: 26px; font-weight: 700; }
-  .next .lab { margin: 0; white-space: nowrap; }
-  .next .arrow { flex: 0 0 40px; height: 22px; }
+  /* 시장 진입: 오른쪽으로 올라가는 계단 네 칸(마지막 칸 강조). 칸마다 누구에게 · 무엇을 · 넘어갈 조건.
+     12장 B2C → 키즈 제휴 → 통신사·보험사를 여는 순서와 같다. 숫자는 로드맵 PDF(검증 전 가정) */
+  .slide { gap: 22px; }
+  .sub { font-size: 30px; color: var(--text-2); font-weight: 700; }
+  .sub em { font-style: normal; color: var(--main); font-weight: 800; }
+  .stairs { flex: 1; min-height: 0; gap: 0; align-items: flex-end; }
+  .stairs .arrow { flex: 0 0 52px; height: 28px; align-self: flex-end; margin: 0 8px 170px; }
+  .st { flex: 1; min-width: 0; background: var(--gray-2); border-radius: 24px; padding: 18px 24px 20px; display: flex; flex-direction: column; gap: 6px; }
+  .st.on { background: var(--bg); border: 6px solid var(--main); padding: 12px 18px 14px; }
+  .when { align-self: flex-start; font-size: 20px; font-weight: 800; border-radius: 99px; padding: 3px 14px; background: var(--sub); color: #fff; }
+  .on .when { background: var(--main); }
+  .art { flex: 1; min-height: 150px; display: grid; place-items: center; }
+  .art svg { width: 100%; height: 100%; max-height: 210px; }
+  .st b { font-size: 34px; line-height: 1.2; }
+  .who { font-size: 20px; font-weight: 800; color: var(--main); }
+  .st p { font-size: 21px; color: var(--text-2); line-height: 1.4; }
+  .gate { margin-top: 8px; background: var(--bg); border-radius: 14px; padding: 10px 14px; display: flex; flex-direction: column; gap: 2px; border-left: 6px solid var(--line); }
+  .on .gate { background: var(--main-1); border-left-color: var(--main); }
+  .gate i { font-style: normal; font-size: 17px; font-weight: 800; color: var(--text-3); }
+  .gate span { font-size: 22px; font-weight: 800; line-height: 1.35; }
+  .gate em { font-style: normal; color: var(--main); }
+  .why { display: flex; align-items: baseline; gap: 22px; }
+  .why .lab { margin: 0; white-space: nowrap; }
+  .why b { font-size: 26px; }
+  .why b em { font-style: normal; color: var(--main); }
+  .why .foot { margin-left: auto; white-space: nowrap; }
 </style>
 </head>
 <body class="slide">
   <header>
     <p class="sec">시장 진입 전략</p>
     <h1><span class="need">[제목 미정]</span></h1>
+    <p class="sub"><em>첫 고객은 육아 인플루언서 개인.</em> 아이 사진을 가장 자주 · 공개로 올리고, DM으로 바로 닿습니다</p>
   </header>
 
-  <div class="flow">
-    <div class="box">
-      <span class="lab">첫 고객</span>
-      <b>아이 사진을 SNS에<br>자주 올리는 부모</b>
-      <span class="need foot">[대상 좁히기 필요]</span>
+  <div class="stairs">
+    <div class="st" style="height:528px">
+      <span class="when">출시</span>
+      <div class="art"><svg viewBox="-123 -57 267 223" role="img" aria-label="노트북 앞의 부모와 아이"><polygon points="129.9,75.0 20.8,138.0 20.8,151.5 129.9,88.5" fill="#c4c4c4" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="-109.1,63.0 20.8,138.0 20.8,151.5 -109.1,76.5" fill="#dcdcdc" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="0.0,0.0 129.9,75.0 20.8,138.0 -109.1,63.0" fill="#f4f4f4" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="80.5,64.5 44.2,85.5 44.2,55.5 80.5,34.5" fill="#c4c4c4" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="-33.8,40.5 44.2,85.5 44.2,55.5 -33.8,10.5" fill="#dcdcdc" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="2.6,-10.5 80.5,34.5 44.2,55.5 -33.8,10.5" fill="#f4f4f4" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="61.6,30.5 58.5,32.3 58.5,-11.2 61.6,-13.0" fill="#9a9a9a" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="6.5,2.2 58.5,32.3 58.5,-11.2 6.5,-41.2" fill="#777" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="9.6,-43.1 61.6,-13.0 58.5,-11.2 6.5,-41.2" fill="#9a9a9a" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="9.1,0.1 55.9,27.1 55.9,-9.7 9.1,-36.7" fill="#ffffff" stroke="#555" stroke-width="1.2" stroke-linejoin="round" /><polygon points="12.2,-3.4 33.8,9.0 33.8,-17.1 12.2,-29.5" fill="#e3e5e9" stroke="#aab0ba" stroke-width="1" stroke-linejoin="round" /><polygon points="14.8,-18.5 27.3,-11.2 27.3,-16.7 14.8,-23.9" fill="#f2c94c" stroke="#a87f00" stroke-width="1" stroke-linejoin="round" /><polygon points="37.7,11.2 52.7,19.9 52.7,12.4 37.7,3.7" fill="#0c8840" stroke="#0c8840" stroke-width="1" stroke-linejoin="round" /><line x1="37.7" y1="-3.8" x2="52.7" y2="4.9" stroke="#aab0ba" stroke-width="3" stroke-linecap="round"/><line x1="37.7" y1="-9.8" x2="52.7" y2="-1.1" stroke="#aab0ba" stroke-width="3" stroke-linecap="round"/><polygon points="3.9,3.8 55.9,33.8 36.4,45.0 -15.6,15.0" fill="#cfd3d9" stroke="#555" stroke-width="1.2" stroke-linejoin="round" /><ellipse cx="-41.6" cy="69.0" rx="30.2" ry="12.8" fill="rgba(0,0,0,.18)"/><rect x="-64.8" y="-6.0" width="46.4" height="75.0" rx="23.2" fill="#222"/><circle cx="-41.6" cy="-25.6" r="17.8" fill="#222"/><ellipse cx="23.4" cy="97.5" rx="19.5" ry="8.3" fill="rgba(0,0,0,.18)"/><rect x="8.4" y="48.9" width="30.1" height="48.6" rx="15.0" fill="#555"/><circle cx="23.4" cy="36.2" r="11.6" fill="#555"/></svg></div>
+      <b>웹 출시</b>
+      <span class="who">먼저 찾아오는 부모</span>
+      <p>진단 · 보정을 웹에 공개하고<br>무료 · 충전 · 구독 결제를 연다</p>
+      <div class="gate"><i>넘어갈 조건</i><span>진단 · 보정 · 결제가<br>오류 없이 돈다</span></div>
     </div>
     <div class="arrow"></div>
-    <div class="box">
-      <span class="lab">지금 · 하고 있는 것</span>
-      <ul>
-        <li>웹 무료 체험<span>8.26 배포 · 11.2 재배포</span></li>
-        <li>인스타 게시물 8개</li>
-        <li><span class="kpi">17/18명</span>지인 체험 "생각 못 한 위험을 알게 됐다"</li>
-      </ul>
+    <div class="st" style="height:564px">
+      <span class="when">출시 후 1개월</span>
+      <div class="art"><svg viewBox="-128 -98 283 272" role="img" aria-label="링라이트 폰으로 아이 사진을 올리는 육아 인플루언서"><polygon points="140.3,81.0 26.0,147.0 26.0,160.5 140.3,94.5" fill="#c4c4c4" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="-114.3,66.0 26.0,147.0 26.0,160.5 -114.3,79.5" fill="#dcdcdc" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="0.0,0.0 140.3,81.0 26.0,147.0 -114.3,66.0" fill="#f4f4f4" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><ellipse cx="-54.6" cy="73.5" rx="30.2" ry="12.8" fill="rgba(0,0,0,.18)"/><rect x="-77.8" y="-1.5" width="46.4" height="75.0" rx="23.2" fill="#222"/><circle cx="-54.6" cy="-21.1" r="17.8" fill="#222"/><ellipse cx="-15.6" cy="99.0" rx="19.0" ry="8.0" fill="rgba(0,0,0,.18)"/><rect x="-30.2" y="51.9" width="29.2" height="47.1" rx="14.6" fill="#555"/><circle cx="-15.6" cy="39.5" r="11.2" fill="#555"/><line x1="36.4" y1="51.0" x2="13.0" y2="100.5" stroke="#555" stroke-width="2.5"/><line x1="36.4" y1="51.0" x2="41.6" y2="111.0" stroke="#555" stroke-width="2.5"/><line x1="36.4" y1="51.0" x2="52.0" y2="93.0" stroke="#555" stroke-width="2.5"/><polygon points="75.9,41.7 75.6,36.7 74.9,31.5 73.7,26.1 72.1,20.7 70.1,15.2 67.6,9.8 64.8,4.6 61.7,-0.5 58.2,-5.3 54.5,-9.8 50.6,-13.9 46.6,-17.6 42.4,-20.8 38.2,-23.6 34.0,-25.7 29.8,-27.3 25.7,-28.3 21.8,-28.7 18.1,-28.5 14.7,-27.6 11.6,-26.2 8.7,-24.2 6.3,-21.6 4.3,-18.5 2.6,-14.9 1.5,-10.9 0.8,-6.5 0.5,-1.8 0.8,3.2 1.5,8.4 2.6,13.8 4.3,19.2 6.3,24.7 8.7,30.1 11.6,35.3 14.7,40.4 18.1,45.2 21.8,49.7 25.7,53.8 29.8,57.5 34.0,60.7 38.2,63.4 42.4,65.6 46.6,67.2 50.6,68.2 54.5,68.6 58.2,68.4 61.7,67.5 64.8,66.1 67.6,64.1 70.1,61.5 72.1,58.4 73.7,54.8 74.9,50.8 75.6,46.4" fill="none" stroke="#555" stroke-width="12"/><polygon points="75.9,41.7 75.6,36.7 74.9,31.5 73.7,26.1 72.1,20.7 70.1,15.2 67.6,9.8 64.8,4.6 61.7,-0.5 58.2,-5.3 54.5,-9.8 50.6,-13.9 46.6,-17.6 42.4,-20.8 38.2,-23.6 34.0,-25.7 29.8,-27.3 25.7,-28.3 21.8,-28.7 18.1,-28.5 14.7,-27.6 11.6,-26.2 8.7,-24.2 6.3,-21.6 4.3,-18.5 2.6,-14.9 1.5,-10.9 0.8,-6.5 0.5,-1.8 0.8,3.2 1.5,8.4 2.6,13.8 4.3,19.2 6.3,24.7 8.7,30.1 11.6,35.3 14.7,40.4 18.1,45.2 21.8,49.7 25.7,53.8 29.8,57.5 34.0,60.7 38.2,63.4 42.4,65.6 46.6,67.2 50.6,68.2 54.5,68.6 58.2,68.4 61.7,67.5 64.8,66.1 67.6,64.1 70.1,61.5 72.1,58.4 73.7,54.8 74.9,50.8 75.6,46.4" fill="none" stroke="#fffbe6" stroke-width="8.5"/><polygon points="55.6,57.9 52.0,60.0 52.0,-0.0 55.6,-2.1" fill="#9a9a9a" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="20.8,42.0 52.0,60.0 52.0,-0.0 20.8,-18.0" fill="#777" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="24.4,-20.1 55.6,-2.1 52.0,-0.0 20.8,-18.0" fill="#9a9a9a" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="22.9,40.2 49.9,55.8 49.9,1.8 22.9,-13.8" fill="#ffffff" stroke="#555" stroke-width="1.2" stroke-linejoin="round" /><circle cx="28.6" cy="-3.0" r="8" fill="#dcfdea" stroke="#0c8840" stroke-width="2.5"/><line x1="34.3" y1="-1.8" x2="48.1" y2="6.2" stroke="#aab0ba" stroke-width="3" stroke-linecap="round"/><line x1="34.3" y1="3.0" x2="42.9" y2="7.9" stroke="#aab0ba" stroke-width="3" stroke-linecap="round"/><polygon points="24.2,38.0 31.4,42.2 31.4,26.5 24.2,22.3" fill="#e3e5e9" stroke="#aab0ba" stroke-width="1" stroke-linejoin="round" /><path d="M23.8,37.0 q0,-9 4,-10 q4,1 4,10 z" fill="#777"/><circle cx="27.8" cy="24.0" r="3.2" fill="#777"/><polygon points="24.2,19.9 31.4,24.1 31.4,8.6 24.2,4.4" fill="#e3e5e9" stroke="#aab0ba" stroke-width="1" stroke-linejoin="round" /><path d="M23.8,19.0 q0,-9 4,-10 q4,1 4,10 z" fill="#777"/><circle cx="27.8" cy="6.0" r="3.2" fill="#777"/><polygon points="32.5,42.8 39.7,47.0 39.7,31.3 32.5,27.1" fill="#e3e5e9" stroke="#aab0ba" stroke-width="1" stroke-linejoin="round" /><path d="M32.1,41.8 q0,-9 4,-10 q4,1 4,10 z" fill="#777"/><circle cx="36.1" cy="28.8" r="3.2" fill="#777"/><polygon points="32.5,24.7 39.7,28.9 39.7,13.4 32.5,9.2" fill="#e3e5e9" stroke="#aab0ba" stroke-width="1" stroke-linejoin="round" /><path d="M32.1,23.8 q0,-9 4,-10 q4,1 4,10 z" fill="#777"/><circle cx="36.1" cy="10.8" r="3.2" fill="#777"/><polygon points="40.8,47.5 48.1,51.8 48.1,36.2 40.8,31.9" fill="#e3e5e9" stroke="#aab0ba" stroke-width="1" stroke-linejoin="round" /><path d="M40.4,46.6 q0,-9 4,-10 q4,1 4,10 z" fill="#777"/><circle cx="44.4" cy="33.6" r="3.2" fill="#777"/><polygon points="40.8,29.5 48.1,33.8 48.1,18.2 40.8,14.0" fill="#e3e5e9" stroke="#aab0ba" stroke-width="1" stroke-linejoin="round" /><path d="M40.4,28.7 q0,-9 4,-10 q4,1 4,10 z" fill="#777"/><circle cx="44.4" cy="15.7" r="3.2" fill="#777"/><path transform="translate(75.3,-22.5) scale(1.3)" d="M0,6 C-14,-4 -10,-16 0,-9 C10,-16 14,-4 0,6 Z" fill="#e5483b" stroke="#fff" stroke-width="2"/><path transform="translate(105.3,-46.5) scale(0.95)" d="M0,6 C-14,-4 -10,-16 0,-9 C10,-16 14,-4 0,6 Z" fill="#e5483b" stroke="#fff" stroke-width="2"/><path transform="translate(79.3,-72.5) scale(0.7)" d="M0,6 C-14,-4 -10,-16 0,-9 C10,-16 14,-4 0,6 Z" fill="#e5483b" stroke="#fff" stroke-width="2"/></svg></div>
+      <b>DM 체험</b>
+      <span class="who">육아 인플루언서 개인</span>
+      <p>인스타 DM으로 웹 링크를 보내<br>부모가 직접 진단해 보게</p>
+      <div class="gate"><i>넘어갈 조건</i><span>체험 <em>1,000명</em><br>유료 전환율 숫자 확보</span></div>
     </div>
     <div class="arrow"></div>
-    <div class="box on">
-      <span class="lab">다음 · 기술 보완 뒤</span>
-      <b>지인이 아닌<br>실제 부모에게 체험</b>
-      <span class="need foot">[대상 · 인원 · 시기 미정]</span>
+    <div class="st" style="height:600px">
+      <span class="when">출시 후 6개월</span>
+      <div class="art"><svg viewBox="-134 -92 317 277" role="img" aria-label="촬영 중인 아이 모델과 에이전트"><polygon points="153.3,88.5 33.8,157.5 33.8,171.0 153.3,102.0" fill="#c4c4c4" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="-119.5,69.0 33.8,157.5 33.8,171.0 -119.5,82.5" fill="#dcdcdc" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="0.0,0.0 153.3,88.5 33.8,157.5 -119.5,69.0" fill="#f4f4f4" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="0.0,12.0 77.9,57.0 77.9,-33.0 0.0,-78.0" fill="#f4f4f4" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="0.0,12.0 77.9,57.0 26.0,87.0 -52.0,42.0" fill="#fafafa" stroke="#c9cdd4" stroke-width="1" stroke-linejoin="round" /><line x1="-52.0" y1="48.0" x2="-52.0" y2="-30.0" stroke="#555" stroke-width="2.5"/><path d="M-78.0,-22.0 Q-52.0,-56.0 -26.0,-22.0 Z" fill="#fff" stroke="#555" stroke-width="1.6"/><ellipse cx="13.0" cy="49.5" rx="22.4" ry="9.5" fill="rgba(0,0,0,.18)"/><rect x="-4.2" y="-6.2" width="34.5" height="55.7" rx="17.2" fill="#222"/><circle cx="13.0" cy="-20.8" r="13.3" fill="#222"/><path transform="translate(35.0,-19.5) scale(.9)" d="M0,-12 L3.5,-4 L12,-3.5 L5.5,2 L7.5,11 L0,6.5 L-7.5,11 L-5.5,2 L-12,-3.5 L-3.5,-4 Z" fill="#f2c94c" stroke="#a87f00" stroke-width="1.4"/><line x1="2.6" y1="57.0" x2="-18.2" y2="97.5" stroke="#555" stroke-width="2.5"/><line x1="2.6" y1="57.0" x2="7.8" y2="109.5" stroke="#555" stroke-width="2.5"/><line x1="2.6" y1="57.0" x2="18.2" y2="91.5" stroke="#555" stroke-width="2.5"/><polygon points="19.5,57.8 5.2,66.0 5.2,51.0 19.5,42.8" fill="#777" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="-13.0,55.5 5.2,66.0 5.2,51.0 -13.0,40.5" fill="#555" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="1.3,32.2 19.5,42.8 5.2,51.0 -13.0,40.5" fill="#9a9a9a" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><circle cx="-6.0" cy="44.0" r="7" fill="#333" stroke="#0c8840" stroke-width="2.5"/><ellipse cx="77.9" cy="108.0" rx="28.7" ry="12.2" fill="rgba(0,0,0,.18)"/><rect x="55.8" y="36.6" width="44.2" height="71.4" rx="22.1" fill="#555"/><circle cx="77.9" cy="17.9" r="17.0" fill="#555"/><rect x="51.9" y="58.6" width="16" height="21" rx="2" fill="#fff" stroke="#555" stroke-width="1.6"/><line x1="54.9" y1="65.6" x2="64.9" y2="65.6" stroke="#0c8840" stroke-width="2"/><line x1="54.9" y1="70.6" x2="64.9" y2="70.6" stroke="#aab0ba" stroke-width="2"/><path d="M87.1,-29.0 h44 a8,8 0 0 1 8,8 v16 a8,8 0 0 1 -8,8 h-24 l-10,10 v-10 h-10 a8,8 0 0 1 -8,-8 v-16 a8,8 0 0 1 8,-8 z" fill="#0c8840"/><circle cx="99.1" cy="-15.0" r="3" fill="#fff"/><circle cx="109.1" cy="-15.0" r="3" fill="#fff"/><circle cx="119.1" cy="-15.0" r="3" fill="#fff"/><path d="M117.1,-55.0 h44 a8,8 0 0 1 8,8 v16 a8,8 0 0 1 -8,8 h-24 l-10,10 v-10 h-10 a8,8 0 0 1 -8,-8 v-16 a8,8 0 0 1 8,-8 z" fill="#9aa3b2"/><circle cx="129.1" cy="-41.0" r="3" fill="#fff"/><circle cx="139.1" cy="-41.0" r="3" fill="#fff"/><circle cx="149.1" cy="-41.0" r="3" fill="#fff"/></svg></div>
+      <b>키즈 제휴</b>
+      <span class="who">키즈 에이전트 · 육아 커뮤니티 회원</span>
+      <p>회원 혜택으로 넣어<br>제휴사의 신뢰를 빌려 옴</p>
+      <div class="gate"><i>넘어갈 조건</i><span>제휴 <em>3곳</em><br>누적 사용자 <em>5,000명</em></span></div>
+    </div>
+    <div class="arrow"></div>
+    <div class="st on" style="height:636px">
+      <span class="when">출시 후 12개월</span>
+      <div class="art"><svg viewBox="-123 -121 272 290" role="img" aria-label="요금제와 자녀보험 혜택을 받는 가족"><polygon points="135.1,78.0 26.0,141.0 26.0,154.5 135.1,91.5" fill="#c4c4c4" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="-109.1,63.0 26.0,141.0 26.0,154.5 -109.1,76.5" fill="#dcdcdc" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="0.0,0.0 135.1,78.0 26.0,141.0 -109.1,63.0" fill="#f4f4f4" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><ellipse cx="-49.4" cy="58.5" rx="30.2" ry="12.8" fill="rgba(0,0,0,.18)"/><rect x="-72.6" y="-16.5" width="46.4" height="75.0" rx="23.2" fill="#222"/><circle cx="-49.4" cy="-36.1" r="17.8" fill="#222"/><ellipse cx="0.0" cy="81.0" rx="19.0" ry="8.0" fill="rgba(0,0,0,.18)"/><rect x="-14.6" y="33.9" width="29.2" height="47.1" rx="14.6" fill="#555"/><circle cx="0.0" cy="21.5" r="11.2" fill="#555"/><ellipse cx="49.4" cy="103.5" rx="28.7" ry="12.2" fill="rgba(0,0,0,.18)"/><rect x="27.3" y="32.1" width="44.2" height="71.4" rx="22.1" fill="#222"/><circle cx="49.4" cy="13.4" r="17.0" fill="#222"/><rect x="-72.8" y="-107.0" width="68" height="52" rx="10" fill="#fff" stroke="#0c8840" stroke-width="3.5"/><line x1="-38.8" y1="-66.0" x2="-38.8" y2="-85.0" stroke="#0c8840" stroke-width="3.5" stroke-linecap="round"/><circle cx="-38.8" cy="-87.0" r="3.5" fill="#0c8840"/><path d="M-48.8,-92.0 A12,12 0 0 1 -28.8,-92.0" fill="none" stroke="#0c8840" stroke-width="3" stroke-linecap="round"/><path d="M-55.8,-96.0 A20,20 0 0 1 -21.8,-96.0" fill="none" stroke="#0c8840" stroke-width="3" stroke-linecap="round"/><rect x="15.2" y="-107.0" width="68" height="52" rx="10" fill="#fff" stroke="#0c8840" stroke-width="3.5"/><path d="M35.2,-97.0 h28 v12 q0,16 -14,22 q-14,-6 -14,-22 z" fill="#dcfdea" stroke="#0c8840" stroke-width="3"/><polyline points="42.2,-83.0 48.2,-77.0 57.2,-88.0" fill="none" stroke="#0c8840" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <b>통신사 · 보험사</b>
+      <span class="who">키즈 요금제 · 자녀보험 가입 부모</span>
+      <p>요금제 · 자녀보험 부가서비스로<br>부모는 결제 없이 사용</p>
+      <div class="gate"><i>제안</i><span>가입자 단위 계약 제안</span></div>
     </div>
   </div>
 
-  <div class="fb">
-    <div><b>기술 피드백</b>어디서 단서를 놓치고, 어디를 잘못 잡는지</div>
-    <div><b>사용성 피드백</b>어디까지 좋다고 느끼는지 · 앞으로 무엇을 바라는지</div>
-  </div>
-
-  <div class="next band">
-    <span class="lab">발표 뒤에도</span>
-    <span>협력 제안서 보내기 <span class="need">[대상 미정]</span></span><div class="arrow"></div>
-    <span>고객 모으기</span><div class="arrow"></div>
-    <span class="main">수익화</span>
+  <div class="why band">
+    <span class="lab">왜 이 순서</span>
+    <b>통신사 · 보험사는 숫자 없이 만나 주지 않음 → <em>웹 · DM으로 숫자</em>, <em>키즈 제휴로 신뢰</em>를 먼저</b>
+    <span class="foot">일정은 출시 기준 예시 · 목표는 검증 전 가정</span>
   </div>
   <span class="pg">13</span>
 </body>
