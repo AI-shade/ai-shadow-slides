@@ -4,7 +4,7 @@
 <style>
   /* 마무리: 서브 색 바탕에 비전 한 줄(가장 크게) · 우 서비스 주소 QR · 아래 감사합니다 */
   .slide { gap: 36px; padding-top: 100px; }
-  .end { flex: 1; min-height: 0; display: grid; grid-template-columns: 1.7fr 1fr; gap: 40px; }
+  .end { flex: 1; min-height: 0; display: grid; }
   .vision { background: var(--sub); color: #fff; border-radius: 28px; padding: 56px 64px; display: flex; flex-direction: column; justify-content: center; gap: 28px; }
   .vision img { height: 64px; align-self: flex-start; background: #fff; border-radius: 12px; padding: 8px 14px; }
   .vision .lab { color: var(--on-main); margin: 0; }
@@ -12,10 +12,8 @@
   .vision h1 .need { color: #ffb4ab; }
   .vision p { font-size: 34px; font-weight: 700; color: var(--on-main); line-height: 1.4; }
   .vision .tag { color: #fff; font-weight: 800; }
-  .qr { font-size: 30px; font-weight: 700; border-radius: 28px; }
   .bye { display: flex; align-items: baseline; gap: 32px; }
   .bye b { font-size: 52px; }
-  .bye span { font-size: 30px; font-weight: 800; color: var(--main); }
 </style>
 </head>
 <body class="slide">
@@ -26,12 +24,10 @@
       <h1>아이 곁의<br>그림자가 되겠습니다</h1>
       <p class="tag">올린 사진으로는 아이가 어디 있는지 알 수 없는 것이 상식인 사회,<br>그 사회를 향한 아이SHADOW의 시도</p>
     </div>
-    <div class="slot qr">서비스 주소 · QR<span class="need">[QR 필요]</span></div>
   </div>
 
   <div class="bye band">
     <b>감사합니다</b>
-    <span>이 화면에서 Q&amp;A</span>
   </div>
   <span class="pg">17</span>
 </body>
