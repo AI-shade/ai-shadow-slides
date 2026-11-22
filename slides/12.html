@@ -2,74 +2,101 @@
 <html lang="ko">
 <head><meta charset="utf-8"><link rel="stylesheet" href="../theme.css">
 <style>
-  /* 수익 모델: B2C 요금 네 칸(월 구독 강조) · 아래 좌 B2B 통신사 가설 · 우 팀이 정할 것 · 맨 아래 원가 */
-  .slide { gap: 24px; }
-  .sub { font-size: 28px; color: var(--text-2); font-weight: 700; }
-  .lab2 { font-size: 24px; font-weight: 800; margin-bottom: 10px; }
-  .lab2 .need, .hyp { font-size: 20px; font-weight: 800; color: #a87f00; background: #fff6d6; border-radius: 6px; padding: 1px 8px; margin-left: 6px; }
-  .tiers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-  .tier { background: var(--gray-2); border-radius: 20px; padding: 18px 22px; display: flex; flex-direction: column; gap: 4px; }
-  .tier.on { background: var(--bg); border: 6px solid var(--main); }
-  .tier b { font-size: 30px; }
-  .tier .who { font-size: 20px; color: var(--text-3); }
-  .tier p { font-size: 21px; color: var(--text-2); line-height: 1.4; }
-  .tier .price { margin-top: 10px; font-size: 32px; font-weight: 900; color: var(--main); }
-  .low { flex: 1; min-height: 0; display: grid; grid-template-columns: 1.7fr 1fr; gap: 20px; }
-  .b2b { background: var(--gray-2); border-radius: 20px; padding: 18px 26px; display: flex; flex-direction: column; }
-  .b2b .row { display: grid; grid-template-columns: 200px 1fr; gap: 16px; padding: 6px 0; border-bottom: 2px solid var(--line); font-size: 20px; line-height: 1.4; }
-  .b2b .row:last-child { border-bottom: 0; }
-  .b2b .row b { font-size: 20px; }
-  .todo { border: 3px dashed var(--line); border-radius: 20px; padding: 18px 26px; }
-  .todo ol { margin: 0; padding-left: 1.3em; display: flex; flex-direction: column; gap: 8px; font-size: 22px; line-height: 1.35; }
-  .cost { display: grid; grid-template-columns: auto 1fr 1fr 1fr; gap: 36px; align-items: baseline; }
-  .cost .lab { margin: 0; }
-  .cost b { font-size: 34px; color: var(--main); font-weight: 900; }
-  .cost span { font-size: 20px; color: var(--text-2); }
+  /* 수익 모델: 돈이 어떻게 흐르나. 가운데 아이SHADOW, 왼쪽 부모(B2C), 오른쪽 통신사·보험사(B2B, 강조).
+     초록 화살표 = 돈 · 회색 화살표 = 서비스 · 위 아치 = 기업 고객의 부모는 결제 없이 씀. 가격 숫자는 넣지 않음 */
+     양옆 칸은 세 갈래로 세분: B2C 무료 · 충전 · 구독 / B2B 통신사 · 보험사 · 키즈 에이전트·육아 커뮤니티 */
+  .slide { gap: 18px; }
+  .sub { font-size: 30px; color: var(--text-2); font-weight: 700; }
+  .model { position: relative; flex: 1; min-height: 0; padding-top: 62px; display: grid; grid-template-columns: 1fr 200px .7fr 200px 1fr; align-items: stretch; }
+  .arch { position: absolute; left: 0; top: 0; width: 100%; height: 86px; overflow: visible; }
+  .arch-lab { position: absolute; left: 50%; top: -6px; transform: translateX(-50%); background: var(--bg); padding: 0 18px; font-size: 24px; font-weight: 800; color: var(--text-2); white-space: nowrap; }
+  .arch-lab em { font-style: normal; color: var(--main); }
+  .node { background: var(--gray-2); border-radius: 24px; padding: 14px 22px 18px; display: flex; flex-direction: column; gap: 10px; min-width: 0; position: relative; z-index: 1; }
+  .node.on { background: var(--bg); border: 6px solid var(--main); padding: 8px 16px 12px; }
+  .node.svc { background: var(--main-1); }
+  .art { height: 150px; display: grid; place-items: center; }
+  .art svg { width: 100%; height: 100%; }
+  .hd { display: flex; align-items: center; gap: 12px; }
+  .hd b { font-size: 34px; line-height: 1.2; }
+  .hd small { margin-left: auto; font-size: 20px; font-weight: 700; color: var(--text-3); }
+  .tag { font-size: 20px; font-weight: 800; border-radius: 99px; padding: 3px 14px; background: var(--sub); color: #fff; white-space: nowrap; }
+  .on .tag { background: var(--main); }
+  .rows { display: flex; flex-direction: column; gap: 8px; }
+  .row { display: grid; grid-template-columns: 96px 1fr auto; grid-template-areas: 'k w p' 'k d d'; align-items: center; column-gap: 12px; row-gap: 2px; background: var(--bg); border-radius: 14px; padding: 9px 14px; }
+  .row .k { grid-area: k; }
+  .row .w { grid-area: w; font-size: 22px; font-weight: 800; line-height: 1.3; white-space: nowrap; }
+  .row .d { grid-area: d; font-size: 19px; color: var(--text-2); line-height: 1.35; }
+  .row em { grid-area: p; }
+  .on .row { background: var(--main-1); }
+  .row .k { font-size: 23px; font-weight: 900; }
+  .row .k.g { color: var(--main); }
+  .row em { font-style: normal; font-size: 18px; font-weight: 800; white-space: nowrap; padding: 3px 12px; border-radius: 99px; border: 2px solid var(--main); color: var(--main); background: var(--bg); }
+  .row em.free { border-color: var(--line); color: var(--text-3); }
+  .node p { font-size: 23px; color: var(--text-2); line-height: 1.4; }
+  .steps { margin-top: auto; display: flex; flex-direction: column; gap: 8px; }
+  .steps span { font-size: 20px; font-weight: 700; padding: 6px 14px; border-radius: 12px; background: var(--bg); color: var(--text-2); }
+  .steps span b { color: var(--main); margin-right: 6px; }
+  .lnk { width: 100%; height: 220px; align-self: start; margin-top: -26px; overflow: visible; }
+  .lnk .tm { font-size: 27px; font-weight: 800; fill: var(--main); }
+  .lnk .ts { font-size: 24px; font-weight: 700; fill: var(--text-3); }
+  .key { display: flex; gap: 22px; align-items: center; font-size: 20px; color: var(--text-3); font-weight: 700; }
+  .key i { display: inline-block; width: 34px; height: 8px; border-radius: 4px; margin-right: 8px; vertical-align: middle; }
+  .why { display: flex; align-items: baseline; gap: 22px; }
+  .why .lab { margin: 0; white-space: nowrap; }
+  .why b { font-size: 26px; }
+  .why b em { font-style: normal; color: var(--main); }
+  .why .key { margin-left: auto; }
 </style>
 </head>
 <body class="slide">
   <header>
     <p class="sec">수익 모델</p>
     <h1><span class="need">[제목 미정]</span></h1>
-    <p class="sub">같은 제품을 고객마다 다르게 팝니다</p>
+    <p class="sub">같은 기능을 두 길로 팝니다. 부모에게 직접, 그리고 부모 고객을 가진 기업에게</p>
   </header>
 
-  <div>
-    <p class="lab2">B2C · 부모 · 무료로 들어와 보정에서 돈을 냄</p>
-    <div class="tiers">
-      <div class="tier"><b>무료</b><span class="who">처음 쓰는 부모</span><p>진단 (사진 속 위치 단서 찾기)<br>한 달 <span class="need">[ ]</span>장까지</p><span class="price">0원</span></div>
-      <div class="tier"><b>기능별</b><span class="who">가끔 올리는 부모</span><p>AI 보정 1장씩 결제<br>원가 1장 $0.04~0.15</p><span class="price"><span class="need">[ ]</span>원 / 장</span></div>
-      <div class="tier on"><b>월 구독</b><span class="who">자주 올리는 부모</span><p>진단 무제한 · 보정 <span class="need">[ ]</span>장<br>영상 <span class="need">[계획]</span></p><span class="price"><span class="need">[ ]</span>원 / 월</span></div>
-      <div class="tier"><b>연 구독</b><span class="who">계속 쓸 부모</span><p>월 구독과 같음<br><span class="need">[ ]</span>개월 값으로</p><span class="price"><span class="need">[ ]</span>원 / 년</span></div>
+  <div class="model">
+    <svg class="arch" viewBox="0 0 1680 86" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M1443,62 C1443,14 1383,14 1263,14 L417,14 C297,14 237,14 237,40" fill="none" stroke="#0c8840" stroke-width="5" stroke-dasharray="14 10" stroke-linecap="round"/>
+      <polygon points="237,62 224,38 250,38" fill="#0c8840"/>
+    </svg>
+    <span class="arch-lab">기업 고객의 부모는 <em>결제 없이</em> 혜택으로 사용</span>
+
+    <div class="node">
+      <div class="art"><svg viewBox="-144 -106 288 283" role="img" aria-label="부모와 폰"><polygon points="129.9,75.0 0.0,150.0 0.0,163.5 129.9,88.5" fill="#c4c4c4" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="-129.9,75.0 0.0,150.0 0.0,163.5 -129.9,88.5" fill="#dcdcdc" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="0.0,0.0 129.9,75.0 0.0,150.0 -129.9,75.0" fill="#f4f4f4" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="39.0,58.5 31.7,62.7 31.7,-54.3 39.0,-58.5" fill="#9a9a9a" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="-25.5,29.7 31.7,62.7 31.7,-54.3 -25.5,-87.3" fill="#777" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="-18.2,-91.5 39.0,-58.5 31.7,-54.3 -25.5,-87.3" fill="#9a9a9a" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="-21.3,21.6 27.5,49.8 27.5,-49.2 -21.3,-77.4" fill="#ffffff" stroke="#555" stroke-width="1.2" stroke-linejoin="round" /><polygon points="-17.1,-4.5 23.4,18.9 23.4,-44.1 -17.1,-67.5" fill="#e3e5e9" stroke="#aab0ba" stroke-width="1" stroke-linejoin="round" /><polygon points="-13.8,-49.0 9.6,-35.5 9.6,-45.4 -13.8,-58.9" fill="#f2c94c" stroke="#a87f00" stroke-width="1.4" stroke-linejoin="round" /><path d="M1.2,16.4 q0,-26 11,-28 q11,2 11,28 z" fill="#555"/><circle cx="12.2" cy="-21.6" r="7.5" fill="#555"/><polygon points="-13.8,18.4 20.0,38.0 20.0,27.5 -13.8,7.9" fill="#0c8840" stroke="#0c8840" stroke-width="1" stroke-linejoin="round" /><ellipse cx="59.8" cy="94.5" rx="19.4" ry="8.2" fill="rgba(0,0,0,.18)"/><rect x="44.8" y="46.2" width="29.9" height="48.3" rx="14.9" fill="#222"/><circle cx="59.8" cy="33.6" r="11.5" fill="#222"/></svg></div>
+      <div class="hd"><span class="tag">B2C</span><b>부모</b><small>부모가 직접 결제</small></div>
+      <div class="rows">
+        <div class="row"><span class="k">무료</span><b class="w">처음 쓰는 부모</b><span class="d">진단 · 보정 미리보기(워터마크)</span><em class="free">결제 없음</em></div>
+        <div class="row"><span class="k g">충전형</span><b class="w">가끔 올리는 부모</b><span class="d">필요할 때 장수 묶음으로 보정</span><em>장 단위</em></div>
+        <div class="row"><span class="k g">구독형</span><b class="w">자주 올리는 부모</b><span class="d">매달 고화질 보정 · 워터마크 없음</span><em>월 정액</em></div>
+      </div>
+    </div>
+    <svg class="lnk" viewBox="0 0 250 260"><text x="125.0" y="68" text-anchor="middle" class="tm">충전 · 구독 결제</text><line x1="16" y1="108" x2="200" y2="108" stroke="#0c8840" stroke-width="12" stroke-linecap="round" /><polygon points="234,108 200,87 200,129" fill="#0c8840"/><circle cx="125.0" cy="108" r="24" fill="#0c8840" stroke="#fff" stroke-width="4"/><text x="125.0" y="117" text-anchor="middle" font-size="26" font-weight="900" fill="#fff">₩</text><line x1="234" y1="196" x2="45" y2="196" stroke="#9aa3b2" stroke-width="7" stroke-linecap="round" /><polygon points="16,196 45,178 45,214" fill="#9aa3b2"/><text x="125.0" y="240" text-anchor="middle" class="ts">진단 · 보정</text></svg>
+    <div class="node svc">
+      <div class="art"><svg viewBox="-144 -89 288 267" role="img" aria-label="아이SHADOW 방패"><polygon points="129.9,75.0 0.0,150.0 0.0,163.5 129.9,88.5" fill="#c4c4c4" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="-129.9,75.0 0.0,150.0 0.0,163.5 -129.9,88.5" fill="#dcdcdc" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="0.0,0.0 129.9,75.0 0.0,150.0 -129.9,75.0" fill="#f1fef6" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="49.4,103.5 43.9,106.3 38.0,108.8 31.7,110.9 25.0,112.6 18.1,113.9 10.9,114.8 3.7,115.2 -3.7,115.2 -10.9,114.8 -18.1,113.9 -25.0,112.6 -31.7,110.9 -38.0,108.8 -43.9,106.3 -49.4,103.5 -54.3,100.4 -58.5,97.0 -62.2,93.3 -65.2,89.4 -67.4,85.4 -68.9,81.3 -69.7,77.1 -69.7,72.9 -68.9,68.7 -67.4,64.6 -65.2,60.6 -62.2,56.7 -58.5,53.0 -54.3,49.6 -49.4,46.5 -43.9,43.7 -38.0,41.2 -31.7,39.1 -25.0,37.4 -18.1,36.1 -10.9,35.2 -3.7,34.8 3.7,34.8 10.9,35.2 18.1,36.1 25.0,37.4 31.7,39.1 38.0,41.2 43.9,43.7 49.4,46.5 54.3,49.6 58.5,53.0 62.2,56.7 65.2,60.6 67.4,64.6 68.9,68.7 69.7,72.9 69.7,77.1 68.9,81.3 67.4,85.4 65.2,89.4 62.2,93.3 58.5,97.0 54.3,100.4" fill="rgba(12,136,64,.10)" stroke="#0c8840" stroke-width="2.4" stroke-linejoin="round" stroke-dasharray="8 6"/><path d="M-32.5,-75.2 L32.5,-37.6 L32.5,19.4 Q24.2,61.5 0.0,51.6 Q-24.2,42.7 -32.5,-18.2 Z" fill="#0a6d33" stroke="#0a6d33" stroke-width="2" stroke-linejoin="round"/><path d="M-32.5,-69.8 L32.5,-32.2 L32.5,24.8 Q24.2,66.9 0.0,57.0 Q-24.2,48.1 -32.5,-12.8 Z" fill="#dcfdea" stroke="#0c8840" stroke-width="4" stroke-linejoin="round"/><polyline points="-14.3,-15.8 -2.6,7.5 18.2,-15.0" fill="none" stroke="#0c8840" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="hd"><span class="tag">서비스</span><b>아이SHADOW</b></div>
+      <p>사진 속 위치 단서를 찾고,<br>그 부분만 고쳐 다시 확인</p>
+      <div class="steps">
+        <span><b>웹</b>부모가 직접 접속</span>
+        <span><b>API</b>제휴사 앱 · 상품 안 기능</span>
+      </div>
+    </div>
+    <svg class="lnk" viewBox="0 0 250 260"><text x="125.0" y="68" text-anchor="middle" class="tm">가입자당 · 단체 이용료</text><line x1="234" y1="108" x2="54" y2="108" stroke="#0c8840" stroke-width="16" stroke-linecap="round" /><polygon points="16,108 54,84 54,132" fill="#0c8840"/><circle cx="125.0" cy="108" r="24" fill="#0c8840" stroke="#fff" stroke-width="4"/><text x="125.0" y="117" text-anchor="middle" font-size="26" font-weight="900" fill="#fff">₩</text><line x1="16" y1="196" x2="205" y2="196" stroke="#9aa3b2" stroke-width="7" stroke-linecap="round" /><polygon points="234,196 205,178 205,214" fill="#9aa3b2"/><text x="125.0" y="240" text-anchor="middle" class="ts">앱 · 상품에 붙일 기능</text></svg>
+    <div class="node on">
+      <div class="art"><svg viewBox="-144 -150 314 342" role="img" aria-label="통신사와 보험사 건물"><polygon points="155.9,90.0 26.0,165.0 26.0,178.5 155.9,103.5" fill="#c4c4c4" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="-129.9,75.0 26.0,165.0 26.0,178.5 -129.9,88.5" fill="#dcdcdc" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="0.0,0.0 155.9,90.0 26.0,165.0 -129.9,75.0" fill="#f4f4f4" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="54.6,43.5 7.8,70.5 7.8,-31.5 54.6,-58.5" fill="#cfd3d9" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="-44.2,40.5 7.8,70.5 7.8,-31.5 -44.2,-61.5" fill="#e3e5e9" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="2.6,-88.5 54.6,-58.5 7.8,-31.5 -44.2,-61.5" fill="#ffffff" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><line x1="-37.7" y1="29.2" x2="1.3" y2="51.8" stroke="#aab0ba" stroke-width="1.2"/><line x1="48.1" y1="32.2" x2="14.3" y2="51.8" stroke="#aab0ba" stroke-width="1.2"/><line x1="-37.7" y1="14.2" x2="1.3" y2="36.8" stroke="#aab0ba" stroke-width="1.2"/><line x1="48.1" y1="17.2" x2="14.3" y2="36.8" stroke="#aab0ba" stroke-width="1.2"/><line x1="-37.7" y1="-0.8" x2="1.3" y2="21.8" stroke="#aab0ba" stroke-width="1.2"/><line x1="48.1" y1="2.2" x2="14.3" y2="21.8" stroke="#aab0ba" stroke-width="1.2"/><line x1="-37.7" y1="-15.8" x2="1.3" y2="6.8" stroke="#aab0ba" stroke-width="1.2"/><line x1="48.1" y1="-12.8" x2="14.3" y2="6.8" stroke="#aab0ba" stroke-width="1.2"/><line x1="-37.7" y1="-30.8" x2="1.3" y2="-8.2" stroke="#aab0ba" stroke-width="1.2"/><line x1="48.1" y1="-27.8" x2="14.3" y2="-8.2" stroke="#aab0ba" stroke-width="1.2"/><line x1="-37.7" y1="-45.8" x2="1.3" y2="-23.2" stroke="#aab0ba" stroke-width="1.2"/><line x1="48.1" y1="-42.8" x2="14.3" y2="-23.2" stroke="#aab0ba" stroke-width="1.2"/><line x1="5.2" y1="-60.0" x2="5.2" y2="-106.0" stroke="#555" stroke-width="3"/><circle cx="5.2" cy="-108.0" r="5" fill="#0c8840"/><path d="M-7.6,-117.6 A16,16 0 0 1 18.0,-117.6" fill="none" stroke="#0c8840" stroke-width="3" stroke-linecap="round"/><path d="M-17.2,-124.8 A28,28 0 0 1 27.6,-124.8" fill="none" stroke="#0c8840" stroke-width="3" stroke-linecap="round"/><polygon points="129.9,90.0 80.5,118.5 80.5,46.5 129.9,18.0" fill="#cfd3d9" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="26.0,87.0 80.5,118.5 80.5,46.5 26.0,15.0" fill="#e3e5e9" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><polygon points="75.3,-13.5 129.9,18.0 80.5,46.5 26.0,15.0" fill="#ffffff" stroke="#555" stroke-width="1.4" stroke-linejoin="round" /><line x1="32.5" y1="75.8" x2="74.0" y2="99.8" stroke="#aab0ba" stroke-width="1.2"/><line x1="123.4" y1="78.8" x2="87.0" y2="99.8" stroke="#aab0ba" stroke-width="1.2"/><line x1="32.5" y1="60.8" x2="74.0" y2="84.8" stroke="#aab0ba" stroke-width="1.2"/><line x1="123.4" y1="63.8" x2="87.0" y2="84.8" stroke="#aab0ba" stroke-width="1.2"/><line x1="32.5" y1="45.8" x2="74.0" y2="69.8" stroke="#aab0ba" stroke-width="1.2"/><line x1="123.4" y1="48.8" x2="87.0" y2="69.8" stroke="#aab0ba" stroke-width="1.2"/><line x1="32.5" y1="30.8" x2="74.0" y2="54.8" stroke="#aab0ba" stroke-width="1.2"/><line x1="123.4" y1="33.8" x2="87.0" y2="54.8" stroke="#aab0ba" stroke-width="1.2"/><polygon points="35.1,54.8 71.4,75.8 71.4,48.8 35.1,27.8" fill="#ffffff" stroke="#555" stroke-width="1.3" stroke-linejoin="round" /><path d="M33.3,62.1 Q35.3,38.1 53.3,36.1 Q71.3,38.1 73.3,62.1 Z" fill="#0c8840"/><path d="M53.3,56.1 L53.3,72.2 q0,6 -6,5" fill="none" stroke="#0c8840" stroke-width="3" stroke-linecap="round"/><ellipse cx="-57.2" cy="69.0" rx="10.1" ry="4.3" fill="rgba(0,0,0,.18)"/><rect x="-65.0" y="43.8" width="15.6" height="25.2" rx="7.8" fill="#777"/><circle cx="-57.2" cy="37.2" r="6.0" fill="#777"/><ellipse cx="-52.0" cy="93.0" rx="10.1" ry="4.3" fill="rgba(0,0,0,.18)"/><rect x="-59.8" y="67.8" width="15.6" height="25.2" rx="7.8" fill="#777"/><circle cx="-52.0" cy="61.2" r="6.0" fill="#777"/><ellipse cx="2.6" cy="106.5" rx="10.1" ry="4.3" fill="rgba(0,0,0,.18)"/><rect x="-5.2" y="81.3" width="15.6" height="25.2" rx="7.8" fill="#777"/><circle cx="2.6" cy="74.7" r="6.0" fill="#777"/><ellipse cx="13.0" cy="130.5" rx="10.1" ry="4.3" fill="rgba(0,0,0,.18)"/><rect x="5.2" y="105.3" width="15.6" height="25.2" rx="7.8" fill="#777"/><circle cx="13.0" cy="98.7" r="6.0" fill="#777"/></svg></div>
+      <div class="hd"><span class="tag">B2B</span><b>기업</b><small>매출의 중심 · 가설</small></div>
+      <div class="rows">
+        <div class="row"><span class="k g">통신사</span><b class="w">키즈 · 가족 요금제</b><span class="d">자녀 안심 앱 안 기능으로</span><em>가입자당 월</em></div>
+        <div class="row"><span class="k g">보험사</span><b class="w">자녀보험</b><span class="d">가입 혜택 · 부가서비스로</span><em>가입자당 월</em></div>
+        <div class="row"><span class="k g">키즈 제휴</span><b class="w">키즈 에이전트</b><span class="d">육아 커뮤니티 · 앱도 회원 혜택으로</span><em>단체 이용권</em></div>
+      </div>
     </div>
   </div>
 
-  <div class="low">
-    <div class="b2b">
-      <p class="lab2">B2B · 통신사<span class="hyp">가설</span></p>
-      <div class="row"><b>통신사가 가진 것</b><span>키즈폰 · 자녀 안심 앱(예: SKT ZEM 안심지도 · 안심리포트)을 쓰는 부모 고객</span></div>
-      <div class="row"><b>우리가 주는 것</b><span>자녀 안심 앱 안에 «사진 올리기 전 점검» 기능을 붙임 (API)</span></div>
-      <div class="row"><b>우리가 받는 것</b><span>부모 고객을 만날 통로 · 이용료</span></div>
-      <div class="row"><b>통신사가 얻는 것</b><span>키즈 요금제 · 안심 서비스를 다른 통신사와 다르게 만듦 <span class="hyp">가설</span></span></div>
-      <div class="row"><b>과금</b><span>가입자당 월 <span class="need">[ ]</span>원 또는 점검 1건당 <span class="need">[ ]</span>원</span></div>
-    </div>
-    <div class="todo">
-      <p class="lab2">팀이 정할 것</p>
-      <ol>
-        <li>무료 진단 한 달 몇 장</li>
-        <li>보정 1장 · 월 · 연 가격</li>
-        <li>월 구독에 보정 몇 장</li>
-        <li>통신사 과금: 가입자당 or 건당</li>
-        <li>영상 기능을 유료에 넣을지</li>
-      </ol>
-    </div>
-  </div>
-
-  <div class="cost band">
-    <span class="lab">원가 (잰 값)</span>
-    <p><span>진단 1장 </span><b>5.6원</b><br><span>무료로 1,000장 진단해도 5,600원</span></p>
-    <p><span>보정 1장 </span><b>$0.04~0.15</b><br><span>방식별 · 배포본 단가 <span class="need">[확인 필요]</span></span></p>
-    <p><span>결제 수수료 <span class="need">[ ]</span>%</span><br><span>가격은 보정 원가 + 수수료보다 높게</span></p>
+  <div class="why band">
+    <span class="lab">왜 두 길로</span>
+    <b>설문: 월 구독이면 «무료일 때만 쓴다»가 가장 많음 → 부모 결제는 낮게, <em>매출 규모는 제휴로</em></b>
+    <span class="key"><span><i style="background:#0c8840"></i>돈</span><span><i style="background:#9aa3b2"></i>서비스</span></span>
   </div>
   <span class="pg">12</span>
 </body>
