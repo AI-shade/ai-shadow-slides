@@ -6,13 +6,16 @@
   .two { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 1.35fr; gap: 32px; }
   .two .box { display: flex; flex-direction: column; gap: 18px; min-height: 0; }
   .two .lab { margin: 0; }
-  .people { width: 100%; height: auto; }
-  .kpi { color: var(--main); font-size: 128px; }
-  .say { font-size: 34px; font-weight: 700; line-height: 1.4; }
+  /* 왼쪽 칸: 사람 5명씩 두 줄 → 그 밑에 퍼센트 → 문장, 모두 가운데. 위아래 여백을 같게(margin auto) — 11-22 */
+  .people { width: 78%; height: auto; align-self: center; margin-top: auto; }
+  .kpi { color: var(--main); font-size: 128px; align-self: center; line-height: 1; }
+  .say { font-size: 34px; font-weight: 700; line-height: 1.4; text-align: center; }
   .word { font-size: 80px; font-weight: 900; color: var(--main); line-height: 1; letter-spacing: -.02em; }
+  .term { display: flex; align-items: center; gap: 28px; } /* 정의를 초록 글자 옆으로(11-22) */
   .def { font-size: 28px; color: var(--text-2); line-height: 1.5; }
   .def b { color: var(--text); }
-  .news { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  /* 기사 두 장을 위아래로 — 칸 가로를 다 써서 제목(사진 위쪽)이 잘리지 않고 크게 보인다. 아래쪽 사진만 잘린다 */
+  .news { flex: 1; min-height: 0; display: grid; grid-template-rows: 1fr 1fr; gap: 16px; }
   .news figure { margin: 0; display: flex; flex-direction: column; gap: 8px; min-height: 0; }
   .news img { flex: 1; min-height: 0; width: 100%; object-fit: cover; object-position: top; border-radius: 14px; border: 2px solid var(--line); background: #fff; }
   .so { display: flex; gap: 24px; align-items: baseline; }
@@ -28,24 +31,24 @@
 
   <div class="two">
     <div class="box">
-      <svg class="people" viewBox="0 0 1000 170" aria-hidden="true">
+      <svg class="people" viewBox="0 0 620 350" aria-hidden="true">
         <defs><linearGradient id="part"><stop offset="60%" stop-color="#0c8840"/><stop offset="60%" stop-color="#dfe3ea"/></linearGradient></defs>
         <g id="p"><circle cx="50" cy="34" r="26"/><rect x="18" y="70" width="64" height="96" rx="28"/></g>
         <g fill="#0c8840">
-          <use href="#p" x="0"/><use href="#p" x="100"/><use href="#p" x="200"/><use href="#p" x="300"/>
-          <use href="#p" x="400"/><use href="#p" x="500"/><use href="#p" x="600"/><use href="#p" x="700"/>
+          <use href="#p" x="0"/><use href="#p" x="130"/><use href="#p" x="260"/><use href="#p" x="390"/><use href="#p" x="520"/>
+          <use href="#p" x="0" y="180"/><use href="#p" x="130" y="180"/><use href="#p" x="260" y="180"/>
         </g>
-        <use href="#p" x="800" fill="url(#part)"/>
-        <use href="#p" x="900" fill="#dfe3ea"/>
+        <use href="#p" x="390" y="180" fill="url(#part)"/>
+        <use href="#p" x="520" y="180" fill="#dfe3ea"/>
       </svg>
       <span class="kpi">86.1%</span>
       <p class="say">SNS를 하는 부모 10명 중<br>8~9명이 아이 사진을 올립니다</p>
-      <p class="foot" style="margin-top:auto">세이브더칠드런 조사(2021) · 만 0~11세 자녀 부모 1,000명</p>
+      <p class="foot" style="margin-top:auto;text-align:center">세이브더칠드런 조사(2021) · 만 0~11세 자녀 부모 1,000명</p>
     </div>
 
     <div class="box">
-      <span class="word">셰어런팅</span>
-      <p class="def"><b>셰어(share) + 페어런팅(parenting)</b><br>부모가 아이 사진 · 영상을 SNS에 올리는 것</p>
+      <div class="term"><span class="word">셰어런팅</span>
+      <p class="def"><b>셰어(share) + 페어런팅(parenting)</b><br>부모가 아이 사진 · 영상을 SNS에 올리는 것</p></div>
       <div class="news">
         <figure><img src="../assets/news/kr3.png" alt=""><figcaption class="foot">뉴시스 · 2022.10.9</figcaption></figure>
         <figure><img src="../assets/news/kr1.png" alt=""><figcaption class="foot">노컷뉴스 · 2023.7.15</figcaption></figure>
