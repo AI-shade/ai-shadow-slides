@@ -18,7 +18,8 @@
   .q { margin: 0; font-size: 26px; font-weight: 700; line-height: 1.4; }
   .q b { color: var(--main); margin-right: 6px; }
   .cmt { width: 100%; border-radius: 12px; border: 2px solid var(--line); background: #fff; }
-  .cmp .shot { flex: 1; min-height: 0; width: 100%; object-fit: contain; object-position: top; border-radius: 12px; border: 2px solid var(--line); background: #fff; }
+  /* 인터뷰 화면은 내용 높이만큼만(아래 빈칸 없이) — 그 아래 실제 댓글이 위로 올라온다(11-22) */
+  .cmp .shot { flex: none; width: 100%; aspect-ratio: 816 / 412; object-fit: cover; object-position: top; border-radius: 12px; border: 2px solid var(--line); background: #fff; }
   .so { display: flex; gap: 24px; align-items: baseline; }
   .so .lab { margin: 0; color: var(--main); white-space: nowrap; }
   .so b { font-size: 32px; }
@@ -55,7 +56,7 @@
       <p class="who">직접 인터뷰 · 육아 · 교육 인플루언서 (인스타 DM)</p>
       <p class="q"><b>Q.</b>팔로워나 모르는 분이 아이가 어디 사는지, 어디 다니는지 알아챈 듯한 반응을 보인 적이 있었나요?</p>
       <img class="shot" src="../assets/interview/quote-answer.png" alt="인터뷰 답변: 밖에서 찍은 영상 배경을 보고 무슨 동네 사시네요 같은 댓글이 달렸다">
-      <p class="who">실제 육아 인플루언서 게시물에 달린 댓글</p>
+      <p class="q">실제 육아 인플루언서 게시물에 달린 댓글</p>
       <img class="cmt" src="../assets/interview/comment-masked.png" alt="실제 댓글: 뭐야 블랙벨트였어요? ○○에 있는 태권도 맞죠?">
     </div>
   </div>
