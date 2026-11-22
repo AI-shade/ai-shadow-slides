@@ -12,11 +12,12 @@
   .vision h1 .need { color: #ffb4ab; }
   .vision p { font-size: 34px; font-weight: 700; color: var(--on-main); line-height: 1.4; }
   .vision .tag { color: #fff; font-weight: 800; }
-  .bye { display: flex; align-items: baseline; gap: 32px; }
+  .bye { display: flex; align-items: center; gap: 32px; }
   .bye b { font-size: 52px; }
-  /* 네잎클로버 완성: 비전 상자 안 오른쪽에 크게 */
-  .clover { top: 230px; right: 210px; width: 230px; height: 212px; background: radial-gradient(circle at 51% 46%, #fff 0 15%, transparent 15.5%); }
-  .clover img { image-rendering: auto; }   /* 원본 로고(528px)를 줄여 쓰므로 픽셀 확대 안 함 */
+  /* 네잎클로버: 남색 상자 위에서는 반투명 가장자리가 깨져 보여 아래 흰 줄에 팀 서명처럼 둔다(표지 아래쪽과 같은 방식) */
+  .sign { margin-left: auto; display: flex; align-items: center; gap: 14px; font-size: 30px; font-weight: 800; color: var(--text-2); }
+  .sign img { width: 92px; height: auto; }
+  html.play .sign img { animation: wiggle .9s .6s ease-in-out both; }
 </style>
 </head>
 <body class="slide">
@@ -30,9 +31,8 @@
   </div>
 
   <div class="bye band">
-    <b>감사합니다</b>
+    <span class="sign"><img src="../assets/team-clover.png" alt="">팀 네잎클로드</span>
   </div>
-  <div class="clover full" aria-hidden="true"><img class="now" src="../assets/team-clover.png" alt=""></div>
   <span class="pg">17</span>
 </body>
 </html>
