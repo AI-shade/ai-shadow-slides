@@ -2,9 +2,9 @@
 <html lang="ko">
 <head><meta charset="utf-8"><link rel="stylesheet" href="../theme.css">
 <style>
-  /* 부모 입장의 네 장면(과정형): 간판 글자 읽기(사진) → 공공데이터와 맞춰 보기(문서 그림 · 데이터 출처)
-     → 지도에서 좁혀짐(공정도와 같은 결의 입체 지도) → 결과 알림(앱 문구)
-     · 아래 띠: 왜 위치는 안 찍어 주나(실험 결과 한 줄) */
+  /* 시도한 이야기(과정형): 시도 1 간판 이름 모으기(사진) → 시도 2 공공데이터와 맞춰 보기(문서 그림 · 출처)
+     → 시도 3 위치가 좁혀지나(공정도와 같은 결의 입체 지도) → 결과(26 / 410 · 그래서 정한 것)
+     · 아래 띠: 해 보며 배운 것(함정) */
   .slide { gap: 24px; }
   .sub { font-size: 30px; color: var(--text-2); font-weight: 700; }
   .flow { flex: 1; min-height: 0; display: flex; gap: 10px; }
@@ -15,6 +15,11 @@
   .no { position: absolute; left: 14px; top: 14px; z-index: 2; width: 50px; height: 50px; border-radius: 50%; background: var(--sub); color: #fff; font-size: 26px; font-weight: 900; display: grid; place-items: center; box-shadow: 0 4px 14px rgba(0,0,0,.2); }
   .scene b { font-size: 30px; line-height: 1.25; white-space: nowrap; }
   .scene p { font-size: 22px; color: var(--text-2); line-height: 1.45; height: 2.9em; }
+
+  /* ① 간판 사진 2×2 */
+  .grid4 { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 6px; background: #fff; }
+  .grid4 img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 0; }
+  .grid4 .tag { position: absolute; right: 12px; bottom: 12px; background: rgba(27,35,51,.82); color: #fff; font-size: 17px; font-weight: 700; border-radius: 8px; padding: 4px 10px; }
 
   /* ② 공공데이터 */
   .data { background: var(--main-1); padding: 18px; display: flex; flex-direction: column; gap: 8px; }
@@ -28,18 +33,18 @@
   .map { background: #fff; border: 2px solid var(--line); display: grid; place-items: center; }
   .map > svg { width: 100%; height: 100%; }
 
-  /* ④ 결과: 앱 알림 세 가지 */
-  .alerts { background: var(--sub); padding: 74px 16px 16px; display: flex; flex-direction: column; justify-content: center; gap: 10px; }
-  .alerts .no { background: var(--main); }
-  .al { background: #fff; border-radius: 14px; padding: 12px 14px; display: grid; grid-template-columns: auto 1fr; gap: 2px 10px; align-items: center; }
-  .al .lv { grid-row: span 2; font-size: 17px; font-weight: 900; border-radius: 8px; padding: 5px 8px; white-space: nowrap; }
-  .al strong { font-size: 20px; line-height: 1.3; }
-  .al span { font-size: 16px; color: var(--text-3); line-height: 1.3; }
-  .al.hi { box-shadow: 0 0 0 5px var(--main); }
-  .al.hi .lv { background: var(--main); color: #fff; }
-  .al.mid .lv { background: var(--main-2); color: var(--main); }
-  .al.lo .lv { background: var(--gray); color: var(--text-3); }
-  .al.lo strong { color: var(--text-2); }
+  /* ④ 결과 */
+  .res { background: var(--sub); color: #fff; padding: 76px 22px 20px; display: flex; flex-direction: column; gap: 10px; }
+  .res .no { background: var(--main); }
+  .res .lab { margin: 0; color: var(--on-main); }
+  .res .big { font-size: 76px; font-weight: 900; line-height: 1; letter-spacing: -.02em; }
+  .res .big small { font-size: 34px; color: #aeb6c6; font-weight: 800; }
+  .res .what { font-size: 21px; color: #d5dbe6; line-height: 1.4; }
+  .res .bar { display: flex; height: 16px; border-radius: 8px; overflow: hidden; margin: 4px 0 2px; }
+  .res .bar i { display: block; }
+  .res .so { margin-top: auto; background: #fff; color: var(--text); border-radius: 14px; padding: 12px 14px; font-size: 19px; line-height: 1.4; }
+  .res .so b { display: block; font-size: 21px; color: var(--main); white-space: normal; margin-bottom: 2px; }
+  .step { font-style: normal; font-size: 20px; font-weight: 800; color: var(--main); margin-right: 8px; }
 
   .why { display: flex; align-items: baseline; gap: 22px; }
   .why .lab { margin: 0; white-space: nowrap; }
@@ -53,14 +58,14 @@
   <header>
     <p class="sec">공개 데이터로 위치 좁히기 · 시도</p>
     <h1><span class="need">[제목 미정]</span></h1>
-    <p class="sub">사진 속 간판 하나로 어디까지 알 수 있을까요? 부모에게는 이렇게 보입니다</p>
+    <p class="sub">간판 하나로 아이가 있는 곳을 찾을 수 있을까? 공공데이터로 직접 시도해 봤습니다</p>
   </header>
 
   <div class="flow">
     <div class="scene">
-      <div class="pic"><img src="../assets/train/label_full.jpg" alt=""><span class="no">1</span></div>
-      <b>간판 글자를 읽어요</b>
-      <p>사진 속 간판 · 학원 이름을<br>찾아 글자로 읽습니다</p>
+      <div class="pic grid4"><span class="no">1</span><img src="../assets/street/s1.jpg" alt=""><img src="../assets/street/s2.jpg" alt=""><img src="../assets/street/s3.jpg" alt=""><img src="../assets/street/s4.jpg" alt=""><span class="tag">사진은 팀이 찍은 예시</span></div>
+      <b><i class="step">시도 1</i>간판 이름 모으기</b>
+      <p>공개된 거리 간판 사진 150장에서<br>가게 이름 410개를 뽑음</p>
     </div>
     <div class="arrow"></div>
     <div class="scene">
@@ -71,31 +76,33 @@
         <div class="src"><i>소상공인시장진흥공단</i><span>상가(상권)정보 <em>275만 곳</em></span></div>
         <div class="src"><i>공공 목록</i><span>어린이집 · 학교 · 학원</span></div>
       </div>
-      <b>공공데이터와 맞춰 봐요</b>
-      <p>같은 이름이 전국에<br>몇 곳 있는지 셉니다</p>
+      <b><i class="step">시도 2</i>공공데이터와 맞춰 보기</b>
+      <p>같은 이름이 전국에<br>몇 곳 있는지 셈</p>
     </div>
     <div class="arrow"></div>
     <div class="scene">
       <div class="pic map"><span class="no">3</span><svg viewBox="0 25 600 410" aria-label="입체 지도 그림"><polygon points="594.4,240.0 300.0,410.0 300.0,425.3 594.4,255.3" fill="#c4c4c4" stroke="#555" stroke-width="1.3" stroke-linejoin="round" /><polygon points="5.6,240.0 300.0,410.0 300.0,425.3 5.6,255.3" fill="#dcdcdc" stroke="#555" stroke-width="1.3" stroke-linejoin="round" /><polygon points="300.0,70.0 594.4,240.0 300.0,410.0 5.6,240.0" fill="#f7f7f4" stroke="#555" stroke-width="1.3" stroke-linejoin="round" /><polygon points="383.9,118.5 404.5,130.3 110.1,300.4 89.5,288.4" fill="#ffffff" stroke="#c9cdd4" stroke-width="1" stroke-linejoin="round" /><polygon points="216.1,118.5 510.5,288.4 489.9,300.4 195.5,130.3" fill="#ffffff" stroke="#c9cdd4" stroke-width="1" stroke-linejoin="round" /><polygon points="489.9,179.7 510.5,191.6 216.1,361.5 195.5,349.6" fill="#ffffff" stroke="#c9cdd4" stroke-width="1" stroke-linejoin="round" /><polygon points="110.1,179.7 404.5,349.6 383.9,361.5 89.5,191.6" fill="#ffffff" stroke="#c9cdd4" stroke-width="1" stroke-linejoin="round" /><polygon points="367.7,279.1 361.6,282.4 354.9,285.3 347.9,287.9 340.5,290.1 332.8,292.0 324.8,293.4 316.6,294.5 308.3,295.1 300.0,295.3 291.7,295.1 283.4,294.5 275.2,293.4 267.2,292.0 259.5,290.1 252.1,287.9 245.1,285.3 238.4,282.4 232.3,279.1 226.6,275.5 221.5,271.7 217.1,267.6 213.2,263.4 210.0,258.9 207.5,254.3 205.7,249.6 204.6,244.8 204.2,240.0 204.6,235.2 205.7,230.4 207.5,225.7 210.0,221.1 213.2,216.6 217.1,212.4 221.5,208.3 226.6,204.5 232.3,200.9 238.4,197.6 245.1,194.7 252.1,192.1 259.5,189.9 267.2,188.0 275.2,186.6 283.4,185.5 291.7,184.9 300.0,184.7 308.3,184.9 316.6,185.5 324.8,186.6 332.8,188.0 340.5,189.9 347.9,192.1 354.9,194.7 361.6,197.6 367.7,200.9 373.4,204.5 378.5,208.3 382.9,212.4 386.8,216.6 390.0,221.1 392.5,225.7 394.3,230.4 395.4,235.2 395.8,240.0 395.4,244.8 394.3,249.6 392.5,254.3 390.0,258.9 386.8,263.4 382.9,267.6 378.5,271.7 373.4,275.5" fill="rgba(12,136,64,.16)" stroke="#0c8840" stroke-width="3" stroke-linejoin="round" stroke-dasharray="9 6"/><polygon points="358.9,124.4 305.9,155.0 305.9,100.6 358.9,70.0" fill="#cfd3d9" stroke="#555" stroke-width="1.3" stroke-linejoin="round" /><polygon points="247.0,121.0 305.9,155.0 305.9,100.6 247.0,66.6" fill="#e3e5e9" stroke="#555" stroke-width="1.3" stroke-linejoin="round" /><polygon points="300.0,36.0 358.9,70.0 305.9,100.6 247.0,66.6" fill="#ffffff" stroke="#555" stroke-width="1.3" stroke-linejoin="round" /><line x1="254.4" y1="108.2" x2="298.5" y2="133.8" stroke="#aab0ba" stroke-width="1"/><line x1="254.4" y1="91.2" x2="298.5" y2="116.8" stroke="#aab0ba" stroke-width="1"/><polygon points="453.1,182.2 406.0,209.4 406.0,175.4 453.1,148.2" fill="#cfd3d9" stroke="#555" stroke-width="1.3" stroke-linejoin="round" /><polygon points="353.0,178.8 406.0,209.4 406.0,175.4 353.0,144.8" fill="#e3e5e9" stroke="#555" stroke-width="1.3" stroke-linejoin="round" /><polygon points="400.1,117.6 453.1,148.2 406.0,175.4 353.0,144.8" fill="#ffffff" stroke="#555" stroke-width="1.3" stroke-linejoin="round" /><line x1="360.4" y1="166.1" x2="398.6" y2="188.1" stroke="#aab0ba" stroke-width="1"/><polygon points="247.0,182.2 196.9,211.1 196.9,170.3 247.0,141.4" fill="#cfd3d9" stroke="#555" stroke-width="1.3" stroke-linejoin="round" /><polygon points="146.9,182.2 196.9,211.1 196.9,170.3 146.9,141.4" fill="#e3e5e9" stroke="#555" stroke-width="1.3" stroke-linejoin="round" /><polygon points="196.9,112.5 247.0,141.4 196.9,170.3 146.9,141.4" fill="#ffffff" stroke="#555" stroke-width="1.3" stroke-linejoin="round" /><line x1="154.3" y1="169.4" x2="189.6" y2="189.9" stroke="#aab0ba" stroke-width="1"/><polygon points="559.1,240.0 500.2,274.0 500.2,199.2 559.1,165.2" fill="#cfd3d9" stroke="#555" stroke-width="1.3" stroke-linejoin="round" /><polygon points="447.2,243.4 500.2,274.0 500.2,199.2 447.2,168.6" fill="#e3e5e9" stroke="#555" stroke-width="1.3" stroke-linejoin="round" /><polygon points="506.1,134.6 559.1,165.2 500.2,199.2 447.2,168.6" fill="#ffffff" stroke="#555" stroke-width="1.3" stroke-linejoin="round" /><line x1="454.6" y1="230.6" x2="492.9" y2="252.8" stroke="#aab0ba" stroke-width="1"/><line x1="454.6" y1="213.6" x2="492.9" y2="235.8" stroke="#aab0ba" stroke-width="1"/><line x1="454.6" y1="196.6" x2="492.9" y2="218.8" stroke="#aab0ba" stroke-width="1"/><polygon points="146.9,243.4 96.8,272.3 96.8,241.7 146.9,212.8" fill="#cfd3d9" stroke="#555" stroke-width="1.3" stroke-linejoin="round" /><polygon points="40.9,240.0 96.8,272.3 96.8,241.7 40.9,209.4" fill="#e3e5e9" stroke="#555" stroke-width="1.3" stroke-linejoin="round" /><polygon points="90.9,180.5 146.9,212.8 96.8,241.7 40.9,209.4" fill="#ffffff" stroke="#555" stroke-width="1.3" stroke-linejoin="round" /><polygon points="456.1,296.1 403.1,326.7 403.1,279.1 456.1,248.5" fill="#cfd3d9" stroke="#555" stroke-width="1.3" stroke-linejoin="round" /><polygon points="355.9,299.5 403.1,326.7 403.1,279.1 355.9,251.9" fill="#e3e5e9" stroke="#555" stroke-width="1.3" stroke-linejoin="round" /><polygon points="408.9,221.3 456.1,248.5 403.1,279.1 355.9,251.9" fill="#ffffff" stroke="#555" stroke-width="1.3" stroke-linejoin="round" /><line x1="363.3" y1="286.8" x2="395.7" y2="305.5" stroke="#aab0ba" stroke-width="1"/><polygon points="241.1,301.2 194.0,328.4 194.0,267.2 241.1,240.0" fill="#cfd3d9" stroke="#555" stroke-width="1.3" stroke-linejoin="round" /><polygon points="146.9,301.2 194.0,328.4 194.0,267.2 146.9,240.0" fill="#e3e5e9" stroke="#555" stroke-width="1.3" stroke-linejoin="round" /><polygon points="194.0,212.8 241.1,240.0 194.0,267.2 146.9,240.0" fill="#ffffff" stroke="#555" stroke-width="1.3" stroke-linejoin="round" /><line x1="154.3" y1="288.5" x2="186.6" y2="307.1" stroke="#aab0ba" stroke-width="1"/><line x1="154.3" y1="271.5" x2="186.6" y2="290.1" stroke="#aab0ba" stroke-width="1"/><polygon points="355.9,360.7 302.9,391.3 302.9,353.9 355.9,323.3" fill="#cfd3d9" stroke="#555" stroke-width="1.3" stroke-linejoin="round" /><polygon points="249.9,360.7 302.9,391.3 302.9,353.9 249.9,323.3" fill="#e3e5e9" stroke="#555" stroke-width="1.3" stroke-linejoin="round" /><polygon points="302.9,292.7 355.9,323.3 302.9,353.9 249.9,323.3" fill="#ffffff" stroke="#555" stroke-width="1.3" stroke-linejoin="round" /><line x1="257.3" y1="348.0" x2="295.6" y2="370.0" stroke="#aab0ba" stroke-width="1"/><ellipse cx="300.0" cy="240.0" rx="12" ry="5" fill="rgba(0,0,0,.22)"/><path d="M300.0,240.0 C294.0,218.0 276.0,206.0 276.0,188.0 A24,24 0 1 1 324.0,188.0 C324.0,206.0 306.0,218.0 300.0,240.0Z" fill="#e5483b" stroke="#a8322a" stroke-width="1.5"/><circle cx="300.0" cy="188.0" r="9" fill="#fff"/><text x="330.0" y="178.0" font-size="30" font-weight="900" fill="#0c8840" style="paint-order:stroke;stroke:#fff;stroke-width:6px;stroke-linejoin:round">반경 약 300m</text></svg></div>
-      <b>지도에서 좁혀지나 봐요</b>
-      <p>드문 이름이면<br>반경 안으로 좁혀집니다</p>
+      <b><i class="step">시도 3</i>위치가 좁혀지나 보기</b>
+      <p>같은 이름이 한 동네에만 있으면<br>그 근처로 좁혀짐</p>
     </div>
     <div class="arrow"></div>
     <div class="scene">
-      <div class="pic alerts">
+      <div class="pic res">
         <span class="no">4</span>
-        <div class="al hi"><span class="lv">위험</span><strong>전국에 1곳뿐인 이름이에요</strong><span>“○○태권도” · 이 근처까지 좁혀져요</span></div>
-        <div class="al mid"><span class="lv">주의</span><strong>3곳이 모두 ○○구에 있어요</strong><span>“○○학원” · 구 하나로 좁혀져요</span></div>
-        <div class="al lo"><span class="lv">낮음</span><strong>같은 이름이 전국에 117곳</strong><span>“○○치킨” · 좁혀지지 않아요</span></div>
+        <span class="lab">한 곳까지 좁혀진 간판 이름</span>
+        <span class="big">26<small> / 410</small></span>
+        <div class="bar"><i style="flex:214;background:#5b6579"></i><i style="flex:64;background:#7f8aa0"></i><i style="flex:3;background:var(--main-3)"></i><i style="flex:26;background:var(--main)"></i><i style="flex:103;background:#3a4560"></i></div>
+        <p class="what">대부분은 프랜차이즈 · 흔한 말이라<br>전국에 여러 곳 (치킨 20,180곳)</p>
+        <div class="so"><b>그래서 정한 것</b>위치를 찍어 주는 기능은 만들지 않고, «이 이름은 전국 ○곳뿐» 알림만 넣음</div>
       </div>
-      <b>드문 이름일수록 <span class="main">위험</span></b>
-      <p>앱 알림 문구를 옮겼어요<br>(이름은 예시)</p>
+      <b><i class="step">결과</i>대부분 안 좁혀짐</b>
+      <p>찍어 주면 악용될 수 있어<br>드문 정도만 알려 주기로</p>
     </div>
   </div>
 
   <div class="why band">
-    <span class="lab">왜 위치는 안 찍어 주나</span>
-    <b>간판 이름 410개를 전국과 맞춰 보니 한 곳까지 좁혀진 건 <em>26개뿐</em> · 찍어 주면 악용될 수 있음</b>
+    <span class="lab">해 보며 배운 것</span>
+    <b>대전 서구만 보면 «푸라닭 1곳» → 전국으로 넓히면 <em>117곳</em> · 한 지역만 보면 틀린다</b>
     <span class="foot">11.3~11.12 · 0원</span>
   </div>
   <span class="pg">09</span>
