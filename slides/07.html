@@ -2,51 +2,51 @@
 <html lang="ko">
 <head><meta charset="utf-8"><link rel="stylesheet" href="../theme.css">
 <style>
-  /* 좌: 사용자 유입(인스타 프로필 + 게시물 첫 장 3개) · 우: 다음 계획 4단계 */
-  .row2 { flex: 1; min-height: 0; display: grid; grid-template-columns: 1.3fr 1fr; gap: 36px; }
-  .ig { display: flex; flex-direction: column; gap: 16px; min-height: 0; }
-  .ig .lab { margin: 0; }
-  .ig .prof { width: 100%; max-width: 520px; border-radius: 12px; display: block; }
-  .ig .posts { flex: 1; min-height: 0; display: flex; align-items: center; gap: 8px; }
-  .ig .post { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px; text-align: center; }
-  .ig .post img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); box-shadow: 0 8px 20px rgba(20, 30, 60, .14); }
-  .ig .post span { font-size: 21px; font-weight: 700; color: var(--text-2); }
-  .ig .posts .arrow { flex: 0 0 26px; height: 18px; margin-bottom: 30px; }
-  .ig b { font-size: 28px; line-height: 1.35; }
-  .plan { display: flex; flex-direction: column; gap: 16px; }
-  .plan .lab { margin: 0; }
-  .plan .box { flex: 1; padding: 22px 32px; display: flex; flex-direction: column; justify-content: center; gap: 4px; }
-  .plan b { font-size: 32px; }
-  .plan p { font-size: 24px; color: var(--text-2); }
+  /* 타임라인: 네 시점(큰 숫자) 위 · 가는 선과 점 · 한 일 아래 · 맨 끝(결과)만 강조 · 아래 정답표 숫자 */
+  .slide { gap: 36px; }
+  .tl { flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: auto 64px auto; row-gap: 10px; column-gap: 40px; position: relative; align-content: center; }
+  .pt { position: relative; display: flex; align-items: center; }
+  .pt::before { content: ""; position: absolute; left: 0; right: -40px; top: calc(50% - 3px); height: 6px; background: var(--line); }
+  .pt.last::before { right: 0; background: linear-gradient(90deg, var(--line), var(--main)); }
+  .when { font-size: 24px; font-weight: 700; color: var(--text-3); }
+  .num { font-size: 84px; font-weight: 900; line-height: 1.05; letter-spacing: -.02em; white-space: nowrap; }
+  .num small { font-size: 30px; font-weight: 800; margin-left: 6px; }
+  .dot { align-self: center; width: 34px; height: 34px; border-radius: 50%; background: var(--bg); border: 6px solid var(--text-3); position: relative; z-index: 1; }
+  .what b { display: block; font-size: 32px; margin-bottom: 8px; }
+  .what p { font-size: 24px; color: var(--text-2); line-height: 1.5; }
+  .last .num, .last .when { color: var(--main); }
+  .last .dot { border-color: var(--main); background: var(--main); box-shadow: 0 0 0 8px var(--main-2); }
+  .score { display: flex; align-items: baseline; gap: 44px; }
+  .score .lab { margin: 0; white-space: nowrap; }
+  .score b { font-size: 52px; font-weight: 900; color: var(--main); }
+  .score span { font-size: 24px; color: var(--text-2); }
 </style>
 </head>
 <body class="slide">
-  <nav class="prog"><span class="done" style="--n:2"></span><span class="done" style="--n:1"></span><span class="done" style="--n:1"></span><span class="done" style="--n:1"></span><span class="on" style="--n:2"></span></nav>
   <header>
-    <p class="sec">운영 · 다음 계획</p>
-    <h1>인스타 계정은 이미 운영 중이고, 다음 한 달은 이것부터 고칩니다</h1>
+    <p class="sec">만든 과정 · 타임라인</p>
+    <h1><span class="need">[제목 미정]</span></h1>
   </header>
 
-  <div class="row2">
-    <div class="ig box">
-      <span class="lab">이미 한 것 · 인스타 @child_shadow 운영</span>
-      <img class="prof" src="../assets/insta/profile.png" alt="인스타그램 child_shadow 프로필">
-      <div class="posts">
-        <div class="post"><img src="../assets/insta/post1.png" alt="어린이집 사칭 문자 게시물"><span>① 경각심</span></div><div class="arrow"></div>
-        <div class="post"><img src="../assets/insta/post2.png" alt="다른 곳 7개 찾기 게시물"><span>② 직접 찾기</span></div><div class="arrow"></div>
-        <div class="post"><img src="../assets/insta/post3.png" alt="올리기 전에 30초만 게시물"><span>③ 30초 사용법</span></div>
-      </div>
-      <b>위험을 먼저 보여 주고, 직접 찾아보게 한 뒤, 사용법을 알려 줍니다</b>
-      <p class="foot">11월부터 게시물 8개 올림</p>
-    </div>
+  <div class="tl">
+    <div><p class="when">8월 ~ 9.5 · 아이디어톤</p><p class="num">8.26<small>웹에 배포</small></p></div>
+    <div><p class="when">10월 · 멘토링</p><p class="num">33→12<small>장</small></p></div>
+    <div><p class="when">11월 · 멘토링</p><p class="num">503<small>장</small></p></div>
+    <div class="last"><p class="when">결과</p><p class="num">77%→0%</p></div>
 
-    <div class="plan">
-      <span class="lab">다음 계획</span>
-      <div class="box on"><b>1. 위치 모델을 앱에 붙임</b><p>우리 서버에서 실행 · 사진을 외부로 보내지 않음</p></div>
-      <div class="box"><b>2. 시험 사진 102장으로 다시 잼</b><p>학습에 쓰지 않고 고정해 둔 사진</p></div>
-      <div class="box"><b>3. 놓친 단서를 사용자가 직접 추가</b><p>지금은 잘못 잡은 것을 빼기만 할 수 있음</p></div>
-      <div class="box"><b>4. 앱이 꺼지는 문제 고치기</b><p>체험자 3명이 겪음 (보정 중 종료 포함)</p></div>
-    </div>
+    <span class="pt"><span class="dot"></span></span><span class="pt"><span class="dot"></span></span><span class="pt"><span class="dot"></span></span><span class="pt last"><span class="dot"></span></span>
+
+    <div class="what"><b>첫 버전을 만들어 배포</b><p>8월 커밋 116개<br>진단 · 위험 요소 지도 · 검수 · 보정 · 재검증<br>마스크가 얼굴 · 손을 여는 픽셀 0</p></div>
+    <div class="what"><b>고쳐 쓰기</b><p>배경 흐림 때 손 · 팔이 잘린 사진<br>간판 글자를 AI로 다시 그리기<br>옷 손보기 선택지 20 → 3개</p></div>
+    <div class="what"><b>마크 모델 직접 학습</b><p>가릴 곳 2,367곳 표시 · 폰 안에서 실행 (11.18)<br>11.2 재배포: 아이폰 튕김 고침 (761 → 176MB)<br>간판 찾아 여는 비율 <span class="need">[33% 또는 40%]</span></p></div>
+    <div class="what last"><b>실제 사진으로 시연</b><p>사람 둘레에 남던 옛 배경 77% → 0%<br>체험자 17/18명<br>"생각 못 한 위험을 알게 됐다" (지인)</p></div>
+  </div>
+
+  <div class="score band">
+    <span class="lab">사진 103장 정답표</span>
+    <p><b>4</b><span> / 위험 사진 71장 중 놓침</span></p>
+    <p><b>5</b><span> / 숨은 위험 8장 중 찾음</span></p>
+    <span class="foot" style="margin-left:auto">이 세트를 보고 고친 부분 있음 · 다시 재면 ±7%p 흔들림</span>
   </div>
   <span class="pg">07</span>
 </body>

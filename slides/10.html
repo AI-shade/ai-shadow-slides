@@ -2,24 +2,68 @@
 <html lang="ko">
 <head><meta charset="utf-8"><link rel="stylesheet" href="../theme.css">
 <style>
-  /* 감사합니다(크게) + 서비스 한 줄 · QR → 팀 한 줄 */
-  .end { flex: 1; min-height: 0; display: grid; grid-template-columns: 1.6fr 1fr; gap: 60px; align-items: center; }
-  .end .left { display: flex; flex-direction: column; gap: 32px; }
-  .end .thanks { font-size: 140px; font-weight: 800; line-height: 1; letter-spacing: -.02em; }
-  .end .one { font-size: 40px; font-weight: 700; color: var(--main); }
-  .end .qr { height: 460px; }
+  /* 마스킹 모델 학습 ①: 좌 11가지 경우 막대(대표 사진) · 우 라벨 사진 → 가린다 / 안 가린다 */
+  .slide { gap: 30px; }
+  .two { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+  .col { display: flex; flex-direction: column; gap: 14px; min-height: 0; }
+  .ct { font-size: 34px; font-weight: 800; line-height: 1.2; }
+  .ct i { font-style: normal; color: var(--main); margin-right: 8px; }
+  .cases { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 6px; }
+  .cases .r { flex: 1; min-height: 0; display: grid; grid-template-columns: 92px 170px 1fr 92px; gap: 18px; align-items: center; }
+  .cases img { width: 92px; height: 100%; max-height: 52px; object-fit: cover; border-radius: 8px; }
+  .cases b { font-size: 25px; }
+  .cases .bar { height: 22px; background: var(--gray-2); border-radius: 6px; overflow: hidden; }
+  .cases .bar span { display: block; height: 100%; background: var(--main); border-radius: 6px; }
+  .cases .n { font-size: 30px; font-weight: 900; color: var(--main); text-align: right; }
+  .cases .n small { font-size: 18px; font-weight: 600; color: var(--text-3); margin-left: 2px; }
+  .sum { font-size: 24px; color: var(--text-2); }
+  .sum b { color: var(--text); }
+  .shot { flex: 1; min-height: 0; width: 100%; object-fit: cover; border-radius: 16px; }
+  .rule { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .rule div { border-radius: 16px; padding: 18px 22px; display: flex; flex-direction: column; gap: 6px; }
+  .rule b { font-size: 30px; }
+  .rule span { font-size: 25px; line-height: 1.45; }
+  .rule .yes { background: var(--main-1); }
+  .rule .yes b { color: var(--main); }
+  .rule .no { background: var(--gray-2); }
+  .rule .no b, .rule .no span { color: var(--text-3); }
 </style>
 </head>
 <body class="slide">
-  <div class="end">
-    <div class="left">
-      <img src="../assets/ishadow-wordmark.svg" alt="아이SHADOW" style="height:64px;align-self:flex-start">
-      <div class="thanks">감사합니다</div>
-      <p class="one">올리기 전에 한 번 확인하는 습관을 만들겠습니다.<br>지금 바로 써 볼 수 있습니다.</p>
+  <header>
+    <p class="sec">마스킹 모델 학습 ① 데이터 만들기</p>
+    <h1><span class="need">[제목 미정]</span></h1>
+  </header>
+
+  <div class="two">
+    <div class="col">
+      <p class="ct"><i>①</i><span class="main">11가지 경우</span>로 나눠 각자 약 100장씩 촬영</p>
+      <div class="cases">
+        <div class="r"><img src="../assets/train/case_occluded.jpg" alt=""><b>가려진 간판</b><div class="bar"><span style="width:100%"></span></div><span class="n">80<small>장</small></span></div>
+        <div class="r"><img src="../assets/train/case_cut.jpg" alt=""><b>잘린 간판</b><div class="bar"><span style="width:76.2%"></span></div><span class="n">61<small>장</small></span></div>
+        <div class="r"><img src="../assets/train/case_rooftop.jpg" alt=""><b>옥상 간판</b><div class="bar"><span style="width:72.5%"></span></div><span class="n">58<small>장</small></span></div>
+        <div class="r"><img src="../assets/train/case_horizontal.jpg" alt=""><b>가로 간판</b><div class="bar"><span style="width:71.2%"></span></div><span class="n">57<small>장</small></span></div>
+        <div class="r"><img src="../assets/train/case_vertical.jpg" alt=""><b>세로 간판</b><div class="bar"><span style="width:60%"></span></div><span class="n">48<small>장</small></span></div>
+        <div class="r"><img src="../assets/train/case_bag.jpg" alt=""><b>가방</b><div class="bar"><span style="width:47.5%"></span></div><span class="n">38<small>장</small></span></div>
+        <div class="r"><img src="../assets/train/case_standee.jpg" alt=""><b>입간판</b><div class="bar"><span style="width:43.8%"></span></div><span class="n">35<small>장</small></span></div>
+        <div class="r"><img src="../assets/train/case_safe.jpg" alt=""><b>가릴 곳 없음</b><div class="bar"><span style="width:42.5%"></span></div><span class="n">34<small>장</small></span></div>
+        <div class="r"><img src="../assets/train/case_uniform.jpg" alt=""><b>교복</b><div class="bar"><span style="width:42.5%"></span></div><span class="n">34<small>장</small></span></div>
+        <div class="r"><img src="../assets/train/case_vehicle.jpg" alt=""><b>차량</b><div class="bar"><span style="width:41.2%"></span></div><span class="n">33<small>장</small></span></div>
+        <div class="r"><img src="../assets/train/case_banner.jpg" alt=""><b>현수막</b><div class="bar"><span style="width:31.2%"></span></div><span class="n">25<small>장</small></span></div>
+      </div>
+      <p class="sum"><b>합계 503장</b> · 어려운 사진(가려진 · 잘린 간판)과 가릴 곳 없는 사진까지 넣음</p>
     </div>
-    <div class="slot qr">서비스 주소 · QR<span class="need">[추가 자료 필요]</span></div>
+
+    <div class="col">
+      <p class="ct"><i>②</i>라벨링 · 가릴 곳에 상자 치기</p>
+      <img class="shot" src="../assets/train/label_full.jpg" alt="">
+      <p class="sum"><b>503장에 2,367곳</b> · 이 상자가 모델이 배우는 정답</p>
+      <div class="rule">
+        <div class="yes"><b>가린다</b><span>가게 · 학원 이름<br>전화번호 · 교복 기관명</span></div>
+        <div class="no"><b>안 가린다</b><span>프랜차이즈 · 일반 문구<br>메뉴 · 가격</span></div>
+      </div>
+    </div>
   </div>
-  <p class="foot band">팀 네잎클로드 · 근오 · 영우 · 현미 · 윤서 · 민석</p>
-  <span class="pg">09</span>
+  <span class="pg">10</span>
 </body>
 </html>

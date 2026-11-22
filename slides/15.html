@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><link rel="stylesheet" href="../theme.css">
+<style>
+  /* 확장형 계단: 같은 도형을 점점 크게 · 진하게, 마지막(해외)만 메인 색 */
+  .slide { gap: 30px; }
+  .stairs { flex: 1; }
+  .stairs > div { justify-content: flex-end; gap: 6px; }
+  .stairs .when { font-size: 22px; font-weight: 700; color: var(--text-3); }
+  .stairs b { font-size: 36px; }
+  .stairs p { font-size: 22px; line-height: 1.4; color: var(--text-2); }
+  .s1 { height: 26%; background: var(--gray-2); }
+  .s2 { height: 38%; background: var(--main-1); }
+  .s3 { height: 50%; background: var(--main-2); }
+  .s4 { height: 62%; background: var(--main-2); }
+  .s5 { height: 76%; background: var(--main-3); }
+  .s6 { height: 100%; background: var(--main); flex: 1.7 !important; }
+  .s6 b, .s6 p, .s6 .when { color: #fff; }
+  .s6 .when .need { color: #fff; background: rgba(0,0,0,.18); border-radius: 6px; padding: 0 6px; }
+</style>
+</head>
+<body class="slide">
+  <header>
+    <p class="sec">확장 계획</p>
+    <h1><span class="need">[제목 미정]</span></h1>
+  </header>
+
+  <div class="stairs">
+    <div class="s1"><span class="when">26.12</span><b>지금</b><p>웹 무료 체험</p></div>
+    <div class="s2"><span class="when">27 상반기</span><b>베타</b><p>베타 테스트 완료</p></div>
+    <div class="s3"><span class="when">27 하반기</span><b>출시</b><p>정식 출시</p></div>
+    <div class="s4"><span class="when need">[시기 미정]</span><b>연계</b><p>키즈 세이프 서비스 연계</p></div>
+    <div class="s5"><span class="when need">[시기 미정]</span><b>제휴</b><p>보험사 · 통신사 제휴</p></div>
+    <div class="s6"><span class="when"><span class="need">[시기 미정]</span></span><b>해외</b><p>아이 사진 법이 생긴 나라부터<br>프랑스 아이 사진 보호법 (2024) · 이탈리아 · 스페인 법 추진 중<br>나라마다 바꿀 것: 글자 읽기 · 장소 데이터</p></div>
+  </div>
+
+  <p class="foot band">국내에서 자리 잡은 뒤 해외로, 한 번에 말고 차례로 · <span class="need">연도는 우리 일정으로 확정 필요</span></p>
+  <span class="pg">15</span>
+</body>
+</html>

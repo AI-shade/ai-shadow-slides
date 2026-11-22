@@ -5,7 +5,7 @@
 :root {
   /* 4색 */
   --bg: #ffffff;
-  --main: #2f6fed;
+  --main: #0c8840;
   --sub: #1f2a44;
   --text: #1b2333;
 
@@ -15,12 +15,12 @@
   --line: #d9dde5;
   --gray: #eceff4;
   --gray-2: #f6f7f9;
-  --main-1: #f1f5fe;
-  --main-2: #dce7fd;
-  --main-3: #b9cffb;
-  --main-soft: #e8f0fe;
-  --main-beam: rgba(47, 111, 237, .30);
-  --on-main: #e3ecff;          /* 메인 · 서브 바탕 위의 옅은 글자 */
+  --main-1: #f1fef6;
+  --main-2: #dcfdea;
+  --main-3: #b9fbd4;
+  --main-soft: #e8fef1;
+  --main-beam: rgba(12, 136, 64, .30);
+  --on-main: #e3ffef;          /* 메인 · 서브 바탕 위의 옅은 글자 */
   --shadow: 0 16px 40px rgba(20, 30, 60, .22);
 
   /* 작업 표시 — 자료가 들어오면 사라질 글자 */

@@ -2,25 +2,40 @@
 <html lang="ko">
 <head><meta charset="utf-8"><link rel="stylesheet" href="../theme.css">
 <style>
-  /* 위: 대회 이름 · 좌: 문제(가장 크게) → 우리가 하는 것 · 우: 그림 자리(미정) · 아래: 제품 · 팀 이름 */
+  /* 표지 겸 제품 소개: 좌 문제 한 줄 → 서비스 이름(가장 크게) → 하는 일 · 우 폰 화면 두 장 · 아래 브랜드 */
+  .slide { gap: 32px; }
+  .cover { flex: 1; min-height: 0; display: grid; grid-template-columns: 1.6fr 1fr; gap: 56px; }
+  .cover .left { display: flex; flex-direction: column; justify-content: center; gap: 22px; }
+  .hook { font-size: 32px; font-weight: 700; color: var(--text-2); }
+  .cover h1 { font-size: 70px; line-height: 1.22; }
+  .does { font-size: 28px; line-height: 1.5; color: var(--text-2); }
+  .flow { display: flex; align-items: center; gap: 16px; font-size: 30px; font-weight: 800; }
+  .flow .arrow { flex: 0 0 48px; height: 26px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .phones { position: relative; }
+  .phones .slot { position: absolute; width: 46%; aspect-ratio: 9 / 18.5; border-radius: 48px; border: 6px solid var(--sub); background: var(--gray-2); }
+  .phones .p1 { left: 2%; bottom: 0; }
+  .phones .p2 { right: 2%; top: 0; }
   .brand { display: flex; align-items: center; gap: 24px; }
   .brand img { height: 56px; }
-  .cover { flex: 1; min-height: 0; display: grid; grid-template-columns: 58fr 42fr; gap: 72px; }
-  .cover .left { display: flex; flex-direction: column; justify-content: center; gap: 44px; }
-  .cover h1 { font-size: 76px; line-height: 1.22; }
-  .cover .we { font-size: 36px; font-weight: 700; color: var(--main); line-height: 1.4; }
-  .art { align-self: center; height: 70%; }
 </style>
 </head>
 <body class="slide">
-  <p class="foot">[멋쟁이사자처럼] Campus AX-Ton 해커톤 본선 · 발표자 이영우</p>
+  <p class="foot">[멋쟁이사자처럼] Campus AX-Ton 해커톤 본선 · 팀 네잎클로드 · 발표자 이영우</p>
 
   <div class="cover">
     <div class="left">
-      <h1>아이 사진 속 간판 하나가,<br>아이가 다니는 곳을<br>알려 줍니다</h1>
-      <p class="we">저희는 아이는 그대로 두고,<br>사진 속 위치 단서만 찾아 지웁니다.</p>
+      <p class="hook">아이 사진 속 간판 하나가, 아이가 다니는 곳을 알려 줍니다</p>
+      <h1>아이 사진 속 위치 단서를 지우고<br>보정해 주는 서비스,<br><span class="main">아이SHADOW</span></h1>
+      <p class="need foot">[본제목 문구 확정 필요]</p>
+      <p class="does">사는 곳 · 다니는 곳을 알려 주는 단서를 찾아 표시하고,<br>아이는 그대로 둔 채 그 부분만 지우고 다시 그립니다.</p>
+      <div class="flow"><span>찾기</span><div class="arrow"></div><span>지우고 보정</span><div class="arrow"></div><span class="main">다시 확인</span></div>
+      <div class="chips"><span class="chip on">간판</span><span class="chip on">교복 · 원복</span><span class="chip">이름표</span><span class="chip">현수막</span><span class="chip">차량</span><span class="chip">가방</span></div>
     </div>
-    <div class="slot art">그림 자리 (미정)</div>
+    <div class="phones">
+      <div class="slot p1">폰 화면 ①<span class="need">[새 화면 필요]</span></div>
+      <div class="slot p2">폰 화면 ②<span class="need">[새 화면 필요]</span></div>
+    </div>
   </div>
 
   <div class="brand band">

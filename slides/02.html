@@ -2,87 +2,64 @@
 <html lang="ko">
 <head><meta charset="utf-8"><link rel="stylesheet" href="../theme.css">
 <style>
-  /* 흐름: 부모 SNS 공유(86.1%) → '셰어런팅'이라는 말이 생김 → 그 사진이 악용된 사례(국내 · 해외) */
-  .slide { gap: 28px; }
-  .flow3 { flex: 1; min-height: 0; display: grid; grid-template-columns: 330px 72px 400px 72px 1fr; align-items: stretch; }
-  .flow3 > .arrow { align-self: center; flex: none; width: 48px; height: 28px; margin: 0 12px; }
-  .col { display: flex; flex-direction: column; gap: 12px; min-height: 0; }
-  .step { font-size: 22px; font-weight: 800; color: var(--main); }
-  .stat { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 12px; }
-  /* 86.1%를 부모 10명 그림으로: 8명은 칠하고 9번째는 60%만 칠함 (템플릿 239장 점 그래프를 사람 모양으로) */
-  .people { display: grid; grid-template-columns: repeat(5, 48px); gap: 14px 16px; }
-  .people i { width: 48px; height: 77px; background: linear-gradient(90deg, var(--main) var(--f, 100%), var(--gray) var(--f, 100%));
-              -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 64'%3E%3Ccircle cx='20' cy='12' r='11'/%3E%3Cpath d='M4 64V38a16 16 0 0 1 32 0v26z'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 64'%3E%3Ccircle cx='20' cy='12' r='11'/%3E%3Cpath d='M4 64V38a16 16 0 0 1 32 0v26z'/%3E%3C/svg%3E") center / contain no-repeat; }
-  .people i.off { --f: 0%; }
-  .stat .kpi { font-size: 88px; }
-  .stat p { font-size: 28px; line-height: 1.35; font-weight: 600; }
-  .word { background: var(--main-soft); border-radius: 18px; padding: 22px 24px; }
-  .word b { display: block; font-size: 48px; font-weight: 800; color: var(--main); }
-  .word p { font-size: 22px; line-height: 1.4; color: var(--text-2); margin-top: 6px; }
-  .shot { flex: 1 1 0; min-height: 0; background: #fff; border: 1px solid var(--line); border-radius: 10px; overflow: hidden;
-          box-shadow: 0 10px 26px rgba(20, 30, 60, .16); }
-  .shot img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; }
-  .case .shot img { object-fit: contain; object-position: top center; }
-  .src { font-size: 18px; color: var(--text-3); font-weight: 600; }
-  .cases { background: var(--gray-2); border-radius: 20px; padding: 16px 20px; display: grid; grid-template-rows: auto auto auto 1fr; gap: 8px 16px; grid-template-columns: 1fr 1fr; min-height: 0; flex: 1; }
-  .cases .rowlab { grid-column: 1 / -1; font-size: 22px; font-weight: 800; }
-  .case.wide { grid-column: 1 / -1; }
-  .case { display: flex; flex-direction: column; gap: 4px; min-height: 0; }
-  .bubble { position: relative; background: var(--bg); box-shadow: 0 6px 16px rgba(20, 30, 60, .10); border-radius: 22px 22px 22px 6px; padding: 14px 18px; font-size: 21px; font-weight: 600; line-height: 1.4; }
-  .bubble::before { content: ""; position: absolute; left: -9px; bottom: 0; width: 18px; height: 16px; background: var(--bg); clip-path: polygon(100% 0, 100% 100%, 0 100%); }
+  /* 나열형 두 칸: ① 숫자(부모 10명 그림) → ② 그래서 생긴 말(기사 두 장) · 아래 한 줄 */
+  .two { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 1.35fr; gap: 32px; }
+  .two .box { display: flex; flex-direction: column; gap: 18px; min-height: 0; }
+  .two .lab { margin: 0; }
+  .people { width: 100%; height: auto; }
+  .kpi { color: var(--main); font-size: 128px; }
+  .say { font-size: 34px; font-weight: 700; line-height: 1.4; }
+  .word { font-size: 80px; font-weight: 900; color: var(--main); line-height: 1; letter-spacing: -.02em; }
+  .def { font-size: 28px; color: var(--text-2); line-height: 1.5; }
+  .def b { color: var(--text); }
+  .news { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .news figure { margin: 0; display: flex; flex-direction: column; gap: 8px; min-height: 0; }
+  .news img { flex: 1; min-height: 0; width: 100%; object-fit: cover; object-position: top; border-radius: 14px; border: 2px solid var(--line); background: #fff; }
+  .so { display: flex; gap: 24px; align-items: baseline; }
+  .so .lab { margin: 0; color: var(--main); white-space: nowrap; }
+  .so b { font-size: 34px; }
 </style>
 </head>
 <body class="slide">
-  <nav class="prog"><span class="on" style="--n:2"></span><span style="--n:1"></span><span style="--n:1"></span><span style="--n:1"></span><span style="--n:2"></span></nav>
   <header>
-    <p class="sec">문제 상황</p>
+    <p class="sec">시장 · 셰어런팅</p>
     <h1><span class="need">[제목 미정]</span></h1>
   </header>
 
-  <div class="flow3">
-    <div class="col">
-      <span class="step">① 부모의 SNS</span>
-      <div class="stat">
-        <div class="people" aria-label="부모 10명 중 8.6명"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i style="--f:60%"></i><i class="off"></i></div>
-        <div class="kpi main">86.1%</div>
-        <p>SNS를 하는 부모 10명 중<br>8~9명이 아이 사진을 올림</p>
-        <span class="src">세이브더칠드런 조사(2021)<br>만 0~11세 자녀 부모 1,000명</span>
-      </div>
+  <div class="two">
+    <div class="box">
+      <span class="lab">① 부모의 SNS</span>
+      <svg class="people" viewBox="0 0 1000 170" aria-hidden="true">
+        <defs><linearGradient id="part"><stop offset="60%" stop-color="#0c8840"/><stop offset="60%" stop-color="#dfe3ea"/></linearGradient></defs>
+        <g id="p"><circle cx="50" cy="34" r="26"/><rect x="18" y="70" width="64" height="96" rx="28"/></g>
+        <g fill="#0c8840">
+          <use href="#p" x="0"/><use href="#p" x="100"/><use href="#p" x="200"/><use href="#p" x="300"/>
+          <use href="#p" x="400"/><use href="#p" x="500"/><use href="#p" x="600"/><use href="#p" x="700"/>
+        </g>
+        <use href="#p" x="800" fill="url(#part)"/>
+        <use href="#p" x="900" fill="#dfe3ea"/>
+      </svg>
+      <span class="kpi">86.1%</span>
+      <p class="say">SNS를 하는 부모 10명 중<br>8~9명이 아이 사진을 올립니다</p>
+      <p class="foot" style="margin-top:auto">세이브더칠드런 조사(2021) · 만 0~11세 자녀 부모 1,000명</p>
     </div>
-    <div class="arrow"></div>
 
-    <div class="col">
-      <span class="step">② 그래서 생긴 말</span>
-      <div class="word"><b>셰어런팅</b><p>셰어(share) + 페어런팅(parenting).<br>부모가 아이 사진 · 영상을 SNS에 올리는 것</p></div>
-      <span class="src">뉴시스 · 2022.10.9</span>
-      <div class="shot"><img src="../assets/news/kr3.png" alt="페북·인스타에 올린 아이 영상, 괜찮을까요"></div>
-      <span class="src">노컷뉴스 · 2023.7.15</span>
-      <div class="shot"><img src="../assets/news/kr1.png" alt="SNS에 아이 사진 올렸는데…정작 저커버그는 아이 얼굴 가렸다?"></div>
-    </div>
-    <div class="arrow"></div>
-
-    <div class="col">
-      <span class="step">③ 사진 속 배경이 위치를 알려 줍니다</span>
-      <div class="cases">
-        <span class="rowlab">국내 · 직접 인터뷰</span>
-        <div class="case wide">
-          <span class="src">육아·교육 인플루언서 · 인스타 DM</span>
-          <div class="bubble">"밖에서 찍은 영상 배경을 보고 '무슨 동네 사시네요' 같은 댓글이 달렸어요."</div>
-        </div>
-        <span class="rowlab">해외 · 경찰 경고</span>
-        <div class="case">
-          <span class="src">호주 연방경찰 · 2025.1.27 · The Nightly</span>
-          <div class="shot"><img src="../assets/news/p_au.png" alt="Unfortunate reality: AFP warns parents about posting back-to-school photos online"></div>
-        </div>
-        <div class="case">
-          <span class="src">뉴질랜드 경찰 · 2025.1.31 · RNZ</span>
-          <div class="shot"><img src="../assets/news/p_nz.png" alt="Why parents should think twice before posting back-to-school photos of their children"></div>
-        </div>
+    <div class="box">
+      <span class="lab">② 그래서 생긴 말</span>
+      <span class="word">셰어런팅</span>
+      <p class="def"><b>셰어(share) + 페어런팅(parenting)</b><br>부모가 아이 사진 · 영상을 SNS에 올리는 것</p>
+      <div class="news">
+        <figure><img src="../assets/news/kr3.png" alt=""><figcaption class="foot">뉴시스 · 2022.10.9</figcaption></figure>
+        <figure><img src="../assets/news/kr1.png" alt=""><figcaption class="foot">노컷뉴스 · 2023.7.15</figcaption></figure>
       </div>
     </div>
   </div>
 
-  <p class="foot">호주 연방경찰: 범죄자는 교복 로고나 사진 배경의 단서로 아이 정보를 모은다 · 뉴질랜드 경찰: 교복 · 학교 건물이 찍힌 사진은 낮 동안 아이가 어디 있는지 알려 준다 · 기사는 각 매체 화면 캡처, 아이가 나온 사진은 흐리게 처리</p>
+  <div class="so band">
+    <span class="lab">그래서</span>
+    <b>이름이 붙을 만큼 흔합니다. 그만큼 시장이 큽니다.</b>
+    <span class="need foot">시장 규모 숫자 [추가 자료 필요]</span>
+  </div>
   <span class="pg">02</span>
 </body>
 </html>

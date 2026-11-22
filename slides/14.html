@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><link rel="stylesheet" href="../theme.css">
+<style>
+  /* 마케팅: 전하려던 메시지 한 줄 → 게시물 세 장(번호 · 느끼게 할 것) → 아래 반응 숫자 */
+  .slide { gap: 28px; }
+  .msg .lab { margin-bottom: 6px; }
+  .msg p { font-size: 34px; font-weight: 800; line-height: 1.4; }
+  .posts { flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .post { display: flex; flex-direction: column; gap: 12px; min-height: 0; }
+  .post .img { position: relative; flex: 1; min-height: 0; }
+  .post img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center top; }
+  .post .no { position: absolute; left: -8px; top: -8px; width: 52px; height: 52px; border-radius: 50%; background: var(--main); color: #fff; font-size: 26px; font-weight: 900; display: grid; place-items: center; z-index: 1; }
+  .post b { font-size: 28px; text-align: center; }
+  .post p { font-size: 21px; color: var(--text-2); text-align: center; line-height: 1.4; }
+  .post p span { color: var(--main); font-weight: 700; }
+  .stats { display: flex; align-items: baseline; gap: 44px; }
+  .stats b { font-size: 48px; font-weight: 900; color: var(--main); margin-right: 8px; }
+  .stats span { font-size: 22px; color: var(--text-2); }
+</style>
+</head>
+<body class="slide">
+  <header>
+    <p class="sec">마케팅 · 실제로 해 본 것</p>
+    <h1><span class="need">[제목 미정]</span></h1>
+  </header>
+
+  <div class="msg">
+    <span class="lab">전하려던 메시지 <span class="need">[문구 확정 필요]</span></span>
+    <p>사진 한 장으로 어떤 일을 당할 수 있는지 느끼게 해서, 제품이 왜 필요한지 알린다</p>
+  </div>
+
+  <div class="posts">
+    <div class="post"><div class="img"><span class="no">1</span><img src="../assets/insta/post1.png" alt=""></div><b>«문자 반전»</b><p>모르는 사람이 아이 어린이집을 알고 문자를 보냄<br><span>→ 사진 한 장으로 당할 수 있는 일을 느낌</span></p></div>
+    <div class="post"><div class="img"><span class="no">2</span><img src="../assets/insta/post2.png" alt=""></div><b>«틀린 그림 게임»</b><p>사진 두 장에서 다른 곳 7개 찾기<br><span>→ 내 사진에도 단서가 있다는 걸 직접 찾아봄</span></p></div>
+    <div class="post"><div class="img"><span class="no">3</span><img src="../assets/insta/post3.png" alt=""></div><b>«30초 사용법»</b><p>올리기 전에 앱으로 확인하는 법<br><span>→ 그래서 이 앱이 필요하다</span></p></div>
+  </div>
+
+  <div class="stats band">
+    <p><b>8개</b><span>인스타 @child_shadow 게시물 (11월~)</span></p>
+    <p><b>17/18명</b><span>"생각 못 한 위험을 알게 됐다" (지인)</span></p>
+    <p><span>DM 체험 신청 </span><span class="need">[ ]</span></p>
+    <span class="foot" style="margin-left:auto">웹 무료 체험 8.26 배포 · 11.2 재배포</span>
+  </div>
+  <span class="pg">14</span>
+</body>
+</html>

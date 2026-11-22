@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><link rel="stylesheet" href="../theme.css">
+<style>
+  /* 마스킹 모델 학습 ②: 결과 띠(위) → 학습 과정 그림 세 개(아래, 마지막 채점만 강조) */
+  .slide { gap: 22px; }
+  .card.row { display: grid; grid-template-columns: 1fr 1.25fr; gap: 22px; align-items: center; }
+  .sub { font-size: 28px; color: var(--text-2); font-weight: 700; }
+  .res { display: grid; grid-template-columns: auto auto 1fr; align-items: center; gap: 48px; background: var(--main-1); border-radius: 24px; padding: 16px 40px; }
+  .res .lab { margin: 0; }
+  .res .how { font-size: 24px; color: var(--text-2); }
+  .res .nums { display: flex; align-items: baseline; gap: 18px; }
+  .res .from { font-size: 64px; font-weight: 900; color: var(--text-3); }
+  .res .to { font-size: 92px; font-weight: 900; color: var(--main); line-height: 1; letter-spacing: -.02em; }
+  .res .arw { font-size: 52px; font-weight: 900; color: var(--main); }
+  .res .why { border-left: 2px solid var(--main-3); padding-left: 40px; font-size: 32px; line-height: 1.45; }
+  .res .why b { color: var(--main); }
+  .steps { flex: 1; min-height: 0; display: grid; grid-template-columns: 1.85fr 64px .8fr; gap: 20px; }
+  .stack { display: flex; flex-direction: column; gap: 18px; min-height: 0; }
+  .card { background: var(--gray-2); border-radius: 22px; padding: 22px 26px; display: flex; flex-direction: column; gap: 12px; min-height: 0; }
+  .card.grow { flex: 1; }
+  .card.on { background: var(--bg); border: 6px solid var(--main); }
+  .card .t { font-size: 30px; font-weight: 800; }
+  .card .t i { font-style: normal; color: var(--main); margin-right: 10px; }
+  .card .s { font-size: 22px; color: var(--text-2); }
+  .card img { display: block; width: 100%; border-radius: 10px; border: 2px solid var(--line); background: #fff; }
+  .card .strip { aspect-ratio: 1800 / 150; object-fit: cover; object-position: top; }
+  .card .fill { flex: 1; min-height: 0; object-fit: contain; }
+  .card .dark { flex: 1; min-height: 0; object-fit: cover; background: #000; border: 0; }
+  .steps .arrow { align-self: center; flex: none; width: 64px; height: 36px; background: linear-gradient(90deg, var(--line), var(--main)); }
+</style>
+</head>
+<body class="slide">
+  <header>
+    <p class="sec">마스킹 모델 학습 ② 학습 · 결과</p>
+    <h1><span class="need">[제목 미정]</span></h1>
+  </header>
+
+  <div class="res">
+    <div><span class="lab">가려야 할 곳을 찾는 비율</span><span class="how">학습한 모델이 함께 찾으면</span></div>
+    <div class="nums"><span class="from">42%</span><span class="arw">→</span><span class="to">약 70%</span></div>
+    <p class="why">너무 작아 글자로는 못 읽던 간판도<br><b>위치로 찾아냅니다</b></p>
+  </div>
+
+  <div class="steps">
+    <div class="stack">
+      <div class="card row">
+        <div><p class="t"><i>1</i>이미 사물을 찾는 모델에서 시작</p><p class="s">처음부터 만들지 않고 우리 사진으로 다시 학습</p></div>
+        <img src="../assets/train/ft_code.png" alt="학습 코드">
+      </div>
+      <div class="card grow">
+        <p class="t"><i>2</i>사진 401장으로 학습 <span class="s">· 나머지 102장은 시험용으로 남겨 둠</span></p>
+        <img class="strip" src="../assets/train/strip_wide.jpg" alt="학습 사진">
+        <img class="fill" src="../assets/train/ft_map.png" alt="학습 그래프">
+      </div>
+    </div>
+    <div class="arrow"></div>
+    <div class="card on">
+      <p class="t"><i>3</i>처음 보는 사진으로 채점</p>
+      <p class="s">간판 위치를 상자로 찾아냄</p>
+      <img class="dark" src="../assets/train/ft_detect.png" alt="간판을 찾은 상자">
+    </div>
+  </div>
+  <span class="pg">11</span>
+</body>
+</html>

@@ -2,76 +2,66 @@
 <html lang="ko">
 <head><meta charset="utf-8"><link rel="stylesheet" href="../theme.css">
 <style>
-  /* 흐름을 한 번 바꾸는 장(1/3 지점): 큰 사진 한 장 + 걱정 순서 → 지금 방법의 한계 한 줄 → "그래서" */
+  /* 대조형: 해외 사건 세 개(기사 화면) ↔ 국내(강조 칸, 인터뷰 말풍선) · 아래 우리가 막는 것 */
   .slide { gap: 32px; }
-  .hero { flex: 1; min-height: 0; display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; }
-  .zoom { position: relative; }
-  .zoom .photo { position: absolute; left: 0; top: 0; width: 62%; height: 100%; }
-  .zoom .spot  { position: absolute; left: 12%; top: 14%; width: 90px; height: 90px; border: 6px solid var(--main); border-radius: 50%; }
-  .zoom .beam  { position: absolute; left: calc(12% + 90px); top: 4%; width: calc(62% - 12% - 70px); height: 46%;
-                 clip-path: polygon(0 18%, 100% 0, 100% 100%, 0 40%); background: linear-gradient(90deg, var(--main-beam), rgba(47,111,237,.06)); }
-  .zoom .lens  { position: absolute; right: 0; top: 0; width: 300px; height: 300px; border: 8px solid var(--main); border-radius: 50%;
-                 background: var(--bg); display: grid; place-items: center; text-align: center; font-size: 36px; font-weight: 800; color: var(--main); }
-  .zoom .eyes  { position: absolute; right: 0; bottom: 0; width: 36%; display: grid; gap: 14px; font-size: 26px; line-height: 1.35; }
-  .zoom .eyes b { color: var(--main); }
-  .rank { display: flex; flex-direction: column; justify-content: center; gap: 18px; }
-  .rank .lab { margin: 0; }
-  .rank ol { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 14px; counter-reset: r; }
-  .rank li { counter-increment: r; display: flex; align-items: center; gap: 20px; font-size: 40px; font-weight: 800; }
-  .rank li::before { content: counter(r); width: 56px; height: 56px; border-radius: 50%; background: var(--main); color: var(--bg);
-                     display: grid; place-items: center; font-size: 28px; flex: none; }
-  .rank li.no { color: var(--text-3); font-weight: 600; font-size: 32px; }
-  .rank li.no::before { content: "–"; background: var(--gray); color: var(--text-3); }
-  .now { display: grid; grid-template-columns: auto repeat(4, 1fr); gap: 12px; align-items: stretch; }
-  .now .lab { margin: 0; align-self: center; white-space: nowrap; }
-  .now div { background: var(--gray-2); border-radius: 14px; padding: 12px 18px; font-size: 22px; line-height: 1.35; color: var(--text-2); }
-  .now div b { display: block; color: var(--text); font-size: 24px; }
+  .cmp { flex: 1; min-height: 0; display: grid; grid-template-columns: 2.1fr 1fr; gap: 28px; }
+  .cmp .box { display: flex; flex-direction: column; gap: 16px; min-height: 0; padding: 30px 34px; }
+  .cmp .lab { margin: 0; }
+  .cases { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 18px 22px; }
+  .case { display: flex; flex-direction: column; gap: 8px; min-height: 0; }
+  .case img { flex: 1; min-height: 0; width: 100%; object-fit: contain; border-radius: 12px; border: 2px solid var(--line); background: #fff; }
+  .case .src { font-size: 20px; color: var(--text-3); }
+  .case b { font-size: 24px; line-height: 1.35; }
+  .case.wide { grid-column: 1 / -1; display: grid; grid-template-columns: 1.2fr 1fr; gap: 22px; align-items: center; }
+  .case.wide img { height: 100%; }
+  .bubble { position: relative; background: var(--bg); border: 3px solid var(--main); border-radius: 24px; padding: 24px 26px; font-size: 32px; font-weight: 800; line-height: 1.35; }
+  .bubble::after { content: ""; position: absolute; left: 44px; bottom: -22px; border: 11px solid transparent; border-top-color: var(--main); border-width: 22px 14px 0; }
+  .who { margin-top: 14px; font-size: 22px; color: var(--text-2); }
+  .cmp .slot { flex: 1; min-height: 0; padding: 20px; }
   .so { display: flex; gap: 24px; align-items: baseline; }
-  .so .lab { margin: 0; white-space: nowrap; color: var(--main); }
-  .so b { font-size: 36px; }
+  .so .lab { margin: 0; color: var(--main); white-space: nowrap; }
+  .so b { font-size: 32px; }
 </style>
 </head>
 <body class="slide">
-  <nav class="prog"><span class="on" style="--n:2"></span><span style="--n:1"></span><span style="--n:1"></span><span style="--n:1"></span><span style="--n:2"></span></nav>
   <header>
-    <p class="sec">왜 이 해결책인가</p>
-    <h1>부모는 아이 얼굴보다 어린이집 이름과 집 위치를 걱정합니다</h1>
+    <p class="sec">사례 · 해외와 국내</p>
+    <h1><span class="need">[제목 미정]</span></h1>
   </header>
 
-  <div class="hero">
-    <div class="zoom">
-      <div class="slot photo">직접 찍은 사진 (아이 얼굴 제외)<span class="need">[추가 자료 필요]</span></div>
-      <div class="beam"></div>
-      <div class="spot"></div>
-      <div class="lens">학원 간판</div>
-      <div class="eyes">
-        <p>부모: "예쁘게 나왔네"</p>
-        <p><b>낯선 사람: "어디 다니는지 알겠네"</b></p>
+  <div class="cmp">
+    <div class="box">
+      <span class="lab">해외 · 셰어런팅 사진이 범죄로 이어진 사건</span>
+      <div class="cases">
+        <div class="case">
+          <img src="../assets/news/us_doj.png" alt="">
+          <span class="src">미국 법무부 · 2023.11</span>
+          <b>학교 댄스 · 첫 등교일 사진을 AI로 변형 → 징역 40년</b>
+        </div>
+        <div class="case">
+          <img src="../assets/news/c_au.png" alt="">
+          <span class="src">IBTimes · 2015.9.30 · 호주</span>
+          <b>아동 성착취 사이트 사진의 절반이 페이스북에서</b>
+        </div>
+        <div class="case wide">
+          <img src="../assets/news/jp_nbc.png" alt="">
+          <div><span class="src">NBC News · 2019.10 · 일본</span><br><b>셀카 <span class="main">눈동자에 비친 역</span>으로 집을 찾아가 범행</b><br><span class="src">(피해자는 성인)</span></div>
+        </div>
       </div>
     </div>
 
-    <div class="rank">
-      <span class="lab">부모 설문 · 걱정되는 것 (많이 고른 순)</span>
-      <ol>
-        <li>어린이집 · 학교 이름</li>
-        <li>집 · 아파트 간판</li>
-        <li>원복 · 교복</li>
-        <li class="no">아이 얼굴: 고른 사람 없음</li>
-      </ol>
+    <div class="box on">
+      <span class="lab">국내 · 범죄 사례는 확인 못 함</span>
+      <div class="bubble">"무슨 동네 사시네요"<br>같은 댓글이 달렸어요</div>
+      <p class="who">직접 인터뷰 · 육아 · 교육 인플루언서</p>
+      <div class="slot">사는 곳 · 다니는 곳을 묻는 댓글 캡처<span class="need">[자료 필요]</span></div>
     </div>
   </div>
 
-  <div class="now">
-    <span class="lab">지금 방법</span>
-    <div><b>안 올린다</b>추억을 못 남김</div>
-    <div><b>공개 범위 줄이기</b>사진 속 간판은 그대로</div>
-    <div><b>얼굴 가리기</b>간판은 그대로, 아이만 안 보임</div>
-    <div><b>휴대폰 지우개</b>어디를 지울지 직접 찾아야 함</div>
-  </div>
-
   <div class="so band">
-    <span class="lab">그래서</span>
-    <b>아이는 그대로 두고, 위치를 알려 주는 단서만 찾아서 지웁니다.</b>
+    <span class="lab">우리가 막는 것</span>
+    <b>배경 · 교복으로 아이를 찾아오는 길</b>
+    <span class="foot">얼굴 합성은 못 막음</span>
   </div>
   <span class="pg">03</span>
 </body>
