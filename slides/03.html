@@ -9,11 +9,17 @@
   .cmp .lab { margin: 0; }
   .cases { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 18px 22px; }
   .case { display: flex; flex-direction: column; gap: 8px; min-height: 0; }
+  /* 세 번째 기사: 화면은 왼쪽 칸(위 기사와 같은 폭), 제목·출처는 그 오른쪽 */
+  .case.side { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr auto auto 1fr; column-gap: 22px; row-gap: 8px; }
+  .case.side img { grid-column: 1; grid-row: 1 / -1; flex: none; height: auto; max-height: 100%; align-self: center; }
+  .case.side b { grid-column: 2; grid-row: 2; min-height: 0; }
+  .case.side .src { grid-column: 2; grid-row: 3; }
   .case img { flex: 1; min-height: 0; width: 100%; object-fit: contain; border-radius: 12px; border: 2px solid var(--line); background: #fff; }
-  .case .src { font-size: 20px; color: var(--text-3); }
-  .case b { font-size: 23px; line-height: 1.35; } /* 24px면 «징역 40년»이 다음 줄로 넘어갔다 — 세 칸 모두 한 줄에 들어가게 */
-  .case.wide { grid-column: 1 / -1; display: grid; grid-template-columns: 1.2fr 1fr; gap: 22px; align-items: center; }
-  .case.wide img { height: 100%; }
+  .case .src { font-size: 20px; color: var(--text-3); text-align: center; }
+  /* 기사 제목은 기사 화면 위에, 오른쪽 인터뷰 질문(.q)과 같은 글씨 크기로 (11-23) */
+  .case b { font-size: 26px; font-weight: 700; line-height: 1.4; word-break: keep-all; text-wrap: balance; text-align: center; }
+  /* 위 두 기사 제목은 한 줄로 — 칸 폭에 들어가게 글씨를 줄인다 (11-23) */
+  .case.one b { font-size: 23px; white-space: nowrap; }
   .who { margin: 0; font-size: 22px; color: var(--text-2); }
   .q { margin: 0; font-size: 26px; font-weight: 700; line-height: 1.4; }
   .q b { color: var(--main); margin-right: 6px; }
@@ -35,19 +41,20 @@
     <div class="box">
       <span class="lab">해외 · 셰어런팅 사진이 범죄로 이어진 사건</span>
       <div class="cases">
-        <div class="case">
+        <div class="case one">
+          <b>AI로 아동 성착취물 만든 정신과 의사, 징역 40년</b>
           <img src="../assets/news/us_doj.png" alt="">
           <span class="src">미국 법무부 · 2023.11</span>
-          <b>학교 댄스 · 첫 등교일 사진을 AI로 변형 → 징역 40년</b>
         </div>
-        <div class="case">
+        <div class="case one">
+          <b>호주 소아성애 사이트, 사진 절반을 페이스북에서</b>
           <img src="../assets/news/c_au.png" alt="">
           <span class="src">IBTimes · 2015.9.30 · 호주</span>
-          <b>아동 성착취 사이트 사진의 절반이 페이스북에서</b>
         </div>
-        <div class="case wide">
+        <div class="case side">
+          <b>스토킹 용의자, 아이돌 사진 속 <span class="main">눈동자에 비친 모습</span>으로 위치 찾아내</b>
           <img src="../assets/news/jp_nbc.png" alt="">
-          <div><span class="src">NBC News · 2019.10 · 일본</span><br><b>셀카 <span class="main">눈동자에 비친 역</span>으로 집을 찾아가 범행</b></div>
+          <span class="src">NBC News · 2019.10 · 일본</span>
         </div>
       </div>
     </div>
